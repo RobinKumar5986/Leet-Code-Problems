@@ -20,11 +20,9 @@ class Solution {
             int temp=wind-freq;
             if(temp<=k){
                 len=wind;
-                wind++;
             }else{
                 map.put(s.charAt(l),map.get(s.charAt(l))-1);
                 l++;
-
             }
             r++;
         }
