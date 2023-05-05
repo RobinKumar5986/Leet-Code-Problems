@@ -33,7 +33,7 @@ class Solution {
              if(c=='a' || c=='e' || c=='i' || c=='o'|| c=='u') v++;
         }
         if(v>count) count=v;
-        int i=k;
+                int i=k;
         while(i<s.length()){
             char c=s.charAt(i);
             char c2=s.charAt(start-1);
