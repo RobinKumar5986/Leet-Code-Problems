@@ -39,7 +39,6 @@ class Solution {
         for(int i=k;i<s.length();i++){
             char c=s.charAt(i);
             char c2=s.charAt(start-1);
-            System.out.println(" c :" + c + " c2 : "+ c2);
             if(k!=1){
                 if(c2=='a' || c2=='e' || c2=='i' || c2=='o'|| c2=='u')
                 {
@@ -48,13 +47,11 @@ class Solution {
                 if(c=='a' || c=='e' || c=='i' || c=='o'|| c=='u'){
                     v++;
                 }
-                
             }else{
                 if(c=='a' || c=='e' || c=='i' || c=='o'|| c=='u'){
                     return 1;
                 }
             }
-            System.out.println(" v : "+ v);
             start++;
             if(v>count) count=v;
         }
