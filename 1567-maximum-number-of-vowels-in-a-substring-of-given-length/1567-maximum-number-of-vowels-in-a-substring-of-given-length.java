@@ -33,10 +33,8 @@ class Solution {
              if(c=='a' || c=='e' || c=='i' || c=='o'|| c=='u') v++;
         }
         if(v>count) count=v;
-
-        System.out.println("Outer v : "+ v);
-
-        for(int i=k;i<s.length();i++){
+        int i=k;
+        while(i<s.length()){
             char c=s.charAt(i);
             char c2=s.charAt(start-1);
             if(k!=1){
@@ -53,6 +51,7 @@ class Solution {
                 }
             }
             start++;
+            i++;
             if(v>count) count=v;
         }
         return count;
