@@ -1,29 +1,5 @@
 class Solution {
     public int maxVowels(String s, int k) {
-//------------Brute Force---------------------------//
-        // int count=Integer.MIN_VALUE;
-        // for(int i=0;i<s.length();i++){
-        //     int temp=0;
-        //     if(k+i<s.length()){
-        //         for(int j=i;j<k+i;j++){
-        //             char c=s.charAt(j);
-        //             if(c=='a' || c=='e' || c=='i' || c=='o'|| c=='u'){
-        //                 temp++;
-        //             }
-        //             if(temp>count) count=temp;
-        //         }
-            
-        //     }else{
-        //         for(int j=i;j<s.length();j++){
-        //             char c=s.charAt(j);
-        //             if(c=='a' || c=='e' || c=='i' || c=='o'|| c=='u'){
-        //                 temp++;
-        //             }
-        //             if(temp>count) count=temp;
-        //         }
-        //     }
-        // }
-        // return count;
 
         int start=1;
         int v=0;
