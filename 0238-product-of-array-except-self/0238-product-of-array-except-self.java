@@ -16,6 +16,7 @@ class Solution {
                 answer[i]=mul/nums[i];
             }else if(c==1){
                 answer[i]=mul2;
+                break;
             }else{
                 answer[i]=0;
             }
