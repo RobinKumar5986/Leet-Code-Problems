@@ -17,8 +17,6 @@ class Solution {
             }else if(c==1){
                 answer[i]=mul2;
                 break;
-            }else{
-                answer[i]=0;
             }
         }
         System.out.println(c);
