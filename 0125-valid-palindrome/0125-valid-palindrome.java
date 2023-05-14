@@ -9,18 +9,16 @@ class Solution {
         //Solution al=new Solution();
 
         while(low<s.length() || hi>=0){
-            if(low<s.length() && alpha(s.charAt(low))==true){
+            if(low<s.length() && alpha(s.charAt(low))){
                 s1+=s.charAt(low);
                
             }
-            if(hi>=0 && alpha(s.charAt(hi))==true){
+            if(hi>=0 && alpha(s.charAt(hi))){
                 s2+=s.charAt(hi);
             }
             low++;
             hi--;
         }
-        System.out.println(s1+ " "+ s2);
-
         if(s1.equals(s2)) return true;
         return false;
     }
