@@ -6,14 +6,14 @@ class Solution {
         String s1="";
         String s2="";
 
-        Solution al=new Solution();
+        //Solution al=new Solution();
 
         while(low<s.length() || hi>=0){
-            if(low<s.length() && al.alpha(s.charAt(low))==true){
+            if(low<s.length() && alpha(s.charAt(low))==true){
                 s1+=s.charAt(low);
                
             }
-            if(hi>=0 && al.alpha(s.charAt(hi))==true){
+            if(hi>=0 && alpha(s.charAt(hi))==true){
                 s2+=s.charAt(hi);
             }
             low++;
