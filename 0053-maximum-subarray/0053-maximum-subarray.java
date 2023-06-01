@@ -28,9 +28,9 @@ class Solution {
                 max=sum;
             }
             if(sum<0){
-                // if(sum>neg){
-                //     neg=sum;
-                // }
+                if(sum>neg){
+                    neg=sum;
+                }
                 sum=0;
             }
         }
