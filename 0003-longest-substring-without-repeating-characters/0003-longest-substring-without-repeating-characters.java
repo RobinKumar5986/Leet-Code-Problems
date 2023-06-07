@@ -53,6 +53,7 @@ class Solution {
             len=Math.max(len,r-l+1);
             map[c]=r+1;
             r++;
+            
         }
 
         return len;
