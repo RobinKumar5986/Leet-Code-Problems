@@ -40,22 +40,6 @@ class Solution {
         // }
         // return len;
 
-
-        // HashMap<Character,Integer> map=new HashMap<>();
-        // int l=0;
-        // int r=0;
-        // int len=0;
-        // while(r<s.length()){
-        //     char c=s.charAt(r);
-
-        //     if( map.containsKey(c) ){
-        //          l=Math.max(l,map.get(c)+1);
-        //     }
-        //     len=Math.max(len,r-l+1);
-        //     map.put(c,r);
-        //     r++;
-        
-        // }
         //--------Using array because it is faster then Hash map-------//
         int[] map=new int[257];
         int l=0;
@@ -69,11 +53,8 @@ class Solution {
             len=Math.max(len,r-l+1);
             map[c]=r+1;
             r++;
-            
         }
 
         return len;
-
-        // return len;
     }
 }
