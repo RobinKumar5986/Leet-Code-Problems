@@ -41,7 +41,8 @@ class Solution {
         // return len;
 
         //--------Using array because it is faster then Hash map-------//
-        int[] map=new int[257];
+        
+        int[] map=new int[256];
         int l=0;
         int r=0;
         int len=0;
@@ -53,7 +54,6 @@ class Solution {
             len=Math.max(len,r-l+1);
             map[c]=r+1;
             r++;
-            
         }
 
         return len;
