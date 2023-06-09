@@ -22,6 +22,9 @@ class Solution {
                 hi=mid-1;
             }
             if(l[mid]==t){
+                if(l[mid+1]!=t){
+                    return l[mid+1];
+                }
                 lo=mid+1;
             }
             if(l[mid]<t){
