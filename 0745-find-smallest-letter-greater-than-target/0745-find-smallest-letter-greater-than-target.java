@@ -27,8 +27,6 @@ class Solution {
             if(l[mid]<t){
                 lo=mid+1;
             }
-            
-
         }
         return c;
 
