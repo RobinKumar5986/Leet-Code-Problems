@@ -1,6 +1,6 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        //-------Brute Force-------//
+        // -------Brute Force-------//
         int len=nums.length;
         
         //----using two for loop methods-----//
@@ -16,6 +16,8 @@ class Solution {
             }
         }
 
+        // List<String> map=new ArrayList<>();
+        // for(int i=0;i<nums.)
         
         return null;
     }
