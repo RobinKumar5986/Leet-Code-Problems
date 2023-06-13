@@ -23,12 +23,8 @@ class Solution {
             }
             
         }
-
-       
         for(int i=0;i<row.size();i++){
             if(col.containsKey(row.get(i))){
-                
-                // System.out.println("Yes : "+row.get(i));
                 count+=col.get(row.get(i));
             }
         }
