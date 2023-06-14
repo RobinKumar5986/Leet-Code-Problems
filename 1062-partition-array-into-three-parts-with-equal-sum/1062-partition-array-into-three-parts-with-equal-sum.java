@@ -1,11 +1,11 @@
 class Solution {
     public boolean canThreePartsEqualSum(int[] arr) {
-        Integer sum = Arrays.stream(arr).reduce(0, Integer::sum);
+        int sum=0;
         int count=0;
 
-        // for(int i=0;i<arr.length;i++){
-        //     sum+=arr[i];
-        // }
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
+        }
         //First base case 
         if(sum%3!=0) return false;
         int crSum=sum/3;
