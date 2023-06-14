@@ -6,8 +6,8 @@ class Solution {
         for(int i=0;i<arr.length;i++){
             sum+=arr[i];
         }
+        //First base case 
         if(sum%3!=0) return false;
-
         int crSum=sum/3;
         sum=0;
 
@@ -18,8 +18,8 @@ class Solution {
                 sum=0;
             }
         }
+        // Second Base Case 
         if(count>=3) return true;
-
         return false;
     }
 }
