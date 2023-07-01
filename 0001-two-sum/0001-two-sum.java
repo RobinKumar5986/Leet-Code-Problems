@@ -16,19 +16,20 @@ class Solution {
         //     }
         // }
         
-        int[] ans=new int[2];
+        int ans[]=new int[2];
         HashMap<Integer,Integer> map=new HashMap<>();
+
         for(int i=0;i<nums.length;i++){
-            int diff=target-nums[i];
-            if(map.containsKey(diff)){
-                ans[0]=map.get(diff);
-                ans[1]=i;
-                return ans;
+            int temp=target-nums[i];
+            if(map.containsKey(temp)){
+                ans[0]=i;
+                ans[1]=map.get(temp);
+                break;
+                
             }
-            else{
-                map.put(nums[i],i);
-            }
+            map.put(nums[i],i);   
         }
-        return null;
+
+        return ans;
     }
 }
