@@ -25,7 +25,6 @@ class Solution {
                 ans[0]=i;
                 ans[1]=map.get(temp);
                 break;
-                
             }
             map.put(nums[i],i);   
         }
