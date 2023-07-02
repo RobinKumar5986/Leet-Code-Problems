@@ -29,14 +29,18 @@ class Solution {
 //------------------------------------------------------//
         int target=0;
         Arrays.sort(nums);
+        int j;
+        int k;
+        int n=nums.length-1;
+
         List<List<Integer>> ans = new ArrayList<>();
 
         for(int i=0;i<nums.length;i++){
             if(nums[i] > 0) return ans;
             if(i > 0 && nums[i-1] == nums[i]) continue;
 
-            int j=i+1;
-            int k=nums.length-1;
+            j=i+1;
+            k=n;
             
             while(j<k){
                 int sum= nums[i]+nums[j] + nums[k];
@@ -55,7 +59,6 @@ class Solution {
                 }
             }
         }
-        // ans.addAll(list);
         return ans;
     }
 }
