@@ -27,28 +27,33 @@ class Solution {
         //     }
         // }
 //------------------------------------------------------//
-        Set<List<Integer>> lst = new HashSet<>();
-        Arrays.sort(nums);                 // Importent
-        if(nums.length<3){ return new ArrayList(lst);}
+        int target=0;
+        Arrays.sort(nums);
+        Set<List<Integer>> list= new HashSet<>();
+        List<List<Integer>> ans = new ArrayList<>();
 
-        for(int i=0;i<nums.length-2;i++){
-            int val=nums[i];
-            int lower=i+1;
-            int upper=nums.length-1;
-            while(lower<upper){
-                int sum=val+nums[lower]+nums[upper];
-                if(sum==0){
-                    lst.add(Arrays.asList(val,nums[lower],nums[upper]));
-                    lower++;
-                }else if(sum<0){
-                    lower++;
-                }else{
-                    upper--;
+        for(int i=0;i<nums.length;i++){
+            int j=i+1;
+            int k=nums.length-1;
+            
+            while(j<k){
+                int sum= nums[i]+nums[j] + nums[k];
+
+                if(sum==target){
+                    list.add(Arrays.asList( nums[i] , nums[j] , nums[k] ));
+                    j++;
+                    k--;
+
+                }else if(sum < target){
+                    j++;
+                }
+                else{
+                    k--;
                 }
             }
-
         }
-        return new ArrayList(lst) ;
+        ans.addAll(list);
 
+        return ans;
     }
 }
