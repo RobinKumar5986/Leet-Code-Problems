@@ -1,4 +1,4 @@
-with ct as (select distinct 
+with ct as (select  
 e.employee_id, e.name , count(*) as reports_count ,
 round(avg(ee.age),0) 
 as average_age 
