@@ -1,42 +1,28 @@
 class Solution {
     public int maxSubArray(int[] nums) {
-        //----------------Brute Force----------------//
-
-
-        // int sum=0;
-        // int max=Integer.MIN_VALUE;
-        // for(int i=0;i<nums.length;i++){
-        //     for(int j=i+1;j<=nums.length;j++){
-        //         sum=0;
-        //         for(int k=i;k<j;k++){
-        //             sum=sum+nums[k];
-        //         }
-        //         if(sum>max){
-        //             max=sum;
-        //         }
-        //     }
-        // }
-
-        //--------kadane's Algorithm---------//
-        //--------Also works for all -ve Value--//
-        int max=Integer.MIN_VALUE;
         int sum=0;
-        int neg=Integer.MIN_VALUE;
+        int max=0;
+        int flag=0;
+
         for(int i=0;i<nums.length;i++){
-            sum=sum+nums[i];
-            if(sum>max){
-                max=sum;
-            }
-            if(sum<0){
-                if(sum>neg){
-                    neg=sum;
+            sum+=nums[i];
+            if(sum>max){max=sum;}
+
+            if(sum<0) {sum=0; flag=1;}
+        }
+        if(flag==1 && max==0){
+            int min=Integer.MIN_VALUE;
+            for(int i=0;i<nums.length;i++){
+                if(nums[i]>min){
+                    min=nums[i];
+                    
                 }
-                sum=0;
             }
+            return min;
+
         }
-        if(neg>max){
-            return neg;
-        }
+
         return max;
+
     }
 }
