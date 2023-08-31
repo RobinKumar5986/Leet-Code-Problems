@@ -36,7 +36,7 @@ class Solution {
         if(nums.length==1) return 0;
 
         int min=nums[0];
-        int max_profit=Integer.MIN_VALUE;
+        int max_profit=-999;
         int flag=1;
 
         for(int i=1;i<nums.length;i++){
@@ -51,7 +51,6 @@ class Solution {
                 
         }
         if(flag==1) return 0;
-
         return max_profit;
 
 
