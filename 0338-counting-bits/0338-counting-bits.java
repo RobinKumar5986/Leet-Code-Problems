@@ -4,8 +4,7 @@ class Solution {
         while(n!=0){
             int rem=n%2;
             if(rem==1) count++;
-
-            n=n/2;
+            n=n>>1;
         }
         return count;
     }
@@ -13,10 +12,7 @@ class Solution {
         int ans[]=new int[n+1];
         for(int i=0;i<=n;i++){
             ans[i]=binCount(i);
-
-            // System.out.println(ans[i]);
         }
-        
         return ans;
     }
 }
