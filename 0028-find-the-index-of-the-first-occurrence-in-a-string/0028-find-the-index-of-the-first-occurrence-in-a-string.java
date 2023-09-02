@@ -1,6 +1,6 @@
 class Solution {
     public int strStr(String haystack, String needle) {
-        if(haystack.length()< needle.length()) return -1;
+        // if(haystack.length()< needle.length()) return -1;
     //-----------Brute Force Solution-------------//
         // int ans=-1;
         // for(int i=0;i<haystack.length();i++){
@@ -25,18 +25,21 @@ class Solution {
         // return ans;
     //-----------Bit Optmize Solution--------------//
         
-        for(int i=0;i<=haystack.length()-needle.length();i++){
-            if(haystack.charAt(i)==needle.charAt(0)){
-                boolean found=true;
-                for(int j=0;j<needle.length();j++){
-                    if(haystack.charAt(j+i)!=needle.charAt(j)){ 
-                        found=false; break;
-                    }
-                }
-                if(found) return i;
-            }
+    //     for(int i=0;i<=haystack.length()-needle.length();i++){
+    //         if(haystack.charAt(i)==needle.charAt(0)){
+    //             boolean found=true;
+    //             for(int j=0;j<needle.length();j++){
+    //                 if(haystack.charAt(j+i)!=needle.charAt(j)){ 
+    //                     found=false; break;
+    //                 }
+    //             }
+    //             if(found) return i;
+    //         }
             
-        }
-        return -1;
+    //     }
+    //     return -1;
+
+    //----------Super Optmize Solution-----------------//
+        return haystack.indexOf(needle);
     }
 }
