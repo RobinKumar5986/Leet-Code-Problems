@@ -40,7 +40,6 @@ class Solution {
           }
         }
         if(c!='0') ans="1"+ans;
-
         return ans;
     }
 }
