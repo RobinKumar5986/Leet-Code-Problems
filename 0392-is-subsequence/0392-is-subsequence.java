@@ -4,7 +4,7 @@ class Solution {
         if(s.length()<=0) return true;
 
         int count=0;
-        char c2=Character.MIN_VALUE;
+        char c2=Character.MIN_VALUE; // for handling empty character i.e char c2='';
         for(int i=0;i<t.length();i++){
             char c1=t.charAt(i);
             if(count<s.length() ){
