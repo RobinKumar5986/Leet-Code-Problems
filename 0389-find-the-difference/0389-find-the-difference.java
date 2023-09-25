@@ -4,9 +4,11 @@ class Solution {
         for(int i=0;i<s.length();i++){
             freq1[s.charAt(i) - 'a']+=1;
         }
+
         for(int i=0;i<t.length();i++){
             freq1[t.charAt(i) - 'a']-=1;
         }
+
         for(int i=0;i<256;i++){
             if(freq1[i]!=0)
             {
@@ -14,7 +16,6 @@ class Solution {
                 return (char)x ;
             }
         }
-        return 'e';
-
+        return 'a';
     }
 }
