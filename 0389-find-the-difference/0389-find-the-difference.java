@@ -16,6 +16,6 @@ class Solution {
                 return (char)x ;
             }
         }
-        return 'a';
+        return 'a'; //just a dummy value
     }
 }
