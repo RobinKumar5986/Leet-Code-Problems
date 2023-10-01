@@ -17,9 +17,8 @@ class Solution {
                 ans+=" ";
             }
         }
-        if(lo!=i){
-            ans+=reverse( s.substring(lo,i) );
-        }
+        ans+=reverse( s.substring(lo,i) );
+        
         return ans;
     }
 }
