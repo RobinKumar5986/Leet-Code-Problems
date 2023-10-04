@@ -5,7 +5,7 @@ class MyHashMap {
         Arrays.fill(data,-1);
     }
     
-    public void put(int key, int value) {
+    public void put(int key, int value) { 
        this.data[key]=value;
     }
     
