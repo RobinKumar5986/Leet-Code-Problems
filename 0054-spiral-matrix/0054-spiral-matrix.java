@@ -7,19 +7,19 @@ public class Solution {
         int right=matrix[0].length-1;
         while(left <= right && top<=bottom){
             for(int i=left ;i<=right ;i++)
-                ans.add(matrix[top][i]); // System.out.println(matrix[top][i]);
+                ans.add(matrix[top][i]);
             top++;
             for(int i=top;i<=bottom;i++)
-                ans.add(matrix[i][right]); // System.out.println(matrix[i][right]);
+                ans.add(matrix[i][right]);
             right--;
             if(bottom>=top){
                 for(int i=right;i>=left;i--)
-                    ans.add(matrix[bottom][i]); // System.out.println(matrix[bottom][i]);
+                    ans.add(matrix[bottom][i]);
                 bottom--;
             }
             if(left<=right){
                 for(int i=bottom;i>=top;i--)
-                    ans.add(matrix[i][left]); // System.out.println(matrix[i][left]);
+                    ans.add(matrix[i][left]);
                 left++;
             }
         }
