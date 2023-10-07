@@ -1,43 +1,25 @@
 public class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> ans = new ArrayList<>();
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
-            return ans;
-        }
-
-        int m = matrix.length;
-        int n = matrix[0].length;
-        int top = 0;
-        int bottom = m - 1;
-        int left = 0;
-        int right = n - 1;
-
-        while (top <= bottom && left <= right) {
-            // Traverse from left to right
-            for (int i = left; i <= right; i++) {
-                ans.add(matrix[top][i]);
-            }
+        List<Integer> ans=new ArrayList<>();
+        int top=0;
+        int bottom=matrix.length-1;
+        int left=0;
+        int right=matrix[0].length-1;
+        while(left <= right && top<=bottom){
+            for(int i=left ;i<=right ;i++)
+                ans.add(matrix[top][i]); // System.out.println(matrix[top][i]);
             top++;
-
-            // Traverse from top to bottom
-            for (int i = top; i <= bottom; i++) {
-                ans.add(matrix[i][right]);
-            }
+            for(int i=top;i<=bottom;i++)
+                ans.add(matrix[i][right]); // System.out.println(matrix[i][right]);
             right--;
-
-            // Check if there are more rows to traverse from bottom to top
-            if (top <= bottom) {
-                for (int i = right; i >= left; i--) {
-                    ans.add(matrix[bottom][i]);
-                }
+            if(bottom>=top){
+                for(int i=right;i>=left;i--)
+                    ans.add(matrix[bottom][i]); // System.out.println(matrix[bottom][i]);
                 bottom--;
             }
-
-            // Check if there are more columns to traverse from right to left
-            if (left <= right) {
-                for (int i = bottom; i >= top; i--) {
-                    ans.add(matrix[i][left]);
-                }
+            if(left<=right){
+                for(int i=bottom;i>=top;i--)
+                    ans.add(matrix[i][left]); // System.out.println(matrix[i][left]);
                 left++;
             }
         }
