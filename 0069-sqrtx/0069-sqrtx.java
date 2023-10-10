@@ -12,11 +12,10 @@ class Solution {
                 return (int)mid;
             }else if(sqr<x){
                 l=mid+1;
+                ans=(int)mid;
             }else{
                 r=mid-1;
-            }
-            if(sqr<x)
-                ans=(int)mid;
+            }   
         }
         return ans;
 
