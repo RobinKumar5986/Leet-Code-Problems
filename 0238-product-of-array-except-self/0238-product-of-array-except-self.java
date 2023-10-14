@@ -2,14 +2,13 @@ class Solution {
     public int[] productExceptSelf(int[] nums) {
         boolean zero_flag=false;
         int mul=1;
-        int count=0;
         for(int i=0;i<nums.length;i++){
             if(nums[i]==0) {
-                zero_flag=true;
-                count++;
-                if(count>1){
-                    return new int[nums.length];
+                if(zero_flag){
+                    Arrays.fill(nums,0);
+                    return nums;
                 }
+                zero_flag=true;
             }
             else mul*=nums[i];
         }
