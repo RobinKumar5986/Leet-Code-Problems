@@ -13,7 +13,6 @@ class Solution {
             Map.Entry<Integer, Integer> entry = list.get(i);
             ans[i]=(int)entry.getKey();
         }
-
         return ans;
     }
 }
