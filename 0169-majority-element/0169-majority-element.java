@@ -12,8 +12,6 @@ class Solution {
             }else{
                 c--;
             }
-            
-            // if(c>=nums.length/2) return ele;
         }
         return ele;
 
