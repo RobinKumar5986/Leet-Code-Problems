@@ -1,24 +1,41 @@
 class MyStack {
-    List<Integer> q=new ArrayList<>();
-    int ind=-1;
+    Queue<Integer> q;
+    int ele=0;
     public MyStack() {
-        
+        q=new LinkedList<>();
     }
-    
     public void push(int x) {
-        q.add(++ind,x);
+        q.add(x);
     }
     
     public int pop() {
-        return q.get(ind--);
+        int size=q.size();
+        while(size>0){
+            ele=q.remove();
+            if(size>1)
+                q.add(ele);
+            size--;
+        }
+        return ele;
+
     }
     
     public int top() {
-        return q.get(ind);
+        int size=q.size();
+        while(size>0){
+        
+            ele=q.remove();
+            q.add(ele);
+            size--;
+        }
+
+        return ele;
     }
     
     public boolean empty() {
-        if(ind==-1) return true;
+        System.out.println(q.size());
+    
+        if(q.size()==0) return true;
         return false;
     }
 }
