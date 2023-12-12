@@ -1,38 +1,25 @@
 class Solution {
-    HashMap<Character,Integer> freq(HashMap<Character,Integer> map,String s){
-        for(int i=0;i<s.length();i++){
-            char c=s.charAt(i);
-            map.put(c,map.getOrDefault(c,0) +1);
-        }
-        return map;   
-    }
-    boolean check(HashMap<Character,Integer> m1,HashMap<Character,Integer> m2){
-        for(Map.Entry<Character,Integer> ele : m1.entrySet()){
-            char key=ele.getKey();
-            int val=ele.getValue();
-            if(!m2.containsKey(key)){
-                return false;
-            }
-            if(m2.containsKey(key) && val!=m2.get(key)){
-                return false;
-            }
-        }
-        return true;
-    }
     public boolean checkInclusion(String s1, String s2) {
-        if(s2.length() < s1.length() ) return false;
-        int lo=0;
-        int hi=s1.length();
-        HashMap<Character,Integer> m1=new HashMap<>();
-        HashMap<Character,Integer> m2=new HashMap<>();
-        m1=freq(m1,s1);
-        for(int i=0;i<s2.length()-hi + 1;i++){
-            String sub=s2.substring(lo+i,hi+i);
-            m2.clear();
-            m2=freq(m2,sub);
-            if(check(m1,m2)) return true;            
+        if(s2.length() < s1.length()) return false;
+        
+        int[] ar1=new int[26],ar2=new int[26];
+        for(int i=0;i<s1.length();i++){
+            ar1[s1.charAt(i) - 'a' ]++;
+            ar2[s2.charAt(i) - 'a']++;
         }
+        if(Arrays.equals(ar1,ar2)) return true;
 
+        int lo=s1.length();
+        int hi=s2.length();
+
+        for(int i=lo; i<hi ;i++ ){
+            //Entry
+            ar2[s2.charAt(i)- 'a']++;
+            //Exit
+            ar2[s2.charAt(i-lo) -'a']--;
+
+            if(Arrays.equals(ar1,ar2)) return true;
+        }
         return false;        
     }
 }
