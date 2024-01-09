@@ -14,19 +14,20 @@
  * }
  */
 class Solution {
-    String seq="";
+    List<Integer> seq=new ArrayList<>();
     public void sequence(TreeNode root){
         if(root==null) return;
-        if(root.left==null && root.right==null) seq=seq+","+root.val;
+        if(root.left==null && root.right==null) seq.add(root.val);
+    
         sequence(root.left);
         sequence(root.right);
     }
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
         sequence(root1);
-        String s1=seq;
-        seq="";
+        List<Integer> seq1=new ArrayList<>(seq);
+        seq.clear();
         sequence(root2);
-        if(s1.equals(seq)) return true;
+        if( Arrays.equals(seq1.toArray(),seq.toArray() ) ) return true;
         return false;
     }
 }
