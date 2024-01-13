@@ -20,7 +20,6 @@ class Solution {
             char key=ele.getKey();
             int val=ele.getValue();
             if(map2.containsKey(key)){
-                System.out.print(key + " : "+val);
                 int val2=map2.get(key);
                 if(val<val2)
                     steps+=val2-val;
@@ -36,7 +35,6 @@ class Solution {
             if(!map1.containsKey(key))
                 unique+=val;
         }
-        System.out.println("\nUnique : "+unique);
         steps+=unique;
         return steps/2;
     }
