@@ -10,57 +10,46 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if(l1==null) return l2;
-        if(l2==null) return l1;
-
-        ListNode ans=new ListNode(0);
-        ListNode head=ans;
-        
         int rem=0;
+        ListNode ans=new ListNode(0);
+        ListNode save=ans;
         while(l1!=null && l2!=null){
             int v1=l1.val;
             int v2=l2.val;
-            v1= v1 + v2 + rem;
-
-            ListNode cur=new ListNode();
-            rem=v1/10;
-            cur.val=v1%10;
-
-            ans.next=cur;
-            ans=ans.next;
+            int sum=l1.val+l2.val+rem;
+            rem=sum/10;
+            ListNode temp=new ListNode(sum%10);
+            ans.next=temp;
+            ans=temp;
 
             l1=l1.next;
             l2=l2.next;
         }
         while(l1!=null){
-          int v=l1.val;
-          v += rem;
-          ListNode cur=new ListNode();
-          rem=v/10;
-          cur.val=v%10;
+            int v1=l1.val;
+            int sum=l1.val+rem;
+            rem=sum/10;
+            ListNode temp=new ListNode(sum%10);
+            ans.next=temp;
+            ans=temp;
 
-          ans.next=cur;
-          ans=ans.next;
-          l1=l1.next;
+            l1=l1.next;
         }
-         while(l2!=null){
-          int v=l2.val;
-          v += rem;
-          ListNode cur=new ListNode();
-          rem=v/10;
-          cur.val=v%10;
+        while(l2!=null){
+            int v2=l2.val;
+            int sum=l2.val+rem;
+            rem=sum/10;
+            ListNode temp=new ListNode(sum%10);
+            ans.next=temp;
+            ans=temp;
 
-          ans.next=cur;
-          ans=ans.next;
-          l2=l2.next;
+            l2=l2.next;
         }
         if(rem!=0){
-            ListNode n=new ListNode(rem);
-            ans.next=n;
-            ans=n;
+            ListNode temp=new ListNode(rem);
+            ans.next=temp;
+            ans=temp;
         }
-
-        return head.next;
-
+        return save.next;
     }
 }
