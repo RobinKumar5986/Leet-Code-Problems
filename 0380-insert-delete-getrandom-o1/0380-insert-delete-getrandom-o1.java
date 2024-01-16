@@ -21,11 +21,8 @@ class RandomizedSet {
     }
     
     public int getRandom() {
-        int x=map.size();
         Random r=new Random();
-        int rNum=r.nextInt(x);    
-         
-        return map.get(rNum);
+        return map.get(r.nextInt(map.size()));
     }
 }
 
