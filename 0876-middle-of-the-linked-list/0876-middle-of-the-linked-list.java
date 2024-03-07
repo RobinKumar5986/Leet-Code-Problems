@@ -1,17 +1,14 @@
 class Solution {
     public ListNode middleNode(ListNode head) {
         if(head.next==null) return head;
-        int len=0;
-        ListNode save=head;
-        while(head!=null){
-            len++;
-            head=head.next;
+        ListNode fast=head;
+        ListNode slow=head;
+        while(fast.next!=null && fast.next.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
         }
-        int mid=len/2;
-        while(mid>0){
-            save=save.next;
-            mid--;
-        }
-        return save;
+        if(fast.next!=null)
+            slow=slow.next;
+        return slow;
     }
 }
