@@ -1,35 +1,24 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        if(nums.length==1){
-            if(nums[0]<=0) return 1;
-            else if(nums[0]>1) return 1;
-            else return nums[0]+1;
-        }
-        int min=Integer.MAX_VALUE;
-        int minP=Integer.MAX_VALUE;
-        int max=Integer.MIN_VALUE;
-
-        for(int ele : nums){
-            if(min>ele)
-                min=ele;
-            if(ele > 0 && ele < minP)
-                minP=ele;
-            if(ele > max)
-                max=ele;
-        }
-        
-        if(minP>1) return 1;
-
-        boolean[] present=new boolean[nums.length];
         for(int i=0;i<nums.length;i++){
-            if(nums[i]>0 && ( (nums[i] - minP) < nums.length))
-                present[nums[i] - minP]=true;
+            if(nums[i] < 0)
+                nums[i]=0;
         }
-
         for(int i=0;i<nums.length;i++){
-            if(!present[i])
-                return minP+i;
+            int val=Math.abs(nums[i]);
+            if(val>=1 && val <=nums.length){
+                if(nums[val - 1] > 0 )
+                    nums[val - 1]=-1*nums[val-1];
+                else if(nums[val-1]==0)
+                    nums[val - 1]=Integer.MIN_VALUE;
+            }
         }
-        return 1+nums.length;
+            
+
+        for(int i=1;i<=nums.length;i++){
+            if(nums[i-1]>=0)
+                return i;
+        }
+        return nums.length+1;
     }
 }
