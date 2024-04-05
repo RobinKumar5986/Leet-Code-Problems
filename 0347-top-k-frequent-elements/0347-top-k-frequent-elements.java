@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     void max_heapify(List<Node> heap,int i) {
         if (heap.size() <= 0) return;
