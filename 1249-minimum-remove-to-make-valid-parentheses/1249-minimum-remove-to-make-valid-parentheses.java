@@ -1,26 +1,26 @@
 class Solution {
     public String minRemoveToMakeValid(String s) {
         String ans="";
-        int miss=0;
+        Set<Integer> miss=new HashSet<>();
         Stack<Integer> stk=new Stack<>();
+
+        StringBuilder sb=new StringBuilder();
         for(int i=0;i<s.length();i++){
-            if(s.charAt(i)=='('){
+            char c=s.charAt(i);
+            if(c==40)
                 stk.push(i);
-            }
-            else if( s.charAt(i)==')' && !stk.isEmpty() ){
-                int ind=stk.pop()-stk.size()-miss;
-                String temp = ans.substring(0,ind);
-                String temp2= ans.substring(ind);
-
-                ans= temp+"("+temp2+")";
-                
-            }else if (s.charAt(i)==')'){
-                miss++;
-            }else{
-                ans=ans + s.charAt(i);
-            }
-
+            else if(c==41 && !stk.isEmpty())
+                stk.pop(); 
+            else if( c==41 && stk.isEmpty())
+                miss.add(i);
         }
-        return ans;
+        while(!stk.isEmpty())
+            miss.add(stk.pop());
+            
+        for(int i=0;i<s.length();i++)
+            if(!miss.contains(i))
+                sb.append(s.charAt(i));
+
+        return new String(sb);
     }
 }
