@@ -9,15 +9,10 @@ class Solution {
         nodes.add(root);
         while(!nodes.isEmpty()){
             int size=nodes.size();
-
             for(int i=0;i<size;i++){
                 TreeNode n=nodes.remove();
                 if(cd==d){
-                    if(n.left!=null)
-                        nodes.add(n.left);
-                    if(n.right!=null)
-                        nodes.add(n.right);
-                    
+
                     TreeNode l=new TreeNode(val);
                     TreeNode r=new TreeNode(val);
 
@@ -26,12 +21,11 @@ class Solution {
 
                     n.left=l;
                     n.right=r;
-                }else{
-                    if(n.left!=null)
-                        nodes.add(n.left);
-                    if(n.right!=null)
-                        nodes.add(n.right);
                 }
+                if(n.left!=null)
+                    nodes.add(n.left);
+                if(n.right!=null)
+                    nodes.add(n.right);
             }
             if(cd==d)
                 return root;
@@ -40,7 +34,6 @@ class Solution {
         return root;
     }
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
-        root=bfs(root,depth-1,1,val);
-        return root;
+        return bfs(root,depth-1,1,val);
     }
 }
