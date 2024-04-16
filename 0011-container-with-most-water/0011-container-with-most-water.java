@@ -1,36 +1,16 @@
 class Solution {
-    public int maxArea(int[] height) {
-
-         /* --------Brute force---------//
-        for(int i=0;i<height.length;i++){
-            for(int j=i+1;j<height.length;j++){
-                if(height[i]<=height[j]){
-                    tempWater=height[i]*(j-i);
-                }else{
-                    tempWater=height[j]*(j-i);
-                }
-                if(water<=tempWater){
-                    water=tempWater;
-                }
-            }
+    public int maxArea(int[] nums) {
+        int ans=0;
+        int lo=0;
+        int hi=nums.length-1;
+        while(lo<hi){
+            int h=Math.min(nums[lo],nums[hi]);
+            int temp=h*Math.abs(lo-hi);
+            if(temp>ans)
+                ans=temp;     
+            while(lo<hi && nums[lo]<=h)lo++;
+            while(lo<hi && nums[hi]<=h)hi--;
         }
-        */
-        int water=0;
-        int[] a=height;
-        int tempWater=0;
-        int pointer1=0;int pointer2=height.length-1;
-        while(pointer2!=pointer1){
-            if(a[pointer1]<=a[pointer2]){
-                tempWater=a[pointer1]*(pointer2-pointer1);
-                pointer1++;
-            }else{
-                tempWater=a[pointer2]*(pointer2-pointer1);
-                pointer2--;
-            }
-            if(water<=tempWater){
-                water=tempWater;
-            }
-        }
-        return water;
+        return ans;
     }
 }
