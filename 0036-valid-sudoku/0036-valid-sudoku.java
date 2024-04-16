@@ -1,34 +1,41 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-
-        //validating row and col O(9*9) --> O(1)
-        for(int row=0;row<9;row++){
-            Set<Character> map1=new HashSet<>();
-            Set<Character> map2=new HashSet<>();
-
-            for(int col=0;col<9;col++){
-                if(map1.contains(board[row][col]) || map2.contains(board[col][row]) )
-                    return false;
-                if(board[row][col]!='.')
-                    map1.add(board[row][col]);
-                if(board[col][row]!='.')
-                    map2.add(board[col][row]);
-            }
-        }
-
-        for(int row = 0;row < 9;row+= 3){
-            for(int col = 0;col < 9; col+= 3){
-                Set<Character> map=new HashSet<>();
-                for(int i=row;i < row+3 ;i++){
-                    for(int j=col; j<col+3;j++){
-                        if( map.contains(board[i][j]) )
+        Set<String> map=new HashSet<>();
+        //First Check
+        for(int r=0;r<3;r++){
+            for(int c=0;c<3;c++){
+                map.clear();
+                for(int ro=r*3;ro < r*3+3;ro++){
+                    for(int co=c*3;co < c*3+3;co++){
+                        String s=board[ro][co]+"";
+                        if(s.equals("."))
+                            continue;
+                        if( map.contains(s) )
                             return false;
-                        if(board[i][j]!='.')
-                            map.add(board[i][j]);
+                        map.add(s);
                     }
                 }
             }
         }
-        return true;
+
+        //Second Check
+        for(int ro=0;ro<9;ro++){
+            for(int co=0;co<9;co++){
+                String s=board[ro][co]+"";
+                if(s.equals("."))
+                    continue;
+                for(int i=ro+1;i<9;i++){
+                    String s2=board[i][co]+"";
+                    if(s.equals(s2))
+                        return false;
+                }
+                for(int i=co+1;i<9;i++){
+                    String s2=board[ro][i]+"";
+                    if(s.equals(s2))
+                        return false;
+                }
+            }
+        }
+        return true; 
     }
 }
