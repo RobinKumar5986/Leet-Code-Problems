@@ -1,38 +1,46 @@
 class Solution {
-    TreeNode save=new TreeNode(0);
-
-    TreeNode dfs(TreeNode root,int d,int cd,int val ){
+    TreeNode bfs(TreeNode root,int d,int cd,int val ){
         if(d==0){
             TreeNode n=new TreeNode(val);
             n.left=root;
             return n;
         }
-        if(root==null){
-            return root;
+        Queue<TreeNode> nodes=new LinkedList<>();
+        nodes.add(root);
+        while(!nodes.isEmpty()){
+            int size=nodes.size();
+
+            for(int i=0;i<size;i++){
+                TreeNode n=nodes.remove();
+                if(cd==d){
+                    if(n.left!=null)
+                        nodes.add(n.left);
+                    if(n.right!=null)
+                        nodes.add(n.right);
+                    
+                    TreeNode l=new TreeNode(val);
+                    TreeNode r=new TreeNode(val);
+
+                    l.left=n.left;
+                    r.right=n.right;
+
+                    n.left=l;
+                    n.right=r;
+                }else{
+                    if(n.left!=null)
+                        nodes.add(n.left);
+                    if(n.right!=null)
+                        nodes.add(n.right);
+                }
+            }
+            if(cd==d)
+                return root;
+            cd++;
         }
-        if(d==cd){
-            TreeNode l=new TreeNode(val);
-            TreeNode r=new TreeNode(val);
-            
-            TreeNode left=root.left;
-            TreeNode right=root.right;
-
-            l.left=left;
-            r.right=right;
-
-            root.left=l;
-            root.right=r;
-
-            return root;
-        }
-        dfs(root.left,d,cd+1,val);
-        dfs(root.right,d,cd+1,val);
-
         return root;
-
     }
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
-        root = dfs(root,depth-1,1,val);
+        root=bfs(root,depth-1,1,val);
         return root;
     }
 }
