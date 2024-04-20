@@ -5,7 +5,7 @@ class Solution {
             return;
         if(land[row][col]!=1)
             return;
-        land[row][col]=999;
+        land[row][col]=0;
         if(row>maxRow)
             maxRow=row;
         if(col>maxCol)
