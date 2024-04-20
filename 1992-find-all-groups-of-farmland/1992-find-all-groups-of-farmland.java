@@ -21,12 +21,6 @@ class Solution {
                 if(land[row][col]==1){
                     dfs(land,row,col);
                     ans.add(new int[]{row,col,maxRow,maxCol});
-                    
-                    for(int i=row;i<=maxRow;i++){
-                        for(int j=col;j<=maxCol;j++){
-                            land[i][j]=999;
-                        }
-                    }
                     maxRow=-1;
                     maxCol=-1;
                 }
