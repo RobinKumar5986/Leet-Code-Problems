@@ -18,12 +18,12 @@ class Solution {
         List<int[]> ans=new ArrayList<>();
         for(int row=0;row<land.length;row++){
             for(int col=0;col<land[0].length;col++){
-                if(land[row][col]==1){
-                    dfs(land,row,col);
+                if(land[row][col]!=1)
+                    continue;
+                dfs(land,row,col);
                     ans.add(new int[]{row,col,maxRow,maxCol});
                     maxRow=-1;
                     maxCol=-1;
-                }
             }
         }
         int[][] cord=new int[ans.size()][4];
