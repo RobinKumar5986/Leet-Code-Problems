@@ -26,11 +26,6 @@ class Solution {
                     maxCol=-1;
             }
         }
-        int[][] cord=new int[ans.size()][4];
-        int i=0;
-        for(int[] ele : ans){
-            cord[i++]=ele;
-        }
-        return cord;   
+        return ans.toArray(new int[ans.size()][]);
     }
 }
