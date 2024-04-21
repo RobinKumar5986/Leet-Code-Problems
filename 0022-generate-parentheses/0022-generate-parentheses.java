@@ -1,12 +1,25 @@
 class Solution {
-    void valid(String para,int open,int close,List<String> ans,int n){
-        if(open+close==n*2) ans.add(para);
-        if(open<n) valid(para+"(",open+1,close,ans,n);
-        if(close<open) valid(para+")", open, close+1,ans,n);
+    List<String> ans = new ArrayList<>();
+
+    void dfs(int n, int l, int r, StringBuilder sb) {
+        if (r + l == 2 * n) {
+            ans.add(new String(sb) );
+            return;
+        }
+        if (l < n) {
+            StringBuilder sb1 = new StringBuilder(sb);
+            sb1.append("(");
+            dfs(n, l + 1, r, sb1);
+        }
+        if (r < l) {
+            StringBuilder sb2 = new StringBuilder(sb);
+            sb2.append(")");
+            dfs(n, l, r + 1, sb2);
+        }
     }
+
     public List<String> generateParenthesis(int n) {
-        List<String> ans=new ArrayList<>();
-        valid("(",1,0,ans,n);
-        return ans; 
+        dfs(n, 1, 0, new StringBuilder("("));
+        return ans;
     }
 }
