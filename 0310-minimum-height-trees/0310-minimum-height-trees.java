@@ -37,7 +37,6 @@ class Solution {
                 for(int ele : lst){
                     dig[ele]--;
                     if(dig[ele]==1){
-                        System.out.println("ele : "+ele );
                         q.add(ele);
                     } 
                 }
