@@ -1,5 +1,6 @@
 class Solution {
     public String reversePrefix(String word, char ch) {
+        char[] w=word.toCharArray();
         StringBuilder sb=new StringBuilder();
         int ind=-1;
         for(int i=0;i<word.length();i++){
