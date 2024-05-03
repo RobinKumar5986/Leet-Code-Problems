@@ -9,20 +9,12 @@ class Solution {
             speed[i]=map.get(pos[i]);
 
         int ans=1;
-        float[] cur=new float[2];
-        float time=(float)(target-pos[pos.length-1])/(float)speed[pos.length-1];
-
-        cur[0]=pos[pos.length-1];
-        cur[1]=time;
-
+        float prev=(float)(target-pos[pos.length-1])/(float)speed[pos.length-1];
         for(int i=pos.length-1; i>=0 ;i--){
-            time=(float)(target-pos[i])/(float)speed[i];
-            if(time<=cur[1] && pos[i]<cur[0]){
-                cur[0]=pos[i];
-            }else if(time > cur[1] && pos[i]<cur[0]){
+            float time=(float)(target-pos[i])/(float)speed[i];
+            if(time > prev){
                 ans++;
-                cur[0]=pos[i];
-                cur[1]=time;
+                prev=time;
             }
         }
         return ans;
