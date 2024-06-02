@@ -5,7 +5,6 @@ class Solution {
         int prev=1;
         boolean flag=true;
         for(int[] ele : meet){
-            System.out.println(ele[0] + " : " +ele[1] );
             if(flag){
                 if(prev<ele[0])
                     ans+=ele[0]-prev;
@@ -18,7 +17,6 @@ class Solution {
             if(ele[1]>prev)
                 prev=ele[1];
         }
-        System.out.println(prev);
         if(days>prev)
             ans+=days-prev;
         return ans;
