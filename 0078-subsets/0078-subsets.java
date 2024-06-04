@@ -1,18 +1,18 @@
 class Solution {
-    public void generate(List<List<Integer>> ans,int[] nums,int ind,List<Integer> sub){
+    List<List<Integer>> ans=new ArrayList<>();
+    void allSub(int[] nums,int ind,List<Integer> lst){
         if(ind==nums.length){
-            ans.add(new ArrayList<>(sub));
+            if(!ans.contains(lst))
+                ans.add(new ArrayList<>(lst));
             return;
         }
-        generate(ans,nums,ind+1,sub);
-        sub.add(nums[ind]);
-        
-        generate(ans,nums,ind+1,sub);
-        sub.remove(sub.size()-1);
+        allSub(nums,ind+1,lst);
+        lst.add(nums[ind]);
+        allSub(nums,ind+1,lst);
+        lst.remove(lst.size()-1);
     }
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> ans=new ArrayList<>(); 
-        generate(ans,nums,0,new ArrayList<>());
+        allSub(nums,0,new ArrayList<>());
         return ans;
     }
 }
