@@ -1,8 +1,8 @@
 class Solution {
     public int longestPalindrome(String s) {
-        int[] map=new int[256];
+        int[] map=new int[58];
         for(int i=0;i<s.length();i++)
-            map[s.charAt(i)]++;
+            map[s.charAt(i) - 'A']++;
         boolean flag=true;
         int ans=0;
         for(int ele : map){
