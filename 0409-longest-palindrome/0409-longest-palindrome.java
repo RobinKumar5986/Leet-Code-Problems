@@ -1,17 +1,18 @@
 class Solution {
     public int longestPalindrome(String s) {
         int[] map=new int[58];
+        for(int i=0;i<s.length();i++)
+            map[s.charAt(i) - 'A']++;
+        boolean flag=true;
         int ans=0;
-        for(int i=0;i<s.length();i++){
-            char c=s.charAt(i);
-            map[c - 'A']++;
-            if(map[c-'A']%2==0)
-                ans+=2;
-        }
         for(int ele : map){
-            if(ele%2!=0){
-                ans+=1;
-                break;
+            if(flag && ele%2!=0){
+                ans+=ele;
+                flag=false;
+            }
+            else if(ele>=2){
+                ele=ele/2;
+                ans+=ele*2;
             }
         }
         return ans;
