@@ -8,10 +8,10 @@ class Solution {
 
         for(int j=0;j<hand.length/grp;j++){
             int key;
-            if(!map.isEmpty())
+            // if(!map.isEmpty())
                 key=map.firstKey();
-            else
-                return false;
+            // else
+            //     return false;
             
             if(map.get(key)<=1)
                 map.remove(key);
