@@ -14,7 +14,6 @@ class Solution {
                 count++;
             }
             else if(f[i]!=1 && i-1 >=0 && f[i-1]==0 && i+1<f.length && f[i+1]==0 ){
-                // System.out.println(i);
                 f[i]=1;
                 count++;
             }
