@@ -20,18 +20,14 @@ class Solution {
 
             for(int i=0;i<grp-1;i++){
                 key++;
-
                 if(!map.containsKey(key))
                     return false;
                
                 if(map.get(key)<=1)
                     map.remove(key);
                 else
-                    map.put(key,map.get(key)-1);
-                
+                    map.put(key,map.get(key)-1);       
             }
-            System.out.println();
-
         }
         return true;
     }
