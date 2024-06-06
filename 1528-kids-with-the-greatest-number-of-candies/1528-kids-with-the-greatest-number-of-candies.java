@@ -4,7 +4,7 @@ class Solution {
         for(int ele : candi)
             if(max<ele)
                 max=ele;
-        List<Boolean> ans=new ArrayList<Boolean>();
+        List<Boolean> ans=new ArrayList<>();
         for(int ele : candi){
             if(ele+ext >= max)
                 ans.add(true);
