@@ -14,8 +14,6 @@ class Solution {
             for(Map.Entry<Integer,Integer> ele : map.entrySet()){
                 int key=ele.getKey();
                 int val=ele.getValue();
-
-                // System.out.println(ele + " : "+ prev);
                 if(prev==-1)
                     prev=key;
                 else{
@@ -28,18 +26,16 @@ class Solution {
                     rem.add(key);
                 else
                     map.put(key,val-1);
+                    
                 ind++;
                 if(ind==grp)
                     break;
             }
             if(ind!=grp)
                 return false;
-            // System.out.println();
             for(int ele : rem){
-                // System.out.print("remove : " + ele);
                 map.remove(ele);
             }
-            // System.out.println();
         }
         return true;
     }
