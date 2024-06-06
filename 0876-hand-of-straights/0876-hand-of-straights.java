@@ -7,11 +7,7 @@ class Solution {
             map.put(ele,map.getOrDefault(ele,0)+1);
 
         for(int j=0;j<hand.length/grp;j++){
-            int key;
-            // if(!map.isEmpty())
-                key=map.firstKey();
-            // else
-            //     return false;
+            int key=map.firstKey();
             
             if(map.get(key)<=1)
                 map.remove(key);
