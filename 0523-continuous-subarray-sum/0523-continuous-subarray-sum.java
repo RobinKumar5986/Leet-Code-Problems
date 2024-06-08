@@ -1,8 +1,5 @@
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
-        if(nums[0] == 300000){
-            return false;
-        }
         if(nums.length==1)
             return false;
         Map<Integer,Integer> map=new HashMap<>();
