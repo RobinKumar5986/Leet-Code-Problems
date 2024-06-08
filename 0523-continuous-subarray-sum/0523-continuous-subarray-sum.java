@@ -6,9 +6,6 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             sum+=nums[i];
             int rem=sum % k;
-            // if(map.containsKey(rem))
-            //     System.out.println(map.get(rem) + " : "+i);
-
             if(map.containsKey(rem) && i-map.get(rem) >=2)
                 return true;
             if(!map.containsKey(rem))
