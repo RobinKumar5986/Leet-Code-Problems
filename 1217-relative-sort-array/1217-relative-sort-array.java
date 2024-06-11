@@ -1,16 +1,14 @@
 class Solution {
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
         int[] map=new int[1001];
-        for(int ele : arr1){
+        for(int ele : arr1)
             map[ele]++;
-        }
+        
         int ind=0;
         for(int ele : arr2){
-            int freq=map[ele];
-            map[ele]=0;
-            for(int i=0;i<freq;i++){
+            for(int i=0;i<map[ele];i++)
                 arr1[ind++]=ele;
-            }
+            map[ele]=0;
         }
         for(int i=0;i<map.length;i++){
             if(map[i]==0)
