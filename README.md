@@ -5,6 +5,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 # Two Pointers
 |  |
 | ------- |
+| [0075-sort-colors](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0075-sort-colors) |
 | [0344-reverse-string](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0344-reverse-string) |
 | [0345-reverse-vowels-of-a-string](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0345-reverse-vowels-of-a-string) |
 | [2572-append-characters-to-string-to-make-subsequence](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/2572-append-characters-to-string-to-make-subsequence) |
@@ -39,6 +40,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 # Array
 |  |
 | ------- |
+| [0075-sort-colors](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0075-sort-colors) |
 | [0078-subsets](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0078-subsets) |
 | [0523-continuous-subarray-sum](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0523-continuous-subarray-sum) |
 | [0605-can-place-flowers](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0605-can-place-flowers) |
@@ -61,6 +63,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 # Sorting
 |  |
 | ------- |
+| [0075-sort-colors](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0075-sort-colors) |
 | [0876-hand-of-straights](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0876-hand-of-straights) |
 | [1137-height-checker](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1137-height-checker) |
 | [1217-relative-sort-array](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1217-relative-sort-array) |
