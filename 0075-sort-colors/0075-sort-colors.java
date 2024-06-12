@@ -9,7 +9,7 @@ class Solution {
                lo++;
                i--;
             }
-
+            
             else if(i==hi || lo >= hi) break;
 
             else if(nums[i]==2){
@@ -18,7 +18,6 @@ class Solution {
                 hi--;
                 i--;
             }
-
         }
     }
 }
