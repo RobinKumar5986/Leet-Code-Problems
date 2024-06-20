@@ -55,6 +55,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1217-relative-sort-array](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1217-relative-sort-array) |
 | [1422-divide-array-in-sets-of-k-consecutive-numbers](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1422-divide-array-in-sets-of-k-consecutive-numbers) |
 | [1528-kids-with-the-greatest-number-of-candies](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1528-kids-with-the-greatest-number-of-candies) |
+| [1675-magnetic-force-between-two-balls](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1675-magnetic-force-between-two-balls) |
 | [2148-minimum-number-of-moves-to-seat-everyone](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/2148-minimum-number-of-moves-to-seat-everyone) |
 # Backtracking
 |  |
@@ -73,6 +74,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1137-height-checker](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1137-height-checker) |
 | [1217-relative-sort-array](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1217-relative-sort-array) |
 | [1422-divide-array-in-sets-of-k-consecutive-numbers](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1422-divide-array-in-sets-of-k-consecutive-numbers) |
+| [1675-magnetic-force-between-two-balls](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1675-magnetic-force-between-two-balls) |
 | [2148-minimum-number-of-moves-to-seat-everyone](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/2148-minimum-number-of-moves-to-seat-everyone) |
 # Trie
 |  |
@@ -93,3 +95,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0982-minimum-increment-to-make-array-unique](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0982-minimum-increment-to-make-array-unique) |
 | [1137-height-checker](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1137-height-checker) |
 | [1217-relative-sort-array](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1217-relative-sort-array) |
+# Binary Search
+|  |
+| ------- |
+| [1675-magnetic-force-between-two-balls](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1675-magnetic-force-between-two-balls) |
