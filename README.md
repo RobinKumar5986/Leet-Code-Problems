@@ -38,6 +38,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1016-subarray-sums-divisible-by-k](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1016-subarray-sums-divisible-by-k) |
 | [1044-find-common-characters](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1044-find-common-characters) |
 | [1217-relative-sort-array](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1217-relative-sort-array) |
+| [1370-count-number-of-nice-subarrays](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1370-count-number-of-nice-subarrays) |
 | [1422-divide-array-in-sets-of-k-consecutive-numbers](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1422-divide-array-in-sets-of-k-consecutive-numbers) |
 # Array
 |  |
@@ -54,6 +55,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1137-height-checker](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1137-height-checker) |
 | [1138-grumpy-bookstore-owner](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1138-grumpy-bookstore-owner) |
 | [1217-relative-sort-array](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1217-relative-sort-array) |
+| [1370-count-number-of-nice-subarrays](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1370-count-number-of-nice-subarrays) |
 | [1422-divide-array-in-sets-of-k-consecutive-numbers](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1422-divide-array-in-sets-of-k-consecutive-numbers) |
 | [1528-kids-with-the-greatest-number-of-candies](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1528-kids-with-the-greatest-number-of-candies) |
 | [1675-magnetic-force-between-two-balls](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1675-magnetic-force-between-two-balls) |
@@ -85,6 +87,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0523-continuous-subarray-sum](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0523-continuous-subarray-sum) |
+| [1370-count-number-of-nice-subarrays](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1370-count-number-of-nice-subarrays) |
 # Prefix Sum
 |  |
 | ------- |
@@ -104,3 +107,4 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1138-grumpy-bookstore-owner](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1138-grumpy-bookstore-owner) |
+| [1370-count-number-of-nice-subarrays](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1370-count-number-of-nice-subarrays) |
