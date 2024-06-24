@@ -60,6 +60,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1528-kids-with-the-greatest-number-of-candies](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1528-kids-with-the-greatest-number-of-candies) |
 | [1675-magnetic-force-between-two-balls](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1675-magnetic-force-between-two-balls) |
 | [2148-minimum-number-of-moves-to-seat-everyone](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/2148-minimum-number-of-moves-to-seat-everyone) |
+| [3429-special-array-i](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/3429-special-array-i) |
 # Backtracking
 |  |
 | ------- |
