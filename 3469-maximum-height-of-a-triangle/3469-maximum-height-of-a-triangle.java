@@ -1,6 +1,5 @@
 class Solution {
     public int maxHeightOfTriangle(int red, int blue) {
-        
         if(red+blue < 3) return 1;
         int r=red;
         int b=blue;
