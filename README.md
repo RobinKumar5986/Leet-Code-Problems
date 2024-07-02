@@ -109,3 +109,26 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [1138-grumpy-bookstore-owner](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1138-grumpy-bookstore-owner) |
 | [1370-count-number-of-nice-subarrays](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1370-count-number-of-nice-subarrays) |
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Array
+|  |
+| ------- |
+| [0350-intersection-of-two-arrays-ii](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0350-intersection-of-two-arrays-ii) |
+## Hash Table
+|  |
+| ------- |
+| [0350-intersection-of-two-arrays-ii](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0350-intersection-of-two-arrays-ii) |
+## Two Pointers
+|  |
+| ------- |
+| [0350-intersection-of-two-arrays-ii](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0350-intersection-of-two-arrays-ii) |
+## Binary Search
+|  |
+| ------- |
+| [0350-intersection-of-two-arrays-ii](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0350-intersection-of-two-arrays-ii) |
+## Sorting
+|  |
+| ------- |
+| [0350-intersection-of-two-arrays-ii](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0350-intersection-of-two-arrays-ii) |
+<!---LeetCode Topics End-->
