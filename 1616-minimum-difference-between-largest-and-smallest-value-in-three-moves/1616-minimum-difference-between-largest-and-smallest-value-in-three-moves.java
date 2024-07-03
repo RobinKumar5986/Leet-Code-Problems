@@ -7,12 +7,12 @@ class Solution {
         int n2=nums[nums.length-3]-nums[1];
         int n3=nums[nums.length-2]-nums[2];
         int n4=nums[nums.length-1]-nums[3];
+        if(n3<n1 && n3<n2 && n3<n4)
+            return n3;
         if(n2<n1 && n2<n3 && n2<n4)
             return n2;
         if(n1<n2 && n1<n3 && n1<n4)
             return n1;
-        if(n3<n1 && n3<n2 && n3<n4)
-            return n3;
         return n4;
     }
 }
