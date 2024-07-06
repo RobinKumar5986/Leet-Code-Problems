@@ -10,11 +10,9 @@ class Solution {
         }
         int flag=0;
         for(int i=1;i<k;i++){
-            // System.out.print(cc[i]+" ");
             if(cc[i]==cc[i-1])
                 flag++;
         }
-        // System.out.println("\n"+flag);
         int lo=1;
         int hi=k;
         int ans=0;
