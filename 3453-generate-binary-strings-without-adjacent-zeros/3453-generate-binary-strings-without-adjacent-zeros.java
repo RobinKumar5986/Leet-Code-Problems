@@ -6,11 +6,9 @@ class Solution {
             ans.add(str);
             return;
         }
-        // Add '0' only if the previous character is not '0'
         if (str.length() == 0 || str.charAt(str.length() - 1) != '0') {
             genAll(ind + 1, str + "0", len);
         }
-        // Always add '1'
         genAll(ind + 1, str + "1", len);
     }
 
