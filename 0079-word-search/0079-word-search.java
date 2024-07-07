@@ -3,16 +3,10 @@ class Solution {
         if(id==word.length()-1)
             return true;
         vis[i][j]=true;
-        if(i+1<n && !vis[i+1][j] && word.charAt(id+1)==board[i+1][j] && dfs(i+1,j,vis,board,word,n,m, id+1) )
-                return true;
-
-        if(i-1>=0 && !vis[i-1][j] && word.charAt(id+1)==board[i-1][j] && dfs(i-1,j,vis,board,word,n,m, id+1) )
-            return true;
-        
-        if(j+1 <m && !vis[i][j+1] && word.charAt(id+1)==board[i][j+1] && dfs(i,j+1,vis,board,word,n,m,id+1) )
-            return true;
-
-        if(j-1 >= 0 && !vis[i][j-1] && word.charAt(id+1)==board[i][j-1] && dfs(i,j-1,vis,board,word,n,m,id+1) )
+        if(i+1<n && !vis[i+1][j] && word.charAt(id+1)==board[i+1][j] && dfs(i+1,j,vis,board,word,n,m, id+1)||
+         i-1>=0 && !vis[i-1][j] && word.charAt(id+1)==board[i-1][j] && dfs(i-1,j,vis,board,word,n,m, id+1) ||
+         j+1 <m && !vis[i][j+1] && word.charAt(id+1)==board[i][j+1] && dfs(i,j+1,vis,board,word,n,m,id+1)  ||
+         j-1 >= 0 && !vis[i][j-1] && word.charAt(id+1)==board[i][j-1] && dfs(i,j-1,vis,board,word,n,m,id+1) )
             return true;
 
         vis[i][j]=false;
