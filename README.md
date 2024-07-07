@@ -114,6 +114,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Array
 |  |
 | ------- |
+| [0079-word-search](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0079-word-search) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0350-intersection-of-two-arrays-ii) |
 | [1616-minimum-difference-between-largest-and-smallest-value-in-three-moves](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1616-minimum-difference-between-largest-and-smallest-value-in-three-moves) |
 ## Hash Table
@@ -150,4 +151,16 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1642-water-bottles](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1642-water-bottles) |
+## String
+|  |
+| ------- |
+| [0079-word-search](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0079-word-search) |
+## Backtracking
+|  |
+| ------- |
+| [0079-word-search](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0079-word-search) |
+## Matrix
+|  |
+| ------- |
+| [0079-word-search](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0079-word-search) |
 <!---LeetCode Topics End-->
