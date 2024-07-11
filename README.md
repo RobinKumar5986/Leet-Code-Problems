@@ -161,6 +161,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0079-word-search](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/0079-word-search) |
+| [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
 | [1720-crawler-log-folder](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1720-crawler-log-folder) |
 ## Backtracking
 |  |
@@ -181,5 +182,6 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Stack
 |  |
 | ------- |
+| [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
 | [1720-crawler-log-folder](https://github.com/RobinKumar5986/Leet-Code-Problems/tree/master/1720-crawler-log-folder) |
 <!---LeetCode Topics End-->
