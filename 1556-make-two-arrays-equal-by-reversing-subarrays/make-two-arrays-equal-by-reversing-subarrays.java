@@ -6,10 +6,6 @@ class Solution {
             map1[arr[i]]++;
             map2[target[i]]++;
         }
-        for(int i=0; i<1000 ;i++){
-            if(map1[i]!=map2[i])
-                return false;
-        }
-        return true;
+        return Arrays.equals(map1,map2);
     }
 }
