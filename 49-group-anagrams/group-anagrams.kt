@@ -2,8 +2,7 @@ class Solution {
     fun groupAnagrams(arr: Array<String>): List<List<String>> {
         val map : HashMap<String,MutableList<String>> = hashMapOf()
         for(ele in arr){
-            val char = ele.toCharArray()
-            val key = getString(char)
+            val key = getString(ele.toCharArray())
             if( !map.containsKey(key) ){
                 map.put(key,mutableListOf())
             }
