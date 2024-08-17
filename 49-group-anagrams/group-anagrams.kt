@@ -1,6 +1,5 @@
 class Solution {
     fun groupAnagrams(arr: Array<String>): List<List<String>> {
-        val ans : MutableList<MutableList<String>> = mutableListOf()
         val map : HashMap<String,MutableList<String>> = hashMapOf()
         for(ele in arr){
             val char = ele.toCharArray()
@@ -12,10 +11,7 @@ class Solution {
             list.add(ele)
             map[key] = list
         }
-        for(ele in map.values){
-            ans.add(ele)
-        }
-        return ans
+        return map.values.toList()
     }
     fun getString(char : CharArray) : String{
         val sb = StringBuilder()
