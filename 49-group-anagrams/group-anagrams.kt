@@ -26,9 +26,8 @@ class Solution {
             
         } 
         for(ele in keyArr){
-            sb.append(ele.toString()+",")
+            sb.append(ele).append('#')
         }
-    
         return sb.toString()
     }
 }
