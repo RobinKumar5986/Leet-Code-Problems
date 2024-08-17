@@ -14,7 +14,6 @@ class Solution {
             val time = (target - ele) / speed.toDouble()
             if(min == -1.0){
                 min = time
-                println(time)
             }else{
                 if(time > min){
                     min = time
