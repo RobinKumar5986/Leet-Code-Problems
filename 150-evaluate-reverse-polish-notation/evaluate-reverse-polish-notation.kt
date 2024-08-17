@@ -3,6 +3,8 @@ class Solution {
         val stk = Stack<Int>()
         for(ele in tokens){
             if(ele.equals("*") || ele.equals("/") || ele.equals("+") || ele.equals("-")){
+                if(stk.isEmpty())
+                    return 0
                 val n1 = stk.pop();
                 val n2 = stk.pop();
                 when(ele){
