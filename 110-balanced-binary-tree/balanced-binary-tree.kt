@@ -16,7 +16,7 @@ class Solution {
         val l = determin(root.left)
         val r = determin(root.right)
 
-        if(Math.abs(l-r) > 1){
+        if(abs(l-r) > 1){
             ans = false
         }
         return Math.max(l,r)+1
