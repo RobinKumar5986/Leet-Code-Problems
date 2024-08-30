@@ -19,7 +19,7 @@ class Solution {
         if(abs(l-r) > 1){
             ans = false
         }
-        return Math.max(l,r)+1
+        return max(l,r)+1
     }
     fun isBalanced(root: TreeNode?): Boolean {
         if(root == null)
