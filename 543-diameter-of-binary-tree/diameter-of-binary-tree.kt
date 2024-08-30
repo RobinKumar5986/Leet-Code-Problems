@@ -23,7 +23,7 @@ class Solution {
 
     }
     fun diameterOfBinaryTree(root: TreeNode?): Int {
-        if(root == null || (root.left == null && root.right == null))
+        if(root == null)
             return 0
         dia(root)
         return ans
