@@ -3,10 +3,11 @@ class Solution {
         var sum:Long = 0
         chalk.forEach{ sum+=it }
         var rem:Long = k%sum
-        for(i in 0..chalk.size - 1 ){
-            rem-=chalk[i]
+
+        chalk.forEachIndexed{ind, it ->
+            rem-=it
             if(rem<0)
-                return i
+                return ind
         }
         return 0
     }
