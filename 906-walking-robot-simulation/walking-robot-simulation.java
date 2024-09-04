@@ -35,7 +35,6 @@ class Solution {
         for (int cmd : commands) {
             if (cmd == -1 || cmd == -2) { 
                 dir = changeDir(dir, cmd);
-                System.out.println("dir : "+dir);
             } else { 
                 int tempX = x;
                 int tempY = y;
