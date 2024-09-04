@@ -1,9 +1,7 @@
 class Solution {
     fun chalkReplacer(chalk: IntArray, k: Int): Int {
         var sum:Long = 0
-        for(ele in chalk){
-            sum+=ele
-        }
+        chalk.forEach{ sum+=it }
         var rem:Long = k%sum
         for(i in 0..chalk.size - 1 ){
             rem-=chalk[i]
