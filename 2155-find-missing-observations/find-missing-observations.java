@@ -9,7 +9,6 @@ class Solution {
         int x = ( ( mean * ( n+m ) ) - sum ) / n;
         int rem = ( ( mean * ( n+m) ) - sum ) % n;
 
-        System.out.print(x+ " : " + rem);
         if(x > 6 || x <=0 )
             return new int[0];
         int req = 6 - x;
