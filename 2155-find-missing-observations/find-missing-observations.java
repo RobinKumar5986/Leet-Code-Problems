@@ -12,20 +12,21 @@ class Solution {
         System.out.print(x+ " : " + rem);
         if(x > 6 || x <=0 )
             return new int[0];
+        int req = 6 - x;
         for(int i = 0 ; i < n ; i++){
             ans[i] = x;
+            if(rem > 0){
+                if(rem >= req){
+                    ans[i] = 6;
+                    rem -= req;
+                }else{
+                    ans[i] += rem;
+                    rem = 0;
+                }
+            }
         }
-        int ind = 0;
-        while(rem > 0 ){
-            if(ind >= n)
-                ind = 0;
-            ans[ind]+=1;
-            if(ans[ind] > 6)
-                return new int[0];
-            rem--;
-            ind++;
-        }
-
+        if(rem > 0)
+            return new int[0];
         return ans;
     }
 }
