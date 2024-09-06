@@ -9,7 +9,7 @@ class Solution {
         ListNode save = null;
         ListNode prev = null;
         while(head!=null){
-            if(head.val >= set.length || set[head.val] == false){
+            if(head.val >= set.length || !set[head.val]){
                 if(save == null){
                     save = head;
                     prev = head;
