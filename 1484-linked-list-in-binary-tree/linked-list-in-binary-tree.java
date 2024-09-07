@@ -45,7 +45,6 @@ class Solution {
             q.offer(n);
             ListNode save = new ListNode();
             save.next = head;
-
             bfs(q,save.next);
             if(ans)
                 return true;
