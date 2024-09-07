@@ -18,7 +18,6 @@ class Solution {
                 TreeNode node = q.poll();
                 if (node == null)
                     continue;
-                // System.out.print(" "+node.val + " : "+head.val);
                 if(head.val == node.val){
                     found = true;
                     if (node.left != null)
@@ -28,7 +27,7 @@ class Solution {
                 }
                 
             }
-            System.out.println();
+            
             if(!found)
                 break;
             if(head.next == null){
@@ -48,7 +47,6 @@ class Solution {
             save.next = head;
 
             bfs(q,save.next);
-            System.out.println("---------------------------");
             if(ans)
                 return true;
         }
