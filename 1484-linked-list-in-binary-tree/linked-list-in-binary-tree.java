@@ -1,10 +1,10 @@
 class Solution {
     boolean ans = false;
+     Queue<TreeNode> q = new LinkedList<>();
     void headFinder(TreeNode root,ListNode head){
         if(root == null)
             return;
         if(root.val == head.val){
-            Queue<TreeNode> q = new LinkedList<>();
             q.offer(root);
             bfs(q,head);
             if(ans)
