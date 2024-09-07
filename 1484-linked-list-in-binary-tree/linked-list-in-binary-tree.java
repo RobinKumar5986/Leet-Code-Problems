@@ -1,15 +1,18 @@
 class Solution {
-    List<TreeNode> heads = new ArrayList<>();
-    void headFinder(TreeNode root,int val){
+    boolean ans = false;
+    void headFinder(TreeNode root,ListNode head){
         if(root == null)
             return;
-        if(root.val == val){
-            heads.add(root);
+        if(root.val == head.val){
+            Queue<TreeNode> q = new LinkedList<>();
+            q.offer(root);
+            bfs(q,head);
+            if(ans)
+                return;
         }
-        headFinder(root.left,val);
-        headFinder(root.right,val);
+        headFinder(root.left,head);
+        headFinder(root.right,head);
     }
-    boolean ans = false;
     void bfs(Queue<TreeNode> q,ListNode head) {
         while (!q.isEmpty()) {
             int len = q.size();
@@ -38,17 +41,7 @@ class Solution {
         }
     }
     public boolean isSubPath(ListNode head, TreeNode root) {
-        Queue<TreeNode> q = new LinkedList<>();
-        headFinder(root,head.val);
-        for(TreeNode n : heads){
-            q.clear();
-            q.offer(n);
-            ListNode save = new ListNode();
-            save.next = head;
-            bfs(q,save.next);
-            if(ans)
-                return true;
-        }
-        return false;
+        headFinder(root,head);
+        return ans;
     }
 }
