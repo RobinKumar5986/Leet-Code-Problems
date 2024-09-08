@@ -22,7 +22,6 @@ class Solution {
                 len += 1;
                 rem--;
             }
-            // System.out.println(len);
             ListNode ans = head;
             ListNode prev = null;
             if(ind < mainLen){
@@ -35,7 +34,6 @@ class Solution {
                     ind++;
                 }
                 prev.next = null;
-                // System.out.println("prev :" + prev.val);
                 mainAns[i] = ans;
             }else{
                 mainAns[i] = null;
