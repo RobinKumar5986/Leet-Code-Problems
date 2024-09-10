@@ -9,17 +9,16 @@
  * }
  */
 class Solution {
-    int gcd(int a, int b)
-    {
-        // Find Minimum of a and b
-        int result = Math.min(a, b);
-        while (result > 0) {
-            if (a % result == 0 && b % result == 0) {
-                break;
-            }
-            result--;
+    public int gcd(int a, int b){
+        if(a == 1 || b==1){
+            return 1;
         }
-        return result;
+        while(b !=0){
+            int rem = a % b;
+            a = b;
+            b= rem;
+        }
+        return a;
     }
 
     public ListNode insertGreatestCommonDivisors(ListNode head) {
