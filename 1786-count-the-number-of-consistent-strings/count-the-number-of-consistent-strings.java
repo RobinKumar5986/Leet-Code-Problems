@@ -6,18 +6,21 @@ class Solution {
         }
         return map;
     }
+    boolean check(String ele , boolean[] allowedMap){
+        boolean flag = true;
+        for(char c : ele.toCharArray()){
+            if(!allowedMap[c - 'a']){
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
     public int countConsistentStrings(String allowed, String[] words) {
         int ans = 0;
         boolean[] allowedMap = mapper(allowed);
         for(String ele : words){
-            boolean[] wordMap = mapper(ele);
-            boolean flag = true;
-            for(int i = 0 ; i<26 ;i++ ){
-                if(wordMap[i] && !allowedMap[i]){
-                    flag = false;
-                    break;
-                }
-            }
+            boolean flag = check(ele,allowedMap);
             if(flag)
                 ans++;
         } 
