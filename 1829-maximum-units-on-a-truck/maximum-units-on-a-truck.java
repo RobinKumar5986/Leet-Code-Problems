@@ -1,31 +1,34 @@
+import java.util.PriorityQueue;
+
 class Solution {
     public int maximumUnits(int[][] boxT, int ts) {
-        SortedSet<Integer> set = new TreeSet<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int ind = 0;
+        // Use a max-heap (priority queue) to store the number of units per box type
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> b[1] - a[1]);
 
+        // Fill the max-heap with the number of boxes and their units
         for (int[] ele : boxT) {
-            int key = Integer.MAX_VALUE - ele[1]; 
-            if (!map.containsKey(ele[1])) {
-                map.put(ele[1], 0);
-            }
-            map.put(ele[1] ,map.get(ele[1]) + ele[0]);
-            set.add(key);
+            maxHeap.offer(new int[]{ele[0], ele[1]});
         }
+
         int ans = 0;
-        for (int e : set) {
-            int ele = Integer.MAX_VALUE - e;
-            int box = map.get(ele);
-            if (ts >= box) {
-                ts -= box;
-                ans += (box * ele);
-                if (ts == 0)
-                    return ans;
+
+        // While there are still boxes in the heap and we have time slots left
+        while (!maxHeap.isEmpty() && ts > 0) {
+            int[] current = maxHeap.poll(); // Get the box with the most units
+            int boxCount = current[0];
+            int units = current[1];
+
+            // If we can take all boxes of this type
+            if (ts >= boxCount) {
+                ans += boxCount * units;
+                ts -= boxCount; // Decrease the remaining time slots
             } else {
-                ans += (ele * ts);
-                return ans;
+                // If we can't take all, take as many as we can
+                ans += ts * units;
+                ts = 0; // All time slots are used up
             }
         }
+
         return ans;
     }
 }
