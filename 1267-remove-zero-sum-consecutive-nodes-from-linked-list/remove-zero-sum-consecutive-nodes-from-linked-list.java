@@ -26,13 +26,6 @@ class Solution {
         }
         return save;
     }
-    void printer(ListNode head){
-        while(head != null ){
-            System.out.print(head.val + " ");
-            head = head.next;
-        }
-        System.out.println();
-    }
     boolean flag = false;
     ListNode reducer(ListNode head , ListNode prev){
         flag = false;
@@ -55,7 +48,6 @@ class Solution {
     }
     public ListNode removeZeroSumSublists(ListNode head) {
         head = removeZero(head);
-        // printer(head);
         ListNode prev = null;
         ListNode save = head;
         while(head != null){
