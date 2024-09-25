@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum">1062. Partition Array Into Three Parts With Equal Sum</a></h2><h3>Easy</h3><hr><p>Given an array of integers <code>arr</code>, return <code>true</code> if we can partition the array into three <strong>non-empty</strong> parts with equal sums.</p>
+<h2><a href="https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum">Partition Array Into Three Parts With Equal Sum</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>Given an array of integers <code>arr</code>, return <code>true</code> if we can partition the array into three <strong>non-empty</strong> parts with equal sums.</p>
 
 <p>Formally, we can partition the array if we can find indexes <code>i + 1 &lt; j</code> with <code>(arr[0] + arr[1] + ... + arr[i] == arr[i + 1] + arr[i + 2] + ... + arr[j - 1] == arr[j] + arr[j + 1] + ... + arr[arr.length - 1])</code></p>
 
