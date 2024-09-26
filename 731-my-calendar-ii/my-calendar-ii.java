@@ -10,7 +10,10 @@ class MyCalendarTwo {
             sum += ele;
             if(sum >= 3){
                 map.put(start,map.get(start)-1);
+                if (map.get(start) == 0) map.remove(start);
+                
                 map.put(end,map.get(end)+1);
+                if (map.get(end) == 0) map.remove(end);
                 return false;
             }
         }
