@@ -1,20 +1,23 @@
 class MyCalendar {
-    Set<int[]> set = new HashSet<>();
+    TreeMap<Integer,Integer> map = new TreeMap<>();
     public MyCalendar() {
         
     }
     
     public boolean book(int start, int end) {
-        for(int[] ele : set){
-            if(start >= ele[0] && start < ele[1])
+        map.put(start,map.getOrDefault(start,0)+1);
+        map.put(end,map.getOrDefault(end,0)-1);
+        int sum = 0;
+        for(int ele : map.keySet()){
+            sum += map.get(ele);
+            // System.out.println(sum + " : "+ele );
+            if(sum >= 2){
+                map.put(start,map.getOrDefault(start,0)-1);
+                map.put(end,map.getOrDefault(end,0)+1);
                 return false;
-            if(end > ele[0] && start < ele[1])
-                return false;   
+            }
         }
-        int[] s = new int[2];
-        s[0] = start;
-        s[1] = end;
-        set.add(s);
+        // System.out.println();
         return true;
     }
 }
