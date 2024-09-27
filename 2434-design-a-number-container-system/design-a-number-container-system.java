@@ -1,42 +1,33 @@
+import java.util.HashMap;
+import java.util.TreeSet;
+
 class NumberContainers {
-    HashMap<Integer,Integer> indMap = new HashMap<>();
-    HashMap<Integer,TreeSet<Integer>> numMap = new HashMap<>();
+    HashMap<Integer, Integer> indMap = new HashMap<>();
+    HashMap<Integer, TreeSet<Integer>> numMap = new HashMap<>();
 
     public NumberContainers() {
-        
     }
-    
-    public void change(int index, int number) {
-        Integer key = null;
-        if(indMap.containsKey(index)){
-            key = indMap.get(index);
-        }
-        indMap.put(index , number);
 
-        if(key != null){
-            TreeSet<Integer> set = numMap.get(key);
-            set.remove(index);
-            if(set.isEmpty()){
-                numMap.remove(key);
-            }else{
-                numMap.put(key,set);
+    public void change(int index, int number) {
+        // If the index already has a number, remove the index from its current number's TreeSet
+        if (indMap.containsKey(index)) {
+            int oldNumber = indMap.get(index);
+            TreeSet<Integer> oldSet = numMap.get(oldNumber);
+            oldSet.remove(index);
+            if (oldSet.isEmpty()) {
+                numMap.remove(oldNumber);  // Clean up empty sets
             }
         }
 
-        if(numMap.get(number) == null){
-            numMap.put(number,new TreeSet<>());
-        }
-        TreeSet<Integer> set = numMap.get(number);
-        set.add(index);
+        // Update the index with the new number
+        indMap.put(index, number);
 
-        numMap.put(number,set);
+        // Add the index to the new number's TreeSet
+        numMap.computeIfAbsent(number, k -> new TreeSet<>()).add(index);
     }
-    
+
     public int find(int number) {
-        if(!numMap.containsKey(number)){
-            return -1;
-        }
-        
-        return numMap.get(number).first();
+        // Return the smallest index for the number, or -1 if none exists
+        return numMap.containsKey(number) ? numMap.get(number).first() : -1;
     }
 }
