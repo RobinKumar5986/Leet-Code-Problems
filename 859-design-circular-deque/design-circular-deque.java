@@ -98,18 +98,10 @@ class MyCircularDeque {
     }
     
     public boolean isEmpty() {
-        if( c<= 0){
-            return true;
-        }else{
-            return false;
-        }
+        return c <= 0;
     }
     
     public boolean isFull() {
-        if( c == k){
-            return true;
-        }else{
-            return false;
-        }
+        return c == k;
     }
 }
