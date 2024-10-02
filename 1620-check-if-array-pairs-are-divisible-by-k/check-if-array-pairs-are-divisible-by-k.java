@@ -8,19 +8,17 @@ class Solution {
             arr[i] = rem;
             freq[rem]++;
         }
-        int c = 0;
+        if(freq[0]%2 != 0 )
+            return false;
         for(int ele : arr){
             if(ele == 0){
-                c++;
-                continue;
+               continue;
             }
             int req = (k - ele) ;
             if(freq[req] <= 0)
                 return false;
             freq[req]--; 
         }
-        if(c % 2 != 0)
-            return false;
         return true;
     }
 }
