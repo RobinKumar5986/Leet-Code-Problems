@@ -7,8 +7,7 @@ class Solution {
         for(int ele : sort){
             if(map.containsKey(ele))
                 continue;
-            map.put(ele,rank);
-            rank++;
+            map.put(ele,rank++);
         }
         int[] ans = new int[arr.length];
         int i = 0;
