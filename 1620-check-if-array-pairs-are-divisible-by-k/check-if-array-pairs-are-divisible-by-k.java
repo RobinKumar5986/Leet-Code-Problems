@@ -10,15 +10,9 @@ class Solution {
         }
         if(freq[0]%2 != 0 )
             return false;
-        for(int ele : arr){
-            if(ele == 0){
-               continue;
-            }
-            int req = (k - ele) ;
-            if(freq[req] <= 0)
+        for(int i = 1 ;i<freq.length ; i++)
+            if(freq[i] != freq[k - i])
                 return false;
-            freq[req]--; 
-        }
         return true;
     }
 }
