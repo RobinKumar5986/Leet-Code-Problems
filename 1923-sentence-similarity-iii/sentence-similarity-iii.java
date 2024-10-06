@@ -16,9 +16,6 @@ class Solution {
             else
                 return false;
         }
-        //case 2: morethen one element 
-        // if(!s1.get(0).equals(s2.get(0)) || !s1.get( s1.size() - 1).equals(s2.get(s2.size() - 1)))
-        //     return false;
         int c = 0;
         for(int i = 0;i<s1.size(); i++){
             if(s1.get(i).equals(s2.get(i)))
@@ -34,8 +31,7 @@ class Solution {
             else
                 break;
         }
-        // System.out.println(c);
-
+        
         if(c>=s1.size())
             return true;
         return false;
