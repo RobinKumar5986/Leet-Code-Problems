@@ -2,6 +2,9 @@ class Solution {
     public boolean areSentencesSimilar(String sen1, String sen2) {
         if(sen1.equals(sen2))
             return true;
+        if(sen1.length()==sen2.length()){
+            return sen1.equals(sen2);
+        }
         if(sen1.length() > sen2.length()){
             String temp = sen1;
             sen1 = sen2;
@@ -9,7 +12,6 @@ class Solution {
         }
         List<String> s1 = Arrays.asList(sen1.split(" "));
         List<String> s2 = Arrays.asList(sen2.split(" "));
-        //case 1 : single element
         if(s1.size() == 1){
             if(s1.get(0).equals(s2.get(0)) || s1.get(0).equals( s2.get(s2.size() - 1) ) )
                 return true;
