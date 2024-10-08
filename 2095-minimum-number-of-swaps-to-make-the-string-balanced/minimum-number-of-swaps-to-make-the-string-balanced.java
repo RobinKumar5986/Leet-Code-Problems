@@ -5,16 +5,16 @@ class Solution {
         int op = 0;
         int cl = 0;
         int swap = 0;
-        for(int i = 0; i < s.length();i++){
-            char c = s.charAt(i);
-            if(c == ']')
-                cl++;
-            else
+        for(char c : s.toCharArray()){
+            if(c == ']'){
+                if(cl == op){
+                    op++;
+                    swap++;
+                }else{
+                    cl++;
+                }
+            }else{
                 op++;
-            if(cl > op){
-                cl--;
-                op++;
-                swap++;
             }
         }
         return swap;
