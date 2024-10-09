@@ -2,8 +2,8 @@ class Solution {
     public int minAddToMakeValid(String s) {
         int ans = 0;
         int c = 0;
-        for(int i= 0 ; i < s.length() ;i++){
-            char ch = s.charAt(i);
+        for(char ch : s.toCharArray()){
+           
             if(ch == ')'){
                 if(c == 0)
                     ans++;
