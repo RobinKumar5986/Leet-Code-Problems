@@ -25,9 +25,7 @@ class Solution {
         }
         if(ind1 == -1)
             return num;
-        char c1 = nums.charAt(ind1);
         char c2 = nums.charAt(ind2);
-
         for(int i = nums.length() -1 ; i >= 0 ; i--){
             if( nums.charAt(i) == c2){
                 ind2 = i;
