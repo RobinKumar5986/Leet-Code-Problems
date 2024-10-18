@@ -2,50 +2,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
-    int max = 0;
-    int count = 0;
-    Map<String, Integer> memo = new HashMap<>();
-
-    void subset(int[] nums, int cur, int ind) {
-        // Prune: If current OR value already equals max, no need to continue
-        if (cur == max) {
-            count += (1 << (nums.length - ind));  // Count all remaining subsets
-            return;
-        }
-        
-        // If we've reached the end of the array
-        if (ind == nums.length) {
-            if (cur == max) count++;
-            return;
-        }
-
-        // Memoization to avoid repeated calculations
-        String key = cur + "," + ind;
-        if (memo.containsKey(key)) {
-            count += memo.get(key);
-            return;
-        }
-
-        int initialCount = count;
-
-        // Option 1: Do not include the current element
-        subset(nums, cur, ind + 1);
-        
-        // Option 2: Include the current element
-        subset(nums, cur | nums[ind], ind + 1);
-
-        // Store the result in memo
-        memo.put(key, count - initialCount);
-    }
-
     public int countMaxOrSubsets(int[] nums) {
-        // Compute the maximum possible OR value
-        for (int ele : nums)
-            max = max | ele;
-        
-        // Start the subset generation and counting
-        subset(nums, 0, 0);
-        
-        return count;
+        // Calculate the maximum possible OR value
+        int maxOr = 0;
+        for (int num : nums) {
+            maxOr |= num;
+        }
+
+        // DP map to store how many subsets have each OR value
+        Map<Integer, Integer> dp = new HashMap<>();
+        dp.put(0, 1); // Initially, there's 1 subset with OR value 0 (the empty subset)
+
+        // Iterate through each number in the array
+        for (int num : nums) {
+            Map<Integer, Integer> newDp = new HashMap<>(dp); // Create a copy of dp
+
+            // Update dp based on current number and existing subsets
+            for (int orVal : dp.keySet()) {
+                int newOrVal = orVal | num;
+                newDp.put(newOrVal, newDp.getOrDefault(newOrVal, 0) + dp.get(orVal));
+            }
+
+            dp = newDp; // Move to the updated dp map
+        }
+
+        // The result is how many subsets achieve the maximum OR value
+        return dp.getOrDefault(maxOr, 0);
     }
 }
