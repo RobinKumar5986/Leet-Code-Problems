@@ -1,32 +1,21 @@
 class Solution {
+    int max = 0;
+    int c = 0;
+    void subset(int[] nums , int cur , int ind){
+        if(ind == nums.length){
+            if(cur == max)
+                c++;
+            return;
+        }
+        //not include
+        subset(nums , cur , ind+1);
+        //include
+        subset(nums , cur | nums[ind], ind+1);
+    }
     public int countMaxOrSubsets(int[] nums) {
-        int n = nums.length;
-        int maxOr = 0;
-        int count = 0;
-
-        // Calculate the maximum possible OR value
-        for (int num : nums) {
-            maxOr |= num;
-        }
-
-        // Iterate over all possible subsets using bit manipulation
-        int totalSubsets = 1 << n; // 2^n subsets
-        for (int mask = 0; mask < totalSubsets; mask++) {
-            int currentOr = 0;
-
-            // For each subset, calculate the OR value
-            for (int i = 0; i < n; i++) {
-                if ((mask & (1 << i)) != 0) { // Check if the i-th element is in the subset
-                    currentOr |= nums[i];
-                }
-            }
-
-            // If the current OR equals the maximum OR, increment the count
-            if (currentOr == maxOr) {
-                count++;
-            }
-        }
-
-        return count;
+        for(int ele : nums)
+            max = max | ele;
+        subset(nums,0,0);
+        return c;
     }
 }
