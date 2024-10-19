@@ -17,10 +17,13 @@ class Solution {
         return sb.toString();
     }
     public char findKthBit(int n, int k) {
-        String s = "0";
+        StringBuilder sb = new StringBuilder();
+        sb.append('0');
         for(int i = 1;i < n ;i ++){
-            s = s + '1' + reverse(invert(s));
+            String t = reverse(invert(sb.toString()));
+            sb.append('1');
+            sb.append(t);
         }
-        return s.charAt(k-1);
+        return sb.charAt(k-1);
     }
 }
