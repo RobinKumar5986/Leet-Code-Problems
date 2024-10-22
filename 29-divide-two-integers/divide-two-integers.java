@@ -25,7 +25,7 @@ class Solution {
                 temp <<= 1;
                 multiple <<= 1;
             }
-
+            
             lx -= temp;
             ans += multiple;
         }
