@@ -39,8 +39,6 @@ class Solution {
         Collections.sort(lst);
         for(int i = lst.size()-1 ; i >= 0 ; i--){
             long num = lst.get(i);
-            // while( i > 0 && lst.get(i-1) == lst.get(i))
-            //     i--;
             k--;
             if(k==0)
                 return num;
