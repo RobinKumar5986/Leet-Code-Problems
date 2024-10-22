@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    List<Long> lst = new ArrayList<>();
+    PriorityQueue<Long> heap = new PriorityQueue<>(Collections.reverseOrder());
     void bfs(Queue<TreeNode> q){
         if(q.isEmpty()){
             return;
@@ -29,19 +29,18 @@ class Solution {
             if(root.right != null)
                 q.add(root.right);
         }
-        lst.add(sum);
+        heap.add(sum);
         bfs(q);
     }
     public long kthLargestLevelSum(TreeNode root, int k) {
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         bfs(q);
-        Collections.sort(lst);
-        for(int i = lst.size()-1 ; i >= 0 ; i--){
-            long num = lst.get(i);
+        while(k>0 && !heap.isEmpty()){
+            long ans = heap.poll();
             k--;
-            if(k==0)
-                return num;
+            if( k == 0)
+                return ans;
         }
         return -1;
     }
