@@ -5,13 +5,16 @@ class Solution {
             return true;
         }
         
-        // If only one is null or values don't match, they are not flip equivalent.
         if (root1 == null || root2 == null || root1.val != root2.val) {
             return false;
         }
-        
-        // Check if children are flip equivalent (without flipping or with flipping).
-        return (flipEquiv(root1.left, root2.left) && flipEquiv(root1.right, root2.right)) ||
-               (flipEquiv(root1.left, root2.right) && flipEquiv(root1.right, root2.left));
+        boolean f1 = flipEquiv(root1.left , root2.left);
+        boolean f2 = flipEquiv(root1.left , root2.right);
+
+        boolean f3 = flipEquiv(root1.right , root2.right);
+        boolean f4 = flipEquiv(root1.right , root2.left);
+
+        return (f1 || f2) && (f3 || f4);
+
     }
 }
