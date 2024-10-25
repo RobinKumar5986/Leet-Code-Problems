@@ -9,7 +9,6 @@ class Solution {
             boolean flag = false;
             for(int i = 1 ; i < fol.length; i++){
                 s = s + fol[i];
-                // System.out.println("str : " + s);
                 if(set.contains(s)){
                     flag = true;
                     break;
@@ -18,7 +17,6 @@ class Solution {
                     s = s + '/';
                 }
             }
-            // System.out.println();
             if(!flag){
                 set.add(s);
                 ans.add(ele);
