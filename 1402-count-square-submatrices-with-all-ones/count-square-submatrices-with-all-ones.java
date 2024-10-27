@@ -22,8 +22,6 @@ class Solution {
         int ans = 0;
         for(int i = 0 ; i < mat.length ; i++){
             for(int j = 0 ; j< mat[0].length; j++){
-                if(mat[i][j] == 0)
-                    continue;
                 ans += dfs(i,j,mat);
             }
         }
