@@ -1,10 +1,9 @@
 class Solution {
-    HashMap<String,Integer> map = new HashMap<>();
+    int[][] dp;
 
     int dfs(int[][] grid, int r ,int c , int lRow, int lCol) {
-        String s = r + "," + c;
-        if(map.containsKey(s))
-            return map.get(s);
+        if(dp[r][c] != 0 )
+            return dp[r][c];
         int n1 = 0;
         int n2 = 0;
         int n3 = 0;
@@ -25,10 +24,12 @@ class Solution {
         }
         
         int max =  Math.max(n1, Math.max(n2, n3));
-        map.put(s , max);
-        return map.get(s);
+        dp[r][c] = max;
+        return dp[r][c];
     }
     public int maxMoves(int[][] grid) {
+        dp = new int[grid.length][grid[0].length];
+
         int max = 0;
         for(int i = 0; i < grid.length ; i++){
             int temp = dfs(grid,i,0,grid.length,grid[0].length);
