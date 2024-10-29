@@ -1,40 +1,39 @@
 class Solution {
     int[][] dp;
+    int[][] directions = {{-1, 1}, {0, 1}, {1, 1}}; // Possible moves: top-right, right, bottom-right
 
-    int dfs(int[][] grid, int r ,int c , int lRow, int lCol) {
-        if(dp[r][c] != 0 )
-            return dp[r][c];
-        int n1 = 0;
-        int n2 = 0;
-        int n3 = 0;
-        
-        // case 1
-        if (r - 1 >= 0 && c + 1 < lCol && grid[r-1][c+1] > grid[r][c]) {
-            n1 = dfs(grid, r-1, c+1, lRow, lCol) + 1;
+    int dfs(int[][] grid, int r, int c, int lRow, int lCol) {
+        if (dp[r][c] != -1) {
+            return dp[r][c]; // Return precomputed result
         }
-        
-        // case 2
-        if (r >= 0 && r < lRow && c + 1 < lCol && grid[r][c+1] > grid[r][c]) {
-            n2 = dfs(grid, r, c+1, lRow, lCol) + 1;
+
+        int maxMoves = 0;
+        for (int[] dir : directions) {
+            int newRow = r + dir[0];
+            int newCol = c + dir[1];
+
+            if (newRow >= 0 && newRow < lRow && newCol < lCol && grid[newRow][newCol] > grid[r][c]) {
+                maxMoves = Math.max(maxMoves, dfs(grid, newRow, newCol, lRow, lCol) + 1);
+            }
         }
-        
-        // case 3
-        if (r + 1 < lRow && c + 1 < lCol && grid[r+1][c+1] > grid[r][c]) {
-            n3 = dfs(grid, r+1, c+1, lRow, lCol) + 1;
-        }
-        
-        int max =  Math.max(n1, Math.max(n2, n3));
-        dp[r][c] = max;
-        return dp[r][c];
+
+        dp[r][c] = maxMoves;
+        return maxMoves;
     }
+
     public int maxMoves(int[][] grid) {
-        dp = new int[grid.length][grid[0].length];
+        int rows = grid.length;
+        int cols = grid[0].length;
+        dp = new int[rows][cols];
+
+        // Initialize dp array to -1 for memoization
+        for (int i = 0; i < rows; i++) {
+            Arrays.fill(dp[i], -1);
+        }
 
         int max = 0;
-        for(int i = 0; i < grid.length ; i++){
-            int temp = dfs(grid,i,0,grid.length,grid[0].length);
-            if(temp > max)
-                max = temp;
+        for (int i = 0; i < rows; i++) {
+            max = Math.max(max, dfs(grid, i, 0, rows, cols));
         }
         return max;
     }
