@@ -1,7 +1,6 @@
 class Solution {
     boolean[][] dp;
     void expand(int i , int j , char[][] grid){
-        System.out.println(i + " : "+ j);
         dp[i][j] = true;
 
         if(i + 1 < grid.length && !dp[i+1][j] && grid[i+1][j] == '1'){
