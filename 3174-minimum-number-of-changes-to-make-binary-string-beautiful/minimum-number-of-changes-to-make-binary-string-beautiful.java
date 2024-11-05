@@ -1,6 +1,5 @@
 class Solution {
     public int minChanges(String s) {
-        //pair checking algo
         int ch = 0;
         for(int i = 0 ; i < s.length() ; i+=2){
             char c1 = s.charAt(i);
