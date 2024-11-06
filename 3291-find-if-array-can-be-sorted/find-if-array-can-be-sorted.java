@@ -22,10 +22,7 @@ class Solution {
                     nums[j+1] = temp;
                 }
             }
-        }
-        for(int ele : nums){
-            System.out.print(ele + " ");
-        }
+        }   
         return true;
     }
 }
