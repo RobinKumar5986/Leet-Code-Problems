@@ -1,7 +1,7 @@
 class Solution {
     public boolean canSortArray(int[] nums) {
         for(int i = 0 ; i<nums.length ; i++){
-            for(int j = 0;j<nums.length-1;j++){
+            for(int j = 0;j<nums.length-1-i;j++){
                 if(nums[j] > nums[j+1]){
                     int set1 = 0;
                     int set2 = 0;
