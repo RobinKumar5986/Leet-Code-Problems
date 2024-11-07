@@ -1,15 +1,14 @@
-import java.math.BigInteger;
 class Solution {
     public int largestCombination(int[] candi) {
         int ans = 0;
         int max = Integer.MIN_VALUE;
         for(int ele : candi)
             max = Math.max(ele,max);
-        int bitLength = BigInteger.valueOf(max).bitLength();
-        int[] bitMap = new int[bitLength];
+        String bin = Integer.toBinaryString(max);
+        int[] bitMap = new int[bin.length()];
 
         for(int ele : candi){
-            int ind = bitLength - 1;
+            int ind = bin.length()-1;
             while(ele != 0){
                 int bit = ele & 1;
                 if(bit == 1){
