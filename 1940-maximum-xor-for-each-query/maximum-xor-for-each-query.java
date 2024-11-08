@@ -7,8 +7,8 @@ class Solution {
         
         int[] ans = new int[nums.length];
         int ind = 0;
+        int n = (int)Math.pow(2,bit) - 1;
         for(int i = nums.length-1; i >= 0 ; i--){
-            int n = (int)Math.pow(2,bit) - 1;
             int k = xor ^ n;
             ans[ind++] = k;
             xor ^= nums[i];
