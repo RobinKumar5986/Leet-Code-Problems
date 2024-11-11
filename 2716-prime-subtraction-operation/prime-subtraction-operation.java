@@ -17,21 +17,7 @@ class Solution {
         return true;
     }
     public boolean primeSubOperation(int[] nums) {
-        boolean flg = true;
-        //check if already sorted
-        for(int i = 1; i < nums.length;i++){
-            if(nums[i] < 2)
-                return false;
-            if(nums[i-1] >= nums[i]){
-                flg = false;
-                break;
-            }
-        }
-        if(flg)
-            return true;
-
         for(int i = 0 ; i < nums.length ; i++){
-            //reduce the num
             int n = nums[i] - 1;
             for(int j = n ; j >= 2; j--){
                 if(isPrime(j)){
