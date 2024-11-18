@@ -15,8 +15,7 @@ class Solution {
                 }
             }else{
                 ind--;
-                int t = k*(-1);
-                for(int n = 0 ; n < t ;n++){
+                for(int n = k ; n < 0 ;n++){
                     if(ind < 0)
                         ind = code.length-1;
                     sum += code[ind--];
