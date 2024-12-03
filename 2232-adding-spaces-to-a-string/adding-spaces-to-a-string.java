@@ -8,7 +8,6 @@ class Solution {
                 ind++;
             }
             sb.append(s.charAt(i));
-            
         }
         return sb.toString();
     }
