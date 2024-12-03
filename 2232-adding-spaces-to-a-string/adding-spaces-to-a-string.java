@@ -1,12 +1,11 @@
 class Solution {
-    public String addSpaces(String s, int[] spaces) {
-        Set<Integer> inds = new HashSet<>();
-        for(int ele : spaces)
-            inds.add(ele);
+    public String addSpaces(String s, int[] sp) {
+        int ind = 0;
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i<s.length();i++){
-            if(inds.contains(i)){
+            if(ind < sp.length && i == sp[ind] ){
                 sb.append(' ');
+                ind++;
             }
             sb.append(s.charAt(i));
             
