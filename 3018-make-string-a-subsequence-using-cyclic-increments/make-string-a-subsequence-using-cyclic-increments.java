@@ -5,7 +5,7 @@ class Solution {
         int j = 0;
         for(int i = 0 ; i < str1.length() ;i++){
             int num = ((str1.charAt(i) - 'a') + 1 ) % 26;
-            if(str1.charAt(i) == str2.charAt(j) || num == (str2.charAt(j) -'a')){
+            if(num == (str2.charAt(j) -'a') || str1.charAt(i) == str2.charAt(j) ){
                 j++;
             }
            
