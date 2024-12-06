@@ -2,12 +2,11 @@ class Solution {
     public int maxCount(int[] banned, int n, int maxSum) {
         int ans = 0;
         int sum = 0;
-        Set<Integer> set = new HashSet<>();
+        boolean[] ok = new boolean[10001];
         for(int ele : banned)
-            set.add(ele);
-        
+            ok[ele] = true;
         for(int i = 1 ; i<= n ;i++){
-            if(!set.contains(i)){
+            if(!ok[i]){
                 if(sum+i <= maxSum){
                     ans++;
                     sum+=i;
