@@ -1,10 +1,9 @@
 class Solution {
-    boolean isOk(int n , int[] nums,int mOp){
-        for(int ele: nums){
-            mOp -= ele/n - 1;
-            if(ele % n != 0)
-                mOp--;
-            if(mOp < 0)
+    boolean isOk(int n, int[] nums, int mOp) {
+        for (int ele : nums) {
+            int operations = (ele + n - 1) / n - 1;
+            mOp -= operations;
+            if (mOp < 0)
                 return false;
         }
         return true;
