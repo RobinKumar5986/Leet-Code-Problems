@@ -2,7 +2,9 @@ class Solution {
     boolean isOk(int n , int[] nums,int mOp){
         int sum = 0;
         for(int ele: nums){
-            int rem = (int)Math.ceil((double)ele/n) - 1;
+            int rem = ele/n - 1;
+            if(ele % n != 0)
+                rem++;
             sum += rem;
             if(sum > mOp)
                 return false;
