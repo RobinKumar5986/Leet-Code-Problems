@@ -11,8 +11,9 @@ class Solution {
     }
     public int minimumSize(int[] nums, int mOp) {
         int hi = -1;
-        for(int ele : nums )
-            hi = Math.max(hi,ele);
+        for(int i: nums){
+            if(hi < i) hi = i;
+        }
         int ans = hi;
         int lo = 1;
         while(lo <= hi){
