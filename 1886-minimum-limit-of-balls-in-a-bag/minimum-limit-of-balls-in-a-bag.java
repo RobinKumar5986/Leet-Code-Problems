@@ -1,12 +1,10 @@
 class Solution {
     boolean isOk(int n , int[] nums,int mOp){
-        int sum = 0;
         for(int ele: nums){
-            int rem = ele/n - 1;
+            mOp -= ele/n - 1;
             if(ele % n != 0)
-                rem++;
-            sum += rem;
-            if(sum > mOp)
+                mOp--;
+            if(mOp < 0)
                 return false;
         }
         return true;
