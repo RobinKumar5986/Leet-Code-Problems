@@ -22,8 +22,6 @@ class Solution {
                 vis.add(pair[i][1]-1);
             }
         }
-        
-        
         return ans;
     }
 }
