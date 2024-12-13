@@ -13,13 +13,15 @@ class Solution {
             return Integer.compare(a[1], b[1]);
         });
 
-        Set<Integer> vis = new HashSet<>();
+        boolean[] vis = new boolean[nums.length];
         for(int i = 0 ; i < nums.length; i++){
-            if(!vis.contains(pair[i][1])){
+            if(!vis[ pair[i][1] ] ){
                 ans+= pair[i][0];
-                vis.add(pair[i][1]);
-                vis.add(pair[i][1] + 1);
-                vis.add(pair[i][1]-1);
+                vis[pair[i][1]] = true;
+                if(pair[i][1]  + 1 < nums.length)
+                    vis[ pair[i][1] + 1 ] = true;
+                if(pair[i][1] - 1 >= 0)
+                    vis[ pair[i][1]-1] = true;
             }
         }
         return ans;
