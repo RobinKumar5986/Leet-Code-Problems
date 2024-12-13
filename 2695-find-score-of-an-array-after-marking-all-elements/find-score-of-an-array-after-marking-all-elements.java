@@ -1,25 +1,42 @@
+import java.util.*;
+
 class Solution {
     public long findScore(int[] nums) {
         long ans = 0;
-        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a,b) -> {
-            if(a[0] != b[0]){
-                return Integer.compare(a[0],b[0]);
+
+        // Create an array of indices
+        int n = nums.length;
+        int[][] indexedNums = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            indexedNums[i][0] = nums[i];
+            indexedNums[i][1] = i;
+        }
+
+        // Sort by value first, then by index
+        Arrays.sort(indexedNums, (a, b) -> {
+            if (a[0] != b[0]) {
+                return Integer.compare(a[0], b[0]);
             }
-            return Integer.compare(a[1],b[1]);
+            return Integer.compare(a[1], b[1]);
         });
-        for(int i = 0 ; i < nums.length; i++){
-            minHeap.offer(new int[]{nums[i],i});
-        }
-        Set<Integer> vis = new HashSet<>();
-        while (!minHeap.isEmpty()) {
-            int[] pair = minHeap.poll();
-            if(!vis.contains(pair[1])){
-                ans += pair[0];
-                vis.add(pair[1]);
-                vis.add(pair[1]+1);
-                vis.add(pair[1]-1);
+
+        // Use a boolean array to track visited indices
+        boolean[] visited = new boolean[n];
+
+        // Process the sorted array
+        for (int[] pair : indexedNums) {
+            int value = pair[0];
+            int index = pair[1];
+
+            // If the index is not visited, process it
+            if (!visited[index]) {
+                ans += value;
+                visited[index] = true;
+                if (index - 1 >= 0) visited[index - 1] = true;
+                if (index + 1 < n) visited[index + 1] = true;
             }
         }
+
         return ans;
     }
 }
