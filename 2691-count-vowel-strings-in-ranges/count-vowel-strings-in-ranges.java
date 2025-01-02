@@ -2,13 +2,17 @@ class Solution {
     public int[] vowelStrings(String[] w, int[][] q) {
         int[] pfx = new int[w.length];
         int[] ans = new int[q.length];
-        Set<Character> set = Set.of('a','e','i','o','u');
-
+        boolean[] vowels = new boolean[26];
+        vowels['a' - 'a'] = true;
+        vowels['e' - 'a'] = true;
+        vowels['i' - 'a'] = true;
+        vowels['o' - 'a'] = true;
+        vowels['u' - 'a'] = true;
         for(int i = 0 ; i < w.length ;i++){
             String s = w[i];
             char f = s.charAt(0);
             char l = s.charAt(s.length()-1);
-            if(set.contains(f) && set.contains(l)){
+            if(vowels[f - 'a'] && vowels[l - 'a']){
                 if(i == 0){
                     pfx[i] = 1;
                 }else{
