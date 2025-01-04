@@ -1,36 +1,32 @@
 class Solution {
+    int ans = 0;
     public int countPalindromicSubsequence(String s) {
-        // Map to store unique characters between first and last occurrence of each character
-        Map<Character, Set<Character>> map = new HashMap<>();
-        int[] first = new int[26]; // To store the first occurrence of each character
-        int[] last = new int[26];  // To store the last occurrence of each character
-        Arrays.fill(first, -1);   // Initialize first occurrence to -1
-
-        // Populate first and last occurrence arrays
-        for (int i = 0; i < s.length(); i++) {
+        int first[] = new int[26];
+        int last[] = new int[26];
+        Arrays.fill(first,-1);
+        
+        for(int i = 0 ; i < s.length(); i++){
             char c = s.charAt(i);
-            if (first[c - 'a'] == -1) {
-                first[c - 'a'] = i; // Set first occurrence
+            if(first[c - 'a'] == -1){
+                first[c - 'a'] = i;
             }
-            last[c - 'a'] = i; // Update last occurrence
+            last[c - 'a'] = i;
         }
-
-        // Populate the map with unique characters between first and last occurrence
-        for (char c = 'a'; c <= 'z'; c++) {
-            if (first[c - 'a'] != -1) { // If the character exists in the string
-                Set<Character> uniqueChars = new HashSet<>();
-                for (int i = first[c - 'a'] + 1; i < last[c - 'a']; i++) {
-                    uniqueChars.add(s.charAt(i));
-                }
-                map.put(c, uniqueChars);
+        //unique element b/w a range
+        Map<Character,Set<Character>> map = new HashMap<>();
+        for(int c = 'a' ; c <='z' ; c++){
+            int lo = first[c - 'a'] + 1;
+            int hi = last[c - 'a'] - 1;
+            
+            Set<Character> set = new HashSet<>();
+            for(int i = lo ; i <= hi ; i++){
+                set.add(s.charAt(i));
             }
+            map.put((char)c,set);
         }
-
-        // Calculate the result
-        int ans = 0;
-        for (Map.Entry<Character, Set<Character>> entry : map.entrySet()) {
-            ans += entry.getValue().size();
-        }
+        map.forEach((key,val) ->{
+            ans += val.size();
+        });
         return ans;
     }
 }
