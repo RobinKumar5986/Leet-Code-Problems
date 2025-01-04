@@ -13,7 +13,7 @@ class Solution {
             last[c - 'a'] = i;
         }
         //unique element b/w a range
-        Map<Character,Set<Character>> map = new HashMap<>();
+        Map<Character,Integer> map = new HashMap<>();
         for(int c = 'a' ; c <='z' ; c++){
             int lo = first[c - 'a'] + 1;
             int hi = last[c - 'a'] - 1;
@@ -22,10 +22,10 @@ class Solution {
             for(int i = lo ; i <= hi ; i++){
                 set.add(s.charAt(i));
             }
-            map.put((char)c,set);
+            map.put((char)c,set.size());
         }
         map.forEach((key,val) ->{
-            ans += val.size();
+            ans += val;
         });
         return ans;
     }
