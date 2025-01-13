@@ -3,10 +3,9 @@ class Solution {
         int[] map = new int[26];
         int ans = s.length();
         for(byte c : s.getBytes()){
-            byte b =(byte)(c - 'a');
-            map[b]++;
-            if(map[b] == 3) {
-                map[b] = 1;
+            map[c-'a']++;
+            if(map[c-'a'] == 3) {
+                map[c-'a'] = 1;
                 ans -= 2;
             }
         }
