@@ -12,14 +12,11 @@ class Solution {
         int[] reqR = new int[r];
         int[] reqC = new int[c];
         int ind = 0;
-        // System.out.println(r + " <:> " + c);
         for(int ele : arr){
             int[] pair = map[ele];
             
             reqR[pair[0]]++;
-            reqC[pair[1]]++;
-            // System.out.println(reqR[pair[0]]  + " : "+ reqC[pair[1]] + " -> "+ pair[0] + " : "+ pair[1] );
-           
+            reqC[pair[1]]++;           
             if(reqR[pair[0]] == c || reqC[pair[1]] == r){
                 return ind;
             }
