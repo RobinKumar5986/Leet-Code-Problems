@@ -17,8 +17,7 @@ class Solution {
             if(nums[st] > next)
                 return false;
             st++;
-            if(st == nums.length)
-                st = 0;
+            st = st % nums.length;
             len--;
         }
         return true;
