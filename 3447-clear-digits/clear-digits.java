@@ -1,18 +1,13 @@
 class Solution {
     public String clearDigits(String s) {
-        Stack<Character> stk = new Stack<>();
+        StringBuilder sb = new StringBuilder();
         for(char c : s.toCharArray()){
-            if(c >= '0' && c<='9'){
-                stk.pop();
+            if(c >= '0' && c <= '9'){
+                sb.deleteCharAt(sb.length() -1);
             }else{
-                stk.push(c);
+                sb.append(c);
             }
         }
-        String ans = "";
-        while(!stk.isEmpty()){
-            char c = stk.pop();
-            ans = c+ans;
-        }
-        return ans;
+        return sb.toString();
     }
 }
