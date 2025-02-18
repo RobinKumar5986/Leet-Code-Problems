@@ -12,7 +12,6 @@ class Solution {
         }
     }
     void backTrack(StringBuilder num,int ind,String pt){
-        System.out.println(num.toString() + " : " + num.length());
         if (num.length() == pt.length() + 1) {
             lexicography(num.toString());
             return;
