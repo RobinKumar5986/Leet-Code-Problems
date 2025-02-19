@@ -1,24 +1,15 @@
 class Solution {
-    Stack<String> stk = new Stack<>();
-    String smallestLex(String s1 , String s2){
-        if(s1.length() != s2.length())
-            return null;
-        for(int i = 0 ; i < s1.length(); i++ ){
-            if(s1.charAt(i) > s2.charAt(i))
-                return s2;
-            if(s1.charAt(i) < s2.charAt(i))
-                return s1;
-        }
-        return s1;
-    }
+    private int count = 0;
+    private String ans = "";
+
     void backTrack(StringBuilder cur, int n,int k){
+        if(count == k){
+            return;
+        }
         if(cur.length() == n){
-            if(stk.size() == k){
-                String su = stk.pop();
-                su = smallestLex(su, cur.toString());
-                stk.push(su);
-            }else{
-                stk.push(cur.toString());
+            count++;
+            if(count == k){
+                ans = cur.toString();
             }
             return;
         }
@@ -46,9 +37,6 @@ class Solution {
     public String getHappyString(int n, int k) {
         StringBuilder sb = new StringBuilder();
         backTrack(sb,n,k);
-        if(stk.size() != k){
-            return "";
-        }
-        return stk.peek();
+        return ans;
     }
 }
