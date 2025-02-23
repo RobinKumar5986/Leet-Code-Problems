@@ -5,12 +5,14 @@ class Solution {
             return null;
         }
         TreeNode node = new TreeNode(pre[prSt]);
-        if(prSt+1 <= prEnd){
-            int mid = map.get(pre[prSt+1]);
-            int leftSz = mid - poSt + 1; // element at prSt + 1 inclusive
-            node.left = treeBuilder(pre,prSt+1,prSt + leftSz,poSt,poSt+leftSz-1);
-            node.right = treeBuilder(pre,prSt + leftSz + 1 , prEnd, poSt+leftSz , poEnd);
+        if (prSt == prEnd) {
+            return node;
         }
+        int mid = map.get(pre[prSt+1]);
+        int leftSz = mid - poSt + 1; // element at prSt + 1 inclusive
+        node.left = treeBuilder(pre,prSt+1,prSt + leftSz,poSt,poSt+leftSz-1);
+        node.right = treeBuilder(pre,prSt + leftSz + 1 , prEnd, poSt+leftSz , poEnd);
+        
         return node;
     }
     public TreeNode constructFromPrePost(int[] pr, int[] po) {
