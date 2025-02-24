@@ -1,9 +1,34 @@
 class Solution {
-
+    Set<Integer> vis = new HashSet<>();
+    Map<Integer,Set<Integer>> map = new HashMap<>();
+    boolean ans = false;
+    void bfs(Queue<Integer> stk,int dst){
+        if(stk.isEmpty() || ans){
+            return;
+        }
+        int sz = stk.size();
+        for(int i = 0 ; i < sz ; i ++){
+            int node = stk.remove();
+            if(node == dst){
+                ans = true;
+                return;
+            }
+            if(!vis.contains(node)){
+            Set<Integer> nn = map.get(node);
+                for(int ele : nn){
+                    if(!vis.contains(ele)){
+                        stk.offer(ele);
+                    }
+                }
+            }
+            vis.add(node);
+        }
+        bfs(stk,dst);
+    }
     public boolean validPath(int n, int[][] edges, int src, int dst) {
         if(src == dst)
             return true;
-        Map<Integer,Set<Integer>> map = new HashMap<>();
+       
         for(int[] ele : edges){
             if(!map.containsKey(ele[0])){
                 map.put(ele[0],new HashSet<>());
@@ -24,25 +49,7 @@ class Solution {
         for(int ele : neb){
             stk.add(ele);
         }
-        Set<Integer> vis = new HashSet<>();
-        while(!stk.isEmpty()){
-            int sz = stk.size();
-            for(int i = 0 ; i < sz ; i ++){
-                int node = stk.remove();
-                if(node == dst){
-                    return true;
-                }
-                if(!vis.contains(node)){
-                    Set<Integer> nn = map.get(node);
-                    for(int ele : nn){
-                        if(!vis.contains(ele)){
-                            stk.offer(ele);
-                        }
-                    }
-                }
-                vis.add(node);
-            }
-        }
-        return false;
+        bfs(stk,dst);
+        return ans;
     }
 }
