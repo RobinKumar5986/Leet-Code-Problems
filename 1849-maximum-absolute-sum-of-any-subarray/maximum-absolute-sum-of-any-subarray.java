@@ -26,6 +26,6 @@ class Solution {
             }
         }
         min = min * -1;
-        return Math.max(max,min) ;   
+        return max > min ? max : min ;   
     }
 }
