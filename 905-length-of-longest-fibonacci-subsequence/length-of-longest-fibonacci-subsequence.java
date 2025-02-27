@@ -1,15 +1,15 @@
 class Solution {
     public int lenLongestFibSubseq(int[] arr) {
-        Set<Integer> set = new HashSet<>(); // For lookup
+        HashMap<Integer, Integer> map = new HashMap<>(); // For lookup
         for (int i = 0; i < arr.length; i++) {
-            set.add(arr[i]);
+            map.put(arr[i], i);
         }
         int ans = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
+        for (int i = 0; i < arr.length-2; i++) {
+            for (int j = i + 1; j < arr.length-2; j++) {
                 int prev = arr[i], cur = arr[j];
                 int co = 2;
-                while (set.contains(prev + cur)) {
+                while (map.containsKey(prev + cur)) {
                     int key = prev + cur;
                     prev = cur;
                     cur = key;
