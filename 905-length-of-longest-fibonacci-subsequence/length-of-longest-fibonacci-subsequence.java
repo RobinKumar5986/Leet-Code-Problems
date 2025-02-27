@@ -13,9 +13,9 @@ class Solution {
                     int key = prev + cur;
                     prev = cur;
                     cur = key;
-                    co++;
-                    ans = Math.max(ans, co);
+                    co++;   
                 }
+                ans = Math.max(ans, co);
             }
         }
         return ans >= 3 ? ans : 0; 
