@@ -19,7 +19,6 @@ class Solution {
             if(col[prev] == col[hi]){
                 issue = prev;
             }
-            // System.out.println(lo + " : "+ hi + " : "+ issue + " : "+ ans);
             if(issue == -1){
                 ans++;
             }else{
