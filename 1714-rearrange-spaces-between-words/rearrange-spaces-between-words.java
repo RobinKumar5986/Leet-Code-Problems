@@ -1,59 +1,42 @@
 class Solution {
     public String reorderSpaces(String text) {
-        int length = text.length();
-        int wordCount = 0;
-        int spaceCount = 0;
-        
-        // Single pass to count words and spaces
-        for (int i = 0; i < length; i++) {
-            if (text.charAt(i) == ' ') {
-                spaceCount++;
-            } else if (i == 0 || text.charAt(i - 1) == ' ') {
-                wordCount++;
-            }
-        }
-        
-        // Edge cases
-        if (spaceCount == 0) return text;
-        if (wordCount == 1) {
-            return text.trim() + " ".repeat(spaceCount);
-        }
-        
-        // Calculate spacing
-        int gapSpaces = spaceCount / (wordCount - 1);
-        int extraSpaces = spaceCount % (wordCount - 1);
-        
-        // Build result in one pass
-        char[] result = new char[length];
-        int writePos = 0;
-        int readPos = 0;
-        
-        // Skip leading spaces
-        while (text.charAt(readPos) == ' ') readPos++;
-        
-        // Process words and gaps
-        for (int w = 0; w < wordCount; w++) {
-            // Copy word
-            while (readPos < length && text.charAt(readPos) != ' ') {
-                result[writePos++] = text.charAt(readPos++);
-            }
-            
-            // Add spaces (except after last word)
-            if (w < wordCount - 1) {
-                for (int s = 0; s < gapSpaces; s++) {
-                    result[writePos++] = ' ';
+        List<String> words = new ArrayList<>();
+        String s = "";
+        int sp = 0;
+        for(int i = 0 ; i < text.length(); i++){
+            if(text.charAt(i) == ' '){
+                sp++;
+                if(!s.isEmpty()){
+                    words.add(s);
                 }
+                s = "";
+            }else{
+                s += text.charAt(i);
             }
-            
-            // Skip spaces between words
-            while (readPos < length && text.charAt(readPos) == ' ') readPos++;
         }
-        
-        // Add remaining spaces
-        while (writePos < length) {
-            result[writePos++] = ' ';
+        if(!s.isEmpty()){
+            words.add(s);
         }
-        
-        return new String(result);
+        if(sp == 0)
+            return text;
+        StringBuilder ans = new StringBuilder();
+        if(words.size() == 1){
+            ans.append( words.get(0) );
+            for(int i = 0 ; i < sp; i++)
+                ans.append( " " );
+            return ans.toString();
+        }
+        String space = "";
+        for(int i = 1; i<= sp / (words.size() -1) ; i++)
+            space+= " ";
+        for(int i = 0 ; i < words.size(); i++){
+            ans.append(words.get(i));
+            if(i < words.size()-1)
+                ans.append(space);
+        }
+        int rem = sp % (words.size() - 1);
+        for(int i = 0 ; i < rem ;i++)
+            ans.append(" ");
+        return ans.toString();
     }
 }
