@@ -1,44 +1,48 @@
+import java.util.*;
+
 class Solution {
     public String reorderSpaces(String text) {
-        // Count spaces and collect words in one pass
-        int spaces = 0;
-        String[] words = text.trim().split("\\s+");
+        List<String> words = new ArrayList<>();
+        int spaceCount = 0, n = text.length();
         
-        // If no words or empty string, return original
-        if (words.length == 0 || (words.length == 1 && words[0].isEmpty())) {
-            return text;
-        }
-        
-        // Count total spaces
+        // Collect words and count spaces
+        StringBuilder word = new StringBuilder();
         for (char c : text.toCharArray()) {
-            if (c == ' ') spaces++;
-        }
-        
-        // If no spaces, return original
-        if (spaces == 0) return text;
-        
-        StringBuilder result = new StringBuilder();
-        
-        // If only one word, append it with all spaces
-        if (words.length == 1) {
-            return words[0] + " ".repeat(spaces);
-        }
-        
-        // Calculate spaces between words and remaining spaces
-        int spacesBetween = spaces / (words.length - 1);
-        int extraSpaces = spaces % (words.length - 1);
-        
-        // Build result
-        for (int i = 0; i < words.length; i++) {
-            result.append(words[i]);
-            if (i < words.length - 1) {
-                result.append(" ".repeat(spacesBetween));
+            if (c == ' ') {
+                spaceCount++;
+                if (word.length() > 0) {
+                    words.add(word.toString());
+                    word.setLength(0); // Reset StringBuilder
+                }
+            } else {
+                word.append(c);
             }
         }
+        if (word.length() > 0) {
+            words.add(word.toString());
+        }
+
+        // If only one word, all spaces go to the end
+        if (words.size() == 1) {
+            return words.get(0) + " ".repeat(spaceCount);
+        }
+
+        // Distribute spaces evenly
+        int spaceBetween = spaceCount / (words.size() - 1);
+        int spaceEnd = spaceCount % (words.size() - 1);
+
+        // Build the final result
+        StringBuilder result = new StringBuilder(n);
+        String separator = " ".repeat(spaceBetween);
         
-        // Append remaining spaces
-        result.append(" ".repeat(extraSpaces));
-        
+        for (int i = 0; i < words.size(); i++) {
+            result.append(words.get(i));
+            if (i < words.size() - 1) {
+                result.append(separator);
+            }
+        }
+        result.append(" ".repeat(spaceEnd));
+
         return result.toString();
     }
 }
