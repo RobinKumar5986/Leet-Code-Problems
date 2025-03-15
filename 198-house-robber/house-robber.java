@@ -2,7 +2,7 @@ class Solution {
     int[] dp;
 
     int sol(int[] nums,int i){
-        if(i < 0 || i>= nums.length)
+        if(i < 0 )
             return 0;
         if(dp[i] != -1)
             return dp[i];
