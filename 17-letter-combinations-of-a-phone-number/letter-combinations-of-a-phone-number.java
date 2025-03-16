@@ -11,20 +11,22 @@ class Solution {
     };
     List<String> ans = new ArrayList<>();
 
-    void generator(String digs, int ind,String comb){
+    void generator(String digs, int ind,StringBuilder combo){
         if(ind >= digs.length()){
-            ans.add(comb);
+            ans.add(combo.toString());
             return;
         }
         int dig = digs.charAt(ind)+ - '0' - 2;
         char[] s = map[dig];
         for(char c : s){
-            generator(digs,ind+1,comb+c);
+            combo.append(c);
+            generator(digs,ind+1,combo);
+            combo.deleteCharAt(combo.length()-1);
         }
     }
     public List<String> letterCombinations(String digits) {
         if(digits.isEmpty()) return ans;
-        generator(digits,0, "");
+        generator(digits,0, new StringBuilder());
         return ans;
     }
 }
