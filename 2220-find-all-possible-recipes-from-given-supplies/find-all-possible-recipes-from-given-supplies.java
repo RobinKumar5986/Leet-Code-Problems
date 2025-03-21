@@ -22,9 +22,7 @@ class Solution {
                 }
             }
         }
-        List<String> realAns = new ArrayList<>();
-        for(String ele : ans)
-            realAns.add(ele);
-        return realAns;
+       
+        return new ArrayList<>(ans);
     }
 }
