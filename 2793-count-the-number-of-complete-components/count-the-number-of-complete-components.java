@@ -1,8 +1,8 @@
 class Solution {
     Map<Integer,Set<Integer>> map = new HashMap<>();
-    Set<Integer> vis = new HashSet<>();
-    int ans = 0;
     public int countCompleteComponents(int n, int[][] edg) {
+        Set<Integer> vis = new HashSet<>();
+        int ans = 0;
         map(edg);
         for (Map.Entry<Integer, Set<Integer>> entry : map.entrySet()) {
             int k = entry.getKey();
@@ -13,7 +13,7 @@ class Solution {
             
             boolean flag = true;
             vis.add(k);
-            
+
             for (int ele : v) {
                 vis.add(ele);
                 if (!map.get(ele).equals(v)) {
