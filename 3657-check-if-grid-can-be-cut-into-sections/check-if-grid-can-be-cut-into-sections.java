@@ -15,7 +15,6 @@ class Solution {
         
         Arrays.sort(xs,(a,b) -> Integer.compare(a[0],b[0]));
         Arrays.sort(ys,(a,b) -> Integer.compare(a[0],b[0]));
-        //vertical cut check
         int co = 0;
         int pMax = -1;
         int co2 = 0;
