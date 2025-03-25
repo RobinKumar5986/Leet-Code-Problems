@@ -18,23 +18,19 @@ class Solution {
         //vertical cut check
         int co = 0;
         int pMax = -1;
+        int co2 = 0;
+        int pMax2 = -1;
         for(int i = 1; i< xs.length ;i++){
             pMax = Math.max(xs[i-1][1],pMax);
+            pMax2 = Math.max(ys[i-1][1],pMax2);
             if(pMax <= xs[i][0])
                 co++;
-            if(co >= 2)
+            if(pMax2 <= ys[i][0])
+                co2++;
+            if(co >= 2 || co2 >= 2)
                 return true;
         }
-        co = 0;
-        pMax = -1;
-        //horizontal cut check
-        for(int i = 1; i< ys.length ;i++){
-            pMax = Math.max(ys[i-1][1],pMax);
-            if(pMax <= ys[i][0])
-                co++;
-            if(co >= 2)
-                return true;
-        }
+       
         return false;
     }
 }
