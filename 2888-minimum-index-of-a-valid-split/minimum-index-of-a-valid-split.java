@@ -1,13 +1,16 @@
 class Solution {
     public int minimumIndex(List<Integer> nums) {
-        Map<Integer,Integer> map = new HashMap<>();
-        int max = 0;
-        int dom = 0;
-        for(int ele : nums){
-            map.put(ele, map.getOrDefault(ele,0)+1);
-            if(max < map.get(ele)){
-                dom = ele;
-                max = map.get(ele);
+        int dom = nums.get(0);
+        int count = 1;
+        for(int i = 1; i < nums.size(); i++){
+            if(nums.get(i) == dom){
+                count++;   
+            }else{
+                count--;
+                if(count == 0){
+                    dom = nums.get(i);
+                    count++;    
+                }
             }
         }
         int ind = 0;
