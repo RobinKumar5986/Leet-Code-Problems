@@ -6,12 +6,12 @@ class Solution {
         preMax[0] = nums[0];
         nextMax[nums.length-1] = nums[nums.length-1];
 
-        int n = nums.length;
-        for (int i = 1; i < n; i++) {
-            preMax[i] = Math.max(nums[i], preMax[i - 1]);
-            nextMax[n - 1 - i] = Math.max(nums[n - 1 - i], nextMax[n - i]);
+        for(int i = 1; i<nums.length;i++){
+            preMax[i] = Math.max(nums[i],preMax[i-1]);
         }
-
+        for(int i = nums.length-2; i >= 0 ; i--){
+            nextMax[i] = Math.max(nums[i],nextMax[i+1]);
+        }
         long ans = 0;
         for(int i = 1; i < nums.length-1; i++){
             long val = (preMax[i-1] - nums[i] ) * (long)nextMax[i+1];
