@@ -14,7 +14,7 @@ class Solution {
         long result = 1;
         base = base % mod;
         while (exp > 0) {
-            if ((exp & 1) == 1) {
+            if ( exp % 2 == 1) { //to privent the lost number which is going to be lost.
                 result = (result * base) % mod;
             }
             base = (base * base) % mod;
