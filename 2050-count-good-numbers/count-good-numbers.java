@@ -18,7 +18,7 @@ class Solution {
                 result = (result * base) % mod;
             }
             base = (base * base) % mod;
-            exp = exp/2;
+            exp = exp >> 1; //similar to n/2;
         }
         return result;
     }
