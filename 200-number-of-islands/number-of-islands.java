@@ -1,33 +1,37 @@
 class Solution {
-    boolean[][] dp;
-    void expand(int i , int j , char[][] grid){
-        if (
-        i >= grid.length 
-        || i < 0 
-        || j >= grid[0].length || j < 0 
-        || grid[i][j] == '0' 
-        || dp[i][j]
-        ) {
-            return;
-        }
+    boolean[][] vis;
+    void expand(char[][] grid,int row,int col){
         
-        dp[i][j] = true;
-        expand(i + 1, j, grid);
-        expand(i - 1, j, grid);
-        expand(i, j + 1, grid);
-        expand(i, j - 1, grid);
+        vis[row][col] = true;
+        //expandin up
+        if(row - 1 >= 0 && grid[row-1][col] == '1' && !vis[row-1][col]){
+            expand(grid,row-1,col);
+        }
+        //expanding down
+        if(row + 1 < grid.length && grid[row+1][col] == '1' && !vis[row+1][col]){
+            expand(grid,row+1,col);
+        }
+        //expanding right
+        if(col + 1 < grid[0].length && grid[row][col+1] == '1' && !vis[row][col+1]){
+            expand(grid,row,col+1);
+        }
+        //expanding left
+        if(col - 1 >= 0 && grid[row][col-1] == '1' && !vis[row][col-1]){
+            expand(grid,row,col-1);
+        }
     }
     public int numIslands(char[][] grid) {
-        dp = new boolean[grid.length][grid[0].length];
         int ans = 0;
-        for(int i = 0 ; i < grid.length ; i++){
-            for(int j = 0 ; j < grid[0].length; j++ ){
-                if(grid[i][j] == '0' || dp[i][j])
-                    continue;
-                expand(i,j,grid);
-                ans++;
+        vis = new boolean[grid.length][grid[0].length];
+        for(int i = 0 ; i < grid.length; i++){
+            for(int j = 0 ; j < grid[0].length; j++){
+                if(!vis[i][j] && grid[i][j] == '1'){
+                    expand(grid,i,j);
+                    ans++;
+                }
             }
         }
+
         return ans;
     }
 }
