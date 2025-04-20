@@ -1,26 +1,36 @@
 class Solution {
-    int expand(int r,int c, int rlen, int clen, int[][] grid){
-        if(r>= rlen || c >= clen || r<0 || c < 0 || grid[r][c] == 0 || grid[r][c] == -1)
-            return 0;
-        grid[r][c] = -1;
-        return 
-        expand(r+1,c,rlen,clen,grid) + 
-        expand(r-1,c,rlen,clen,grid) + 
-        expand(r,c+1,rlen,clen,grid) +
-        expand(r,c-1,rlen,clen,grid) + 1;
+    int ans = 0;
+    int area = 0;
+    void expand(int[][] grid,int row , int col){
+        if(grid[row][col] == 999)
+            return;
+        area += 1;
+        grid[row][col] = 999;
+        ans = Math.max(ans,area);
 
+        //up
+        if(row - 1 >= 0 && grid[row - 1][col] == 1)
+            expand(grid,row-1,col);
+        //down
+        if(row + 1 < grid.length && grid[row + 1][col] == 1)
+            expand(grid,row+1,col);
+        //right
+        if(col + 1 < grid[0].length && grid[row][col + 1] == 1)
+            expand(grid,row,col+1);
+        //left
+        if(col - 1 >= 0 && grid[row][col-1] == 1)
+            expand(grid,row,col-1);
     }
     public int maxAreaOfIsland(int[][] grid) {
-        int ans = 0;
-        int rLen = grid.length;
-        int cLen = grid[0].length;
-        for(int r = 0 ; r < rLen ; r++){
-            for(int c = 0 ; c < cLen ; c++){
-                if(grid[r][c] == 0 || grid[r][c] == -1)
-                    continue;
-                ans = Math.max(ans , expand(r,c,rLen,cLen,grid) );
+        for(int row = 0; row < grid.length ; row++){
+            for(int col = 0 ; col < grid[0].length ; col++){
+                if(grid[row][col] == 1){
+                    expand(grid,row,col);
+                    area = 0;
+                }
             }
         }
+
         return ans;
     }
 }
