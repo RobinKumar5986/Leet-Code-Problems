@@ -1,6 +1,6 @@
 class Solution {
     public int orangesRotting(int[][] grid) {
-        Set<int[]> set = new HashSet<>(); //for already visited
+        Set<String>  set = new HashSet<>(); //for already visited
         int good = 0;
         int rottent = 0;
         for(int i = 0 ; i < grid.length; i++){
@@ -22,9 +22,10 @@ class Solution {
             Set<String> update = new HashSet<>();
             for(int row = 0 ; row < grid.length; row++){
                 for(int col = 0 ; col < grid[0].length; col++){
-                    if(set.contains( new int[]{row,col} ))
+                    if(set.contains( row + ":" +  col) )
                         continue;
                     if(grid[row][col] == 2){
+                        set.add(row + ":" + col);
                         //up
                         if(row -1 >= 0 && grid[row-1][col] == 1){
                             update.add((row - 1) + ":" +  col);
