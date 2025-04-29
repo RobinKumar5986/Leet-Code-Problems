@@ -6,14 +6,13 @@ class Solution {
         long ans = 0;
         int lo = 0;
         int hi = 0;
-        int co = 0;
         while(hi < nums.length){
             if(nums[hi] == max)
-                co++;
-            while(k == co){
+                k--;
+            while(k == 0){
                 ans += nums.length - hi;
                 if(nums[lo] == max)
-                    co--;
+                    k++;
                 lo++;
             }
             hi++;
