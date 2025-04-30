@@ -1,36 +1,33 @@
 class Solution {
-    boolean canReach = false;
     boolean[][] vis;
-    Stack<int[]> stk;
-    void expand(char[][] board, int row , int col){
-        if(row < 0 || col < 0 || row >= board.length || col >= board[0].length || 
-        vis[row][col] || board[row][col] == 'X')
+    void expand(char[][] board, int row, int col){
+        if(row < 0 || col < 0 || row >= board.length || col >= board[0].length || vis[row][col])
+            return;
+        if(board[row][col] == 'X')
             return;
         vis[row][col] = true;
-        stk.add(new int[]{row, col});
-        if(row == 0 || col == 0 || row == board.length -1 || col == board[0].length -1)
-            canReach = true;
-        if(row - 1 >= 0 ) expand(board,row-1,col);
-        if(row + 1 < board.length) expand(board,row+1,col);
-        if(col - 1 >= 0) expand(board,row,col-1);
-        if(col + 1 < board[0].length) expand(board,row,col+1);
-        
+
+        expand(board,row-1,col);
+        expand(board,row+1,col);
+        expand(board,row,col-1);
+        expand(board,row,col+1);
     }
     public void solve(char[][] board) {
         vis = new boolean[board.length][board[0].length];
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0 ; j < board[0].length ; j++){
-                if(vis[i][j] || board[i][j] == 'X')
-                    continue;
-                stk = new Stack<>();
-                canReach = false;
-                expand(board,i,j);
-                if(canReach == false){
-                    while(!stk.isEmpty()){
-                        int[] cord = stk.pop();
-                        board[cord[0]][cord[1]] = 'X';
-                    }
-                }
+        //top & bottom
+        for(int col = 0; col < board[0].length ; col++){
+            if(board[0][col] == 'O')expand(board,0,col);
+            if(board[board.length-1][col] == 'O')expand(board,board.length-1,col);
+        }
+        //left & right
+        for(int row = 0; row < board.length ; row++){
+            if(board[row][0] == 'O')expand(board,row,0);
+            if(board[row][board[0].length-1] == 'O')expand(board,row,board[0].length-1);
+        }
+        for(int i = 1; i< board.length-1 ; i++){
+            for(int j = 1; j < board[0].length-1 ; j++){
+                if(vis[i][j] || board[i][j] == 'X')continue;
+                board[i][j] = 'X';
             }
         }
     }
