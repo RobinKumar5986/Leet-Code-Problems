@@ -8,10 +8,8 @@ class Solution {
             return;
         vis[row][col] = true;
         stk.add(new int[]{row, col});
-
         if(row == 0 || col == 0 || row == board.length -1 || col == board[0].length -1)
             canReach = true;
-        
         if(row - 1 >= 0 ) expand(board,row-1,col);
         if(row + 1 < board.length) expand(board,row+1,col);
         if(col - 1 >= 0) expand(board,row,col-1);
