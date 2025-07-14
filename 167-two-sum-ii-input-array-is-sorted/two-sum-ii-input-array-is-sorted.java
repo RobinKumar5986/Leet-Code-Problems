@@ -2,7 +2,8 @@ class Solution {
     public int[] twoSum(int[] nums, int target) {
         int lo = 0;
         int hi = nums.length-1;
-        //lets try to solve this in simple way first
+        //binary serach approch wont work here because as we cut the arr in half we might lose the potential 
+        //solution because it only checkes the extreams.
         while(lo < hi){
             if(nums[lo] + nums[hi] == target){
                 return new int[]{lo+1,hi+1};
