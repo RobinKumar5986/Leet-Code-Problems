@@ -14,10 +14,8 @@ class Solution {
             while(hi >= 0 && (s.charAt(hi) < 'a' || s.charAt(hi) > 'z') && (s.charAt(hi) < '0' || s.charAt(hi) > '9')){
                 hi--;
             }
-            
             if(hi < 0)
                 return true;
-            
             if(s.charAt(lo) != s.charAt(hi))
                 return false;
             lo++;
