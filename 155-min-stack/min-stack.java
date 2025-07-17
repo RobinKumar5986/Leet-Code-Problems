@@ -1,39 +1,29 @@
 class MinStack {
-    PriorityQueue<Integer> minHeap;
-    int[] stk;
-    int top;
+    Stack<Integer> stk = new Stack<>();
+    Stack<Integer> min = new Stack<>();
+
     public MinStack() {
-        this.minHeap = new PriorityQueue<>();
-        this.stk = new int[3*10000 + 1];
-        this.top = -1;
     }
     
     public void push(int val) {
-        top +=1;
-        minHeap.offer(val);
-        stk[top] = val;
-
+        stk.push(val);
+        if(min.isEmpty() || min.peek() > val){
+            min.push(val);
+        }else{
+            min.push(min.peek());
+        }
     }
     
     public void pop() {
-        minHeap.remove(stk[top]);
-        top -= 1;
+        stk.pop();
+        min.pop();
     }
     
     public int top() {
-        return stk[top];
+        return stk.peek();
     }
     
     public int getMin() {
-        return minHeap.peek();
+        return min.peek();
     }
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(val);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */
