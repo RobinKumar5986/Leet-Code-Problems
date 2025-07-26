@@ -10,8 +10,7 @@ class Solution {
                 ans[ind] = i - ind;
                 top--;
             }
-            top++;
-            stk[top] = i;
+            stk[++top] = i;
         }
         return ans;
     }
