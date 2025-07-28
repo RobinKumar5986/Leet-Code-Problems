@@ -1,7 +1,6 @@
 class Solution {
     public int carFleet(int tar, int[] po, int[] sp) {
-        if(tar == 0 )
-            return 0;
+
         int cf = 1;
         Map<Integer,Integer> map = new HashMap<>();
         for(int i = 0 ;  i < po.length; i++){
