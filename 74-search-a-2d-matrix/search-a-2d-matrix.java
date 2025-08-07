@@ -14,9 +14,6 @@ class Solution {
         return false;
     }
     public boolean searchMatrix(int[][] mat , int target) {
-        //Objective: find the targer...
-        //1.Find the row in which it can be present 
-        //2.Check if in that row is it present ?
         int lo = 0;
         int hi = mat.length-1;
         int len = mat[0].length-1;
