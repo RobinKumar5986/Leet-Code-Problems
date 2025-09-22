@@ -2,25 +2,25 @@ class Solution {
     Map<Integer,List<Integer>> map = new HashMap<>();
     boolean[] vis;
     boolean[] path;
-    boolean isLoop = false;
-    void dfs(int src){
+    boolean dfs(int src){
         List<Integer> neg = map.get(src);
         if(neg == null)
-            return;
+            return false;
         //first current path check to avoid perv path check
         if(path[src]){
-            isLoop = true;
-            return;
+            return true;
         }
         if(vis[src])
-            return;
+            return false;
         vis[src] = true;
         path[src] = true;
         for(int ele : neg){
-            dfs(ele);
+            if(dfs(ele)){
+                return true;
+            }
         }
         path[src] = false;
-        
+        return false;
     }
     public boolean canFinish(int nC, int[][] req) {
         vis = new boolean[2001];
@@ -38,8 +38,7 @@ class Solution {
         //running the dfs
         for(Map.Entry<Integer,List<Integer>> ele : map.entrySet()){
             int src = ele.getKey();
-            dfs(src);
-            if(isLoop)
+            if(dfs(src))
                 return false;
         }
         return true;
