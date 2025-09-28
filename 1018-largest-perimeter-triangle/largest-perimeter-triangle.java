@@ -12,7 +12,7 @@ class Solution {
             int s3 = nums[k];
 
             //checking can we form a triangle
-            if(s1 + s2 > s3 && s2 + s3 > s1 && s3 + s1 > s2){
+            if(s2 + s3 > s1){
                 int para = s1 + s2 + s3;
                 ans = Math.max(ans,para);
             }
