@@ -3,10 +3,9 @@ class Solution {
         String[] path = p.split("/");
         Stack<String> stk = new Stack<>();
         for(String ele : path){
-           
+            
             if(ele.isEmpty() || ele.equals("."))
                 continue;
-
             if(ele.equals("..")){
                 if(!stk.isEmpty()){
                     stk.pop();
