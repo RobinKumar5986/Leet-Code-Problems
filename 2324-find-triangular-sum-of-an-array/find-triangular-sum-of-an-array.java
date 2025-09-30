@@ -7,7 +7,6 @@ class Solution {
             for(int i = 0; i < nums.length -1; i++){
                 nums[i] = (nums[i] + nums[i+1]) % 10;
             }
-            
             len--;
         }
         return nums[0];
