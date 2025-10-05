@@ -3,6 +3,7 @@ class Solution {
     boolean isPv = true;
     String filter(String s){
         int i = 0;
+
         while( i < s.length()){
             if(s.charAt(i) == ' '){
                 i++;
