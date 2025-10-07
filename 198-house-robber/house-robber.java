@@ -1,19 +1,23 @@
 class Solution {
     int[] dp;
-
-    int sol(int[] nums,int i){
-        if(i < 0 )
+    int dfs(int cur,int[] nums){
+        if(cur >= nums.length)
             return 0;
-        if(dp[i] != -1)
-            return dp[i];
-        dp[i] = Math.max(nums[i] + sol(nums,i-2), sol(nums,i-1) );
+        
+        if(dp[cur] != -1)
+            return dp[cur];
+        
+        int rob = nums[cur] + dfs(cur+2,nums);
+        int noRob = dfs(cur+1, nums);
+        dp[cur] = Math.max(rob,noRob);
 
-        return dp[i];
+        return dp[cur];
     }
     public int rob(int[] nums) {
         dp = new int[nums.length];
-        for(int i = 0 ; i < nums.length; i++)
-            dp[i] = -1;
-        return sol(nums,nums.length-1);
+        Arrays.fill(dp,-1);
+        
+        int ans = dfs(0,nums);
+        return ans;
     }
 }
