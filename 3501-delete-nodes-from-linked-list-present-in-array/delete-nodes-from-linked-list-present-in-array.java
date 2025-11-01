@@ -1,26 +1,39 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
     public ListNode modifiedList(int[] nums, ListNode head) {
-        int max = 0;
-        for(int ele : nums)
-            max = Math.max(ele,max);
-        boolean[] set = new boolean[max+1];
-        for(int ele : nums)
-            set[ele] = true;
-        ListNode save = null;
+        Set<Integer> set = new HashSet<>();
+        for(int ele : nums){
+            set.add(ele);
+        }
         ListNode prev = null;
-        while(head!=null){
-            if(head.val >= set.length || !set[head.val]){
-                if(save == null){
-                    save = head;
-                    prev = head;
-                }else{
-                    prev.next = head;
-                    prev = prev.next;
+        ListNode ans = null;
+        while(head != null){
+            if(set.contains(head.val)){
+                while(head != null && set.contains(head.val)){
+                    head = head.next;
                 }
             }
-            head = head.next;
+            if(prev == null){
+                prev = head;
+            }else{
+                prev.next = head;
+                prev = head;
+            }
+            if(head != null)
+                head = head.next;
+            if(ans == null)
+                ans = prev;
+
         }
-        prev.next = null;
-        return save;
+        return ans;
     }
 }
