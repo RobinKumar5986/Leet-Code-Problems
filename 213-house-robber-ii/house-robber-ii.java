@@ -23,6 +23,5 @@ class Solution {
         int r2 = dfs(0,nums,nums.length-1);
         
         return r1 > r2 ? r1 : r2;
-
     }
 }
