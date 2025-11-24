@@ -4,11 +4,8 @@ class Solution {
         int pow = 0;
         long sum = 0;
         for(int ele : nums){
-            sum = (sum * 2 + ele) % 5;
-            if(sum % 5 == 0)
-                ans.add(true);
-            else
-                ans.add(false);
+            sum = ((sum << 1) + ele) % 5;
+            ans.add(sum == 0);
         }
         return ans;
     }
