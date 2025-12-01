@@ -13,7 +13,7 @@ class Solution {
         for(int i = 0 ; i < s.length(); i++){
             ans += expand(i-1,i,s);
             ans += expand(i-1,i+1,s);
-            ans -= 1;
+            ans -= 1; //because adding 2 time for the same index initially
         }
         return ans;
     }
