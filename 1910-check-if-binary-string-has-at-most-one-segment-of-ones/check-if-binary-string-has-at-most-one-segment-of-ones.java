@@ -1,15 +1,16 @@
 class Solution {
     public boolean checkOnesSegment(String s) {
-        int co = 0;
+        boolean flag = false;
         for(int i = 0 ; i < s.length(); i++){
             if(s.charAt(i) == '1'){
-                co++;
+                if(flag) return false;
+                flag = true;
                 while( i < s.length() && s.charAt(i) == '1') {
                     i++;
                 }
             }
 
         }
-        return co == 1 ? true : false;
+        return true;
     }
 }
