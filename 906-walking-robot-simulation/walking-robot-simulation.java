@@ -1,58 +1,48 @@
 class Solution {
-
-    // Direction mapping
-    private int changeDir(int dir, int cmd) {
-        switch (dir) {
-            case 1: // ↑
-                if (cmd == -1) dir = 3; // Left: ←
-                else dir = 4; // Right: →
-                break;
-            case 2: // ↓
-                if (cmd == -1) dir = 4; // Right: →
-                else dir = 3; // Left: ←
-                break;
-            case 3: // →
-                if (cmd == -1) dir = 2; // Down: ↓
-                else dir = 1; // Up: ↑
-                break;
-            case 4: // ←
-                if (cmd == -1) dir = 1; // Up: ↑
-                else dir = 2; // Down: ↓
-                break;
+    public int getDir(int rot,int dir) {
+        // dir can be only from 0 to 3
+        if(rot == -1) {
+            dir = (dir + 1) % 4; 
+        }else{ 
+            dir = ( dir - 1 + 4 ) % 4;
         }
         return dir;
     }
-
     public int robotSim(int[] commands, int[][] obstacles) {
-        int max = 0;
-        Set<String> obs = new HashSet<>();
-        for (int[] obstacle : obstacles) {
-            obs.add(obstacle[0] + "," + obstacle[1]);
+        int x = 0 , y = 0;
+        int dir = 0;
+        int ans = 0;
+        Set<String> set  = new HashSet<>();
+        for(int[] obs : obstacles) {
+            String ob = obs[0] + "," + obs[1];
+            set.add(ob);
         }
-
-        int x = 0, y = 0, dir = 1; // Start facing ↑
-        for (int cmd : commands) {
-            if (cmd == -1 || cmd == -2) { // Turn command
-                dir = changeDir(dir, cmd);
-            } else { // Move command
+        for(int cmd : commands){
+            if(cmd == -1 || cmd == -2){
+                dir = getDir(cmd,dir);
+                continue;
+            }
+            for(int i = 1 ; i <= cmd ; i++){
                 int tempX = x;
                 int tempY = y;
-                for (int i = 0; i < cmd; i++) {
-                    if (dir == 1) tempY++; // Move ↑
-                    else if (dir == 2) tempY--; // Move ↓
-                    else if (dir == 3) tempX++; // Move →
-                    else if (dir == 4) tempX--; // Move ←
+                if(dir == 0) tempY++;
+                if(dir == 1) tempX++;
+                if(dir == 2) tempY--;
+                if(dir == 3) tempX--;
 
-                    if (obs.contains(tempX + "," + tempY)) break; // Stop if obstacle encountered
-
-                    x = tempX;
-                    y = tempY;
-                    if (((x*x) + (y*y)) > max) 
-                        max = (x*x) + (y*y); // Update max distance squared
-                }
+                String cord = tempX + "," + tempY;
+                if(set.contains(cord))
+                    break;
+                x = tempX;
+                y = tempY;
+                
+                ans = Math.max(ans,distance(x,y));
             }
         }
-        
-        return max;
+        return ans;
+
+    }
+    public int distance(int x, int y) {
+        return (x * x) + (y * y);
     }
 }
