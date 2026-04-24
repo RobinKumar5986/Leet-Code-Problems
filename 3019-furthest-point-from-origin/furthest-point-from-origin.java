@@ -16,6 +16,6 @@ class Solution {
                 co2--;
             }
         }
-        return Math.max(Math.abs(co1), Math.abs(co2));
+        return Math.max(co1,co2);
     }
 }
