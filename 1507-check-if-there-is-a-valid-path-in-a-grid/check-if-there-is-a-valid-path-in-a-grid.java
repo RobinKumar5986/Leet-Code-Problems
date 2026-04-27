@@ -126,7 +126,7 @@ class Solution {
         return false; // this is dummy if the grid is valid then this case will neve occurs.
     }
     public boolean hasValidPath(int[][] grid) {
-        //Hope there is no loop in the path 
+        //Hope there is no loop in the path Fuck it does have loops.
         int str = grid[0][0];
         vis = new boolean[grid.length][grid[0].length];
 
