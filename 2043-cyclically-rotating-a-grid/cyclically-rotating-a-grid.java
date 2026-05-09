@@ -64,15 +64,7 @@ class Solution {
             }
             stCol++;
 
-        }
-
-        // for(int[] layer : layers){
-        //     for(int ele : layer){
-        //         System.out.print(ele + " ");
-        //     }
-        //     System.out.println();
-        // }
-       
+        }       
         return ans;
     }
 }
