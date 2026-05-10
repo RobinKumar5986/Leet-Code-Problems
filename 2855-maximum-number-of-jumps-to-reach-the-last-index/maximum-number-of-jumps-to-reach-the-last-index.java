@@ -3,7 +3,7 @@ class Solution {
     int dfs(int ind, int[] nums, int target){
         if(ind >= nums.length-1)
             return 0;
-        if(dp[ind] != Integer.MIN_VALUE)
+        if(dp[ind] != -2)
             return dp[ind];
         
         int max = -1;
@@ -24,10 +24,10 @@ class Solution {
         if(nums.length <= 1)
             return 0;
         dp = new int[nums.length];
-        Arrays.fill(dp, Integer.MIN_VALUE);
+        Arrays.fill(dp, -2);
         int result = dfs(0,nums,target);
-        if(result == Integer.MIN_VALUE) return -1;
-        
+        if(result == -2) return -1;
+
         return result; 
     }
 }
