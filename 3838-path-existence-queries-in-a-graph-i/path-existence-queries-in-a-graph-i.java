@@ -15,7 +15,7 @@ class Solution {
                     nodeGraph.put(ele,set);
                 }
                 set = new HashSet<>(); // new hash set
-                set.add(i + 1);
+                set.add(i+1);
             }
         }
         for (int ele : set) {
