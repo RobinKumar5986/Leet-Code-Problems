@@ -1,9 +1,10 @@
 class Solution {
     public boolean[] pathExistenceQueries(int n, int[] nums, int maxDiff, int[][] qr) {
-        Map<Integer,Set<Integer>>  nodeGraph = new HashMap<>();
-        Set<Integer> set = new HashSet<>();
+        List<Integer> set = new ArrayList<>();
+        int[] map = new int[n];
         set.add(0);
         boolean[] ans = new boolean[qr.length];
+        int comp_id = 1;
         for(int i = 0 ; i < n-1; i++) {
             //can reach next ?
             int abs = Math.abs(nums[i] - nums[i+1]);
@@ -12,21 +13,22 @@ class Solution {
             }else{
                 //first fill the map then reset the set
                 for(int ele : set){
-                    nodeGraph.put(ele,set);
+                    map[ele] = comp_id;
                 }
-                set = new HashSet<>(); // new hash set
+                comp_id++;
+                set = new ArrayList<>(); // new hash set
                 set.add(i+1);
             }
         }
+        comp_id++;
         for (int ele : set) {
-            nodeGraph.put(ele, set);
+            map[ele] = comp_id;
         }
         int ind = 0;
         for(int[] ele : qr){
             int src = ele[0];
             int dst = ele[1];
-            Set<Integer> path = nodeGraph.get(src);
-            if(!path.isEmpty() && path.contains(dst)){
+            if(map[src] == map[dst]){
                 ans[ind++] = true;
             }else{
                 ans[ind++] = false;
