@@ -1,19 +1,17 @@
 class Solution {
     public int[] arrayRankTransform(int[] arr) {
-        int[] sort = arr.clone();
-        Arrays.sort(sort);
-        HashMap<Integer,Integer> map = new HashMap<>();
+        TreeSet<Integer> set = new TreeSet<>();
+        for(int ele: arr){
+            set.add(ele);
+        }
         int rank = 1;
-        for(int ele : sort){
-            if(map.containsKey(ele))
-                continue;
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int ele : set){
             map.put(ele,rank++);
         }
-        int[] ans = new int[arr.length];
-        int i = 0;
-        for(int ele : arr){
-            ans[i++] = map.get(ele); 
+        for(int i = 0 ; i < arr.length ;i++){
+            arr[i] = map.get(arr[i]);
         }
-        return ans;
+        return arr;
     }
 }
