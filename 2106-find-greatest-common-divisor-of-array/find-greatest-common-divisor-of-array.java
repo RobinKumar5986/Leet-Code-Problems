@@ -10,7 +10,9 @@ class Solution {
         int ans = 1;
         for(int i = 1 ; i <= l ; i++){
             if(i > s ) break;
-            if( s % i == 0 && l % i == 0){
+            double v1 = (double)s / i;
+            double v2 = (double)l / i;
+            if((int) v1 == v1 && (int)v2 == v2){
                 ans = i;
             }
         }
