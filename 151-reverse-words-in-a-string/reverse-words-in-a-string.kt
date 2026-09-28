@@ -1,16 +1,29 @@
 class Solution {
     fun reverseWords(s: String): String {
-        val words = s.trim().split(" ")
         var result = ""
-        for(i in words.size - 1 downTo 0) {
-            if(words[i] != "") {
-                if(result != "" ){
-                    result = result + " ";
+        var word = ""
+        for(i in 0 until s.length) {
+            val c = s[i]
+            if( c != ' '){
+                word = word + c
+            }else{
+                if(word != "") {
+                    if(result == "") {
+                        result = word;
+                    }else{
+                        result = word + " " + result
+                    }
                 }
-                result = result + words[i];
+                word = ""
             }
         }
-
-        return result;
+        if(word != ""){
+            if(result == ""){
+                result = word
+            }else{
+                result = word +  " " + result
+            }
+        }
+        return result
     }
 }
