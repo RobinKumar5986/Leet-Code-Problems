@@ -7,16 +7,14 @@ class Solution {
             set.add(ele);
             if(ele > max) max = ele;
         }
-        Set<Integer> vis = new HashSet<>();
         int co = 0;
         int ans = 0;
         for(int ele : set) {
-            if(vis.contains(ele)) continue;
+            if(set.contains(ele-1)) continue;
 
             for(int i = ele ; i <= max; i++){
                 if(set.contains(i)){
                     co++;
-                    vis.add(i);
                 }else{
                     break;
                 }
