@@ -1,6 +1,6 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        long pro = 1;
+        int pro = 1;
         int co = 0;
         for(int ele : nums) {
            
@@ -11,7 +11,7 @@ class Solution {
             }
             pro = pro * ele;
         }
-        if(co >= 1) {
+        if(co == 1) {
             for(int i = 0; i < nums.length; i++){
                 if(nums[i] != 0){ 
                     nums[i] = 0;
