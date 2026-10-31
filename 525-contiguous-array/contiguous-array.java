@@ -7,7 +7,6 @@ class Solution {
             }else{
                 pxSum[i] = pxSum[i-1] + 1;
             }
-            System.out.print(pxSum[i]);   
         }
 
         Map<Integer,Integer> map = new HashMap<>();
