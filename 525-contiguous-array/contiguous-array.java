@@ -10,12 +10,11 @@ class Solution {
         }
 
         Map<Integer,Integer> map = new HashMap<>();
+        map.put(0,0);
         int ans = 0;
         for(int i = 1; i < pxSum.length; i++){
             int sum = pxSum[i];
-            if(sum == 0){
-                ans = Math.max(ans, i);
-            }
+            
             if(map.containsKey(sum)){
                 int ind = map.get(sum);
                 ans = Math.max(ans,i - ind);
