@@ -1,28 +1,37 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int pro = 1;
         int co = 0;
-        for(int ele : nums) {
-           
-            if(ele == 0){ 
+        int[] pefx = new int[nums.length];
+        int[] pofx = new int[nums.length];
+        for(int i = 0 ; i < nums.length; i++){
+            if(nums[i] == 0 ){
                 co++;
-                if(co >= 2) return new int[nums.length];
-                continue;
+                if(co >= 2) return new int[nums.length]; 
             }
-            pro = pro * ele;
+            if(i == 0) {
+                pefx[i] = nums[i];
+                pofx[nums.length-1-i] = nums[nums.length-1 - i];
+            }else{
+                pefx[i] = pefx[i-1] * nums[i];
+                pofx[nums.length-1-i] = pofx[nums.length -1 -i + 1] * nums[nums.length -1 -i];
+            }
+            // System.out.println(pefx[i] + " : " + pofx[nums.length-1-i] );
         }
-        if(co == 1) {
-            for(int i = 0; i < nums.length; i++){
-                if(nums[i] != 0){ 
-                    nums[i] = 0;
+        
+        for(int i = 0 ; i < nums.length; i++ ){
+            Integer num = null;
+            if(i-1 >= 0){
+                num = pefx[i-1];
+            }
+            if(i+1 < nums.length){
+                if(num == null){
+                    num = pofx[i+1];
                 }else{
-                    nums[i] = (int)pro;
+                    num = num * pofx[i+1];
                 }
             }
-            return nums;
-        }
-        for(int i = 0 ; i < nums.length; i++){
-            nums[i] = (int)(pro / nums[i]);
+            nums[i] = num;
+
         }
         return nums;
     }
