@@ -17,11 +17,9 @@ class Solution {
             min = Math.min(min,c2);
             if(c2 > 0) c2 = 0;
         }
-        // System.out.println(sum + " : " + min + " : " + max);
         if(max < 0 && min < 0 && sum < 0)
             return max;
         int ans = Math.max(max, sum - min);
-
         return ans;
     }
 }
