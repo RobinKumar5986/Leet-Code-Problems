@@ -1,19 +1,22 @@
 class Solution {
-    public int[] twoSum(int[] nums, int target) {
+    public int[] twoSum(int[] nums, int tar) {
         int lo = 0;
         int hi = nums.length-1;
-        //binary serach approch wont work here because as we cut the arr in half we might lose the potential 
-        //solution because it only checkes the extreams.
-        while(lo < hi){
-            if(nums[lo] + nums[hi] == target){
-                return new int[]{lo+1,hi+1};
+        int ans[] = new int[2];
+        while(lo  <  hi) {
+            int sum = nums[lo] + nums[hi];
+            if(sum == tar){
+                ans[0] = lo+1;
+                ans[1] = hi+1;
+                break;
             }
-            else if(nums[lo] + nums[hi] < target){
-                lo++;
-            }else{
+            if(sum > tar){
                 hi--;
+            }else{
+                lo++;
             }
         }
-        return new int[]{-1,-1};
+
+        return ans;
     }
 }
