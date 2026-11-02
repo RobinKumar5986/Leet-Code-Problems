@@ -18,7 +18,9 @@ class Solution {
         int lo = 0;
         int hi = 0;
         int[] cur = new int[256];
-        String ans = null;
+        int ans = Integer.MAX_VALUE;
+        int blo = -1;
+        int bhi = -1;
         while( lo <= hi && hi < s.length()){
             char c = s.charAt(hi);
             cur[c]++;
@@ -26,10 +28,12 @@ class Solution {
             if(isSame(seen,cur)) { 
                 //found the string now need to shrink the string to get minimum
                 while(lo <= hi ){
-                    String sub = s.substring(lo,hi+1);
-                    if(ans == null) ans = sub;
-                    if(ans.length() > sub.length())
-                        ans = sub;
+                    int diff = hi - lo +1;
+                    if( diff < ans) {
+                        ans = diff;
+                        blo = lo;
+                        bhi = hi;
+                    }
                     char ch = s.charAt(lo);
                     cur[ch]--;
                     lo++;
@@ -41,7 +45,7 @@ class Solution {
             }
             hi++;
         }
-        return ans == null ? "" : ans;
+        return ans == Integer.MAX_VALUE ? "" : s.substring(blo,bhi+1);
 
     }
 }
