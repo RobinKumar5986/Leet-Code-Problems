@@ -10,7 +10,6 @@ class Solution {
         while(lo <= hi && hi < fr.length) {
             if(type[0] != -1 && type[1] != -1){
                 if(fr[hi] != type[0] && fr[hi] != type[1]){
-                    System.out.println("DUMPING VALS");
                     //dumping all the values of type 0
                     while(c1 > 0 && c2 > 0){
                         if(fr[lo] == type[0])
