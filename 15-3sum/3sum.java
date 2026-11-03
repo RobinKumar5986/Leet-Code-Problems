@@ -1,36 +1,34 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        Map<Integer,List<Integer>> map = new HashMap<>();
+        Map<Integer,Set<Integer>> map = new HashMap<>();
         for(int i = 0 ; i < nums.length; i++){
             if(!map.containsKey(nums[i])){
-                map.put(nums[i],new ArrayList<>());
+                map.put(nums[i],new HashSet<>());
             }
-            List<Integer> lst = map.get(nums[i]);
-            lst.add(i);
-            map.put(nums[i],lst);
+            Set<Integer> set = map.get(nums[i]);
+            set.add(i);
+            map.put(nums[i],set);
         }
-        Set<Integer> seen = new HashSet<>();
         Set<List<Integer>> sum3 = new HashSet<>();
         for(int i = 0 ; i < nums.length; i++){
-            if(i > 0 && nums[i] == nums[i-1])
-                continue;
             for(int j = i+1; j < nums.length; j++){
-                if(j > i + 1 && nums[j] == nums[j-1])
-                    continue;
                 int n1 = nums[i];
                 int n2 = nums[j];
                 int req = -1*(n1+n2);
                 if(!map.containsKey(req))
                     continue;
-                List<Integer> lst = map.get(req);
-                for(int ele : lst) {
-                    if(ele == i || ele == j || i == j)
-                        continue;
+                Set<Integer> set = map.get(req);
+                int len = set.size();
+                if(set.contains(i))
+                    len--;
+                if(set.contains(j))
+                    len--;
+                if(len >= 1){
                     List<Integer> pair = new ArrayList<>();
                     pair.add(nums[i]);
                     pair.add(nums[j]);
-                    pair.add(nums[ele]);
+                    pair.add(req);
                     pair.sort((a,b) -> a-b);
                     sum3.add(pair);
                 }
