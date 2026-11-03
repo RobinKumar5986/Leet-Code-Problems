@@ -11,7 +11,6 @@ class Solution {
             }else{
                 ans += max - nums[i];
             }
-            System.out.println(ans);
         }
         return ans;
     }
