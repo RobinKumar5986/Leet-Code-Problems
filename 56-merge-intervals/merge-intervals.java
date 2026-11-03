@@ -1,35 +1,41 @@
 class Solution {
-    public int[][] merge(int[][] inter) {
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        for(int[] ele : inter){
-            min = Math.min(ele[0], min);
-            max = Math.max(ele[1],max);
-        }
-        int[] time = new int[max+1];
-        boolean[] isCommon = new boolean[max+1];
-        for(int[] ele : inter){
-            if(ele[0] == ele[1]){
-                isCommon[ele[0]] = true;
+    public int[][] merge(int[][] grid) {
+        Arrays.sort(grid,(a,b) -> {
+            if(a[0] == b[0])
+                return a[1] - b[1];
+            return a[0] - b[0]; 
+        });
+        // for (int[] row : grid) {
+        //     System.out.println(Arrays.toString(row));
+        // }
+        List<List<Integer>> lst  = new ArrayList<>();
+        int min = grid[0][0];
+        int max = grid[0][1];
+
+        for(int i = 0 ; i < grid.length; i++){
+            int[] row = grid[i];
+            if(row[0] > max){
+                List<Integer> pair = new ArrayList<>();
+                pair.add(min);
+                pair.add(max);
+
+                lst.add(pair);
+                min = row[0];
+                max = row[1];
             }
-            time[ele[0]]++;
-            time[ele[1]]--;
+
+            max = Math.max(max,row[1]);
         }
-        Integer lo = null;
-        int co = 0;
-        List<int[]> lst = new ArrayList<>();
-        for(int i = 0 ; i < time.length; i++){
-            co += time[i];
-            if(lo == null && co != 0){
-                lo = i;
-            }
-            else if(lo != null && co == 0){
-                lst.add(new int[]{lo,i});
-                lo = null;
-            }else if(co == 0 && isCommon[i]){
-                lst.add(new int[]{i,i});
-            }
+        List<Integer> pair = new ArrayList<>();
+        pair.add(min);
+        pair.add(max);
+        lst.add(pair);
+
+        int[][] ans = new int[lst.size()][2];
+        for(int i = 0 ; i < lst.size(); i++){
+            ans[i][0] = lst.get(i).get(0);
+            ans[i][1] = lst.get(i).get(1);
         }
-        return lst.toArray(new int[0][]);
+        return ans;
     }
 }
