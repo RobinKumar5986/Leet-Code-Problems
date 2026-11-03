@@ -1,23 +1,19 @@
 class Solution {
     public void sortColors(int[] nums) {
-        //first possible sol
-        int co0 = 0;
-        int co1 = 0;
+        int lo = 0;
+        int hi = nums.length-1;
+        int[] co = new int[3];
         for(int ele : nums){
-            if(ele == 0)
-                co0++;
-            if(ele == 1)
-                co1++;
+            co[ele]++;
         }
         int ind = 0;
-        while(ind < co0){
+        for(int i = 0; i < co[0] ; i++){
             nums[ind++] = 0;
         }
-        while(co1 > 0){
+        for(int i = 0; i < co[1] ; i++){
             nums[ind++] = 1;
-            co1--;
         }
-        while(ind < nums.length){
+        for(int i = 0; i < co[2] ; i++){
             nums[ind++] = 2;
         }
     }
