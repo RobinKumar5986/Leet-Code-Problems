@@ -47,8 +47,7 @@ class Solution {
         List<List<Integer>> lst = new ArrayList<>();
        
         for(int i = 0; i < grid.length; i++){
-            // System.out.println("Case 3");
-            // System.out.println(min + " ::: " + max);
+
             int st = grid[i][0];
             int ed = grid[i][1];
             if(max < st) {
@@ -81,9 +80,6 @@ class Solution {
                 max = Math.max(nums[1],max);
                 addOne = false; // new pair is been added. 
             }
-
-            // System.out.println(min + " ::: " + max + " ::: " + lst.size());
-            // System.out.println("----------------------");
             
         }
         List<Integer> pair = new ArrayList<>();
