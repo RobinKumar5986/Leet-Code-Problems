@@ -13,7 +13,6 @@ class Solution {
             maxL[i] = m1;
             maxR[len-i] = m2;
 
-            System.out.println(maxL[i] + " : " + maxR[len-i]);
         }
         int ans = 0;
 
