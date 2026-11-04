@@ -11,7 +11,6 @@ class Solution {
             if(grid[i][0] < max){
                 // System.out.println(i);
                 ans++;
-                max = Math.min(max, grid[i][1]);
             }else{
                 //no overlap
                 max = grid[i][1];
