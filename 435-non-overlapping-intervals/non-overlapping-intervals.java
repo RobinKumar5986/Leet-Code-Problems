@@ -5,7 +5,6 @@ class Solution {
                 return a[1] - b[1];
             return a[0] - b[0];
         });
-        int min = grid[0][0];
         int max = grid[0][1];
         int ans = 0;
         for(int i = 1; i < grid.length; i++){
@@ -15,7 +14,6 @@ class Solution {
                 max = Math.min(max, grid[i][1]);
             }else{
                 //no overlap
-                min = grid[i][0];
                 max = grid[i][1];
             }
         }
