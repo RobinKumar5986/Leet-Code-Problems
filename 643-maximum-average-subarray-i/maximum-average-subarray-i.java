@@ -15,7 +15,9 @@ class Solution {
             sum -= nums[lo-1];
             sum += nums[hi];
 
-            avg = Math.max(avg, sum/k);
+            double temp = sum/k;
+            if(temp > avg) avg = temp;
+
             hi++;
             lo++;
         }
