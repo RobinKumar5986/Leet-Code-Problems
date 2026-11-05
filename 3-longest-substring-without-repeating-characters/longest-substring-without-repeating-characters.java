@@ -7,15 +7,12 @@ class Solution {
         int ans = 0;
         while(lo <= hi && hi < s.length()){
             char c = s.charAt(hi);
-            if(map[c]){
-                while(map[c]){
-                    char ch = s.charAt(lo);
-                    map[ch] = false;
-                    lo++;
-                }
-            }else{
-                ans = Math.max(ans, hi-lo+1);
+            while(map[c]){
+                char ch = s.charAt(lo);
+                map[ch] = false;
+                lo++;
             }
+            ans = Math.max(ans, hi-lo+1);
             map[c] = true;
             hi++;
         }
