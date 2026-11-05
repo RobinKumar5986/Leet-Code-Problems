@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
+        // Arrays.sort(nums);
         Map<Integer,Set<Integer>> map = new HashMap<>();
         for(int i = 0 ; i < nums.length; i++){
             if(!map.containsKey(nums[i])){
