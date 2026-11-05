@@ -15,7 +15,7 @@ class Solution {
                     ans = Math.max(ans, hi - lo + 1);
                 } else {
                     // now I need to discard all until I found one zero
-                    while (flp == k) {
+                    while (flp >= k) {
                         if (nums[lo] == 0)
                             flp--;
                         lo++;
