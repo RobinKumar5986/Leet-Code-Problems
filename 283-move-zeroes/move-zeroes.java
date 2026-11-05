@@ -1,14 +1,13 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        int ze = Integer.MAX_VALUE;
-        int zeCo = 0;
+        int ze = -1;
         for(int i = 0; i < nums.length; i++){
-            if(nums[i] == 0){
-                ze = Math.min(ze,i);
-                // System.out.println("ZE: -> " + ze);
+            if(nums[i] == 0 ){
+                if(ze == -1){
+                    ze = i; //intital push
+                }
             }else{
-                if(ze != Integer.MAX_VALUE){
-                    // System.out.println("FLIP: -> " + nums[ze] + " : " +  nums[i]);
+                if(ze != -1){
                     nums[ze++] = nums[i];
                     nums[i] = 0;
                 }
