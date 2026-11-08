@@ -4,20 +4,16 @@ class Solution {
         int hi = 0;
         int sum = 0;
         int ans = Integer.MAX_VALUE;
-        while(lo <= hi && hi < nums.length){
+        while( hi < nums.length) {
             sum += nums[hi];
-            if(sum >= target){
-                while(lo <= hi && sum >= target){
-                    sum -= nums[lo];
-                    ans = Math.min(ans,hi-lo+1);
-                    lo++;
-                }
+            while(sum >= target) {
+                ans = Math.min( hi - lo + 1, ans);
+                sum -= nums[lo++];
             }
             hi++;
         }
         if(ans == Integer.MAX_VALUE)
             return 0;
         return ans;
-        
     }
 }
