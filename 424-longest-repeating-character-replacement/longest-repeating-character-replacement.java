@@ -25,7 +25,7 @@ class Solution {
             // System.out.println(len + " : " + maxFreq + " : " + lo + " : "+ hi);
             if(len - maxFreq > k ){
                 map[s.charAt(lo++) - 'A']--;
-                maxFreq = getMapFreq(map);
+                // maxFreq = getMapFreq(map);
                 len = hi - lo + 1;
             }
             // System.out.println(len + " : " + maxFreq + " : " + lo + " : "+ hi);
