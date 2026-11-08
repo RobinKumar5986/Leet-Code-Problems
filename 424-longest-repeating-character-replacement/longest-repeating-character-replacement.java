@@ -23,7 +23,7 @@ class Solution {
             //need to check we have enough flip for the remaning char
             int len = hi - lo + 1;
             // System.out.println(len + " : " + maxFreq + " : " + lo + " : "+ hi);
-            while(len - maxFreq > k ){
+            if(len - maxFreq > k ){
                 map[s.charAt(lo++) - 'A']--;
                 maxFreq = getMapFreq(map);
                 len = hi - lo + 1;
