@@ -5,7 +5,6 @@ class Solution {
         pxSum[0] = nums[0];
         for(int i = 1; i< pxSum.length; i++){
             pxSum[i] = pxSum[i-1] + nums[i];
-            // System.out.println(pxSum[i]);
         }
 
         Map<Integer,Integer> map = new HashMap<>();
