@@ -1,11 +1,4 @@
 class Solution {
-    public int getMapFreq(int[] map) {
-        int max = 0;
-        for(int i = 0; i < map.length; i++){
-            max = Math.max(map[i],max);
-        }
-        return max;
-    }
     public int characterReplacement(String s, int k) {
 
         int[] map = new int[26];
