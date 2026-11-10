@@ -8,7 +8,7 @@ class Solution {
             if(nums[mid] == target){
                 return mid;
             }else{
-                if(nums[hi] > nums[mid]){ // rigth side sorted
+                if(nums[hi] >= nums[mid]){ // rigth side sorted
                     if(target <= nums[hi] && target > nums[mid]){
                         lo = mid+1;
                     }else{
