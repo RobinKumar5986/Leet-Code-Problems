@@ -3,8 +3,6 @@ class Solution {
         int day = 1;
         int sum = 0;
         for(int ele : weights){
-            if(ele > w)
-                return false;
             if(sum + ele > w){
                 day++;
                 sum = 0;
@@ -13,13 +11,13 @@ class Solution {
             if(day > days)
                 return false;
         }
-        // System.out.println("days: " + day + " w: " + w);
         return true;
     }
     public int shipWithinDays(int[] weights, int days) {
         int lo = 1;
         int hi = 0;
         for (int w : weights) {
+            lo = Math.max(lo,w);
             hi += w;
         }
         int ans = Integer.MAX_VALUE; // minimize the ans
