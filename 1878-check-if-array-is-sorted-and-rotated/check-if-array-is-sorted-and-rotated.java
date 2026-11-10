@@ -1,24 +1,15 @@
 class Solution {
     public boolean check(int[] nums) {
-        int min = Integer.MAX_VALUE;
-        int st = -1;
-        for(int i = 0 ; i < nums.length;i++){
-            if(nums[i] <= min){
-                min = nums[i];
-                st = i;
-                while(i+1< nums.length && nums[i] == nums[i+1]){
-                    i++;
-                }
+        int co = 0;
+        for(int i = 1; i <= nums.length; i++){
+            int cur = i % nums.length;
+            int prev = i-1;
+            if(nums[prev] > nums[cur]){
+                co++;
+
             }
-        }
-        int len = nums.length-1;
-        while(len != 0){
-            int next = nums[(st+1) % nums.length];
-            if(nums[st] > next)
+            if(co > 1 )
                 return false;
-            st++;
-            st = st % nums.length;
-            len--;
         }
         return true;
     }
