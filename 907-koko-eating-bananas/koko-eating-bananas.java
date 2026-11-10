@@ -3,16 +3,11 @@ class Solution {
         int ind = banana.length-1;
         int time = 0;
         while(ind >= 0) {
-            if(banana[ind] <= k){
-                time += 1;
-            }else{
-                int n = banana[ind]/k;
-                if(banana[ind]%k != 0) n++;
-                time += n;
-            }
-            if(time <= h && ind == 0){
+            time += banana[ind]/k;
+            if(banana[ind]%k != 0)time++;
+
+            if(time <= h && ind == 0)
                 return true;
-            }
             if(time > h)
                 return false;
             
@@ -21,9 +16,10 @@ class Solution {
         return false;
     }
     public int minEatingSpeed(int[] banana, int h) {
-        Arrays.sort(banana);
         int lo = 1;
-        int hi = banana[banana.length-1];
+        int hi = 0;
+        for(int ele : banana) hi = Math.max(hi,ele);
+        
         int ans = Integer.MAX_VALUE;
 
         while(lo <= hi){
