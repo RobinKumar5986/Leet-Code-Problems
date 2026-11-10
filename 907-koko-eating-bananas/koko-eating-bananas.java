@@ -10,7 +10,6 @@ class Solution {
                 if(banana[ind]%k != 0) n++;
                 time += n;
             }
-            // System.out.println(time + " : " + ind);
             if(time <= h && ind == 0){
                 return true;
             }
@@ -30,8 +29,6 @@ class Solution {
         while(lo <= hi){
             int mid = hi + (lo - hi )/2;
             boolean canDo = canEatAll(banana,mid,h);
-            // System.out.println(lo + " : " + hi + " : " + mid + " : " + canDo);
-            // System.out.println("-------------------");
             if(canDo) {
                 ans = mid;
                 hi = mid-1;   
