@@ -11,20 +11,16 @@ class Solution {
         List<int[]> lst = new ArrayList<>();
         for(int i = 1; i < nums.length; i++){
             if(nums[i][0] > max ){
-                int[] pair = new int[2];
-                pair[0] = min;
-                pair[1] = max;
-                lst.add(pair);
+                lst.add(new int[]{min,max});
 
                 min = nums[i][0];
+                max = nums[i][1];
+            }else{
+                max = Math.max(max,nums[i][1]);
             }
-            max = Math.max(max,nums[i][1]);
         }
-        int[] pair = new int[2];
-        pair[0] = min;
-        pair[1] = max;
-        lst.add(pair);
-        
+        lst.add(new int[]{min,max});
+
         int[][] ans = new int[lst.size()][2];
         int ind = 0;
         for(int[] ele : lst) {
