@@ -1,41 +1,37 @@
 class Solution {
-    public int[][] merge(int[][] grid) {
-        Arrays.sort(grid,(a,b) -> {
+    public int[][] merge(int[][] nums) {
+        Arrays.sort(nums, (a,b) -> {
             if(a[0] == b[0])
                 return a[1] - b[1];
-            return a[0] - b[0]; 
+            return a[0] - b[0];
         });
-        // for (int[] row : grid) {
-        //     System.out.println(Arrays.toString(row));
-        // }
-        List<List<Integer>> lst  = new ArrayList<>();
-        int min = grid[0][0];
-        int max = grid[0][1];
+        int min = nums[0][0];
+        int max = nums[0][1];
 
-        for(int i = 0 ; i < grid.length; i++){
-            int[] row = grid[i];
-            if(row[0] > max){
-                List<Integer> pair = new ArrayList<>();
-                pair.add(min);
-                pair.add(max);
-
+        List<int[]> lst = new ArrayList<>();
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i][0] > max ){
+                int[] pair = new int[2];
+                pair[0] = min;
+                pair[1] = max;
                 lst.add(pair);
-                min = row[0];
-                max = row[1];
+
+                min = nums[i][0];
             }
-
-            max = Math.max(max,row[1]);
+            max = Math.max(max,nums[i][1]);
         }
-        List<Integer> pair = new ArrayList<>();
-        pair.add(min);
-        pair.add(max);
+        int[] pair = new int[2];
+        pair[0] = min;
+        pair[1] = max;
         lst.add(pair);
-
+        
         int[][] ans = new int[lst.size()][2];
-        for(int i = 0 ; i < lst.size(); i++){
-            ans[i][0] = lst.get(i).get(0);
-            ans[i][1] = lst.get(i).get(1);
+        int ind = 0;
+        for(int[] ele : lst) {
+            ans[ind][0] = ele[0];
+            ans[ind++][1] = ele[1];
         }
         return ans;
+
     }
 }
