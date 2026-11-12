@@ -13,7 +13,7 @@ class Solution {
                     lo1 = hi;
                 }
 
-                if(nums[hi-1] <= nums[hi]){
+                if(nums[hi-1] <= nums[hi]){ //strictlly decreasing
                     ans = Math.max(ans, hi-lo2);
                     lo2 = hi;
                 }
