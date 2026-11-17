@@ -1,32 +1,38 @@
 class Solution {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoLists(ListNode lst1, ListNode lst2) {
         ListNode ans = new ListNode();
-        ListNode save = ans;
-        while(l1 != null && l2 != null){
-            if(l1.val < l2.val){
-                ListNode n = new ListNode(l1.val);
-                ans.next = n;
+        ListNode save = new ListNode();
+        save.next = ans;
+        while(lst1 != null && lst2 != null){
+            if(lst1.val < lst2.val){
+                ListNode node = new ListNode();
+                node.val = lst1.val;
+                ans.next = node;
                 ans = ans.next;
-                l1 = l1.next;
+                lst1 = lst1.next;
             }else{
-                ListNode n = new ListNode(l2.val);
-                ans.next = n;
+                ListNode node = new ListNode();
+                node.val = lst2.val;
+                ans.next = node;
                 ans = ans.next;
-                l2 = l2.next;
+                lst2 = lst2.next;
             }
         }
-        while(l1 != null){
-            ListNode n = new ListNode(l1.val);
-            ans.next = n;
+
+        while(lst1 != null) {
+            ListNode node = new ListNode();
+            node.val = lst1.val;
+            ans.next = node;
             ans = ans.next;
-            l1 = l1.next;
+            lst1 = lst1.next;
         }
-        while(l2 != null ){
-            ListNode n = new ListNode(l2.val);
-            ans.next = n;
+        while( lst2 != null ){
+            ListNode node = new ListNode();
+            node.val = lst2.val;
+            ans.next = node;
             ans = ans.next;
-            l2 = l2.next;
+            lst2 = lst2.next;
         }
-        return save.next;
+        return save.next.next;
     }
 }
