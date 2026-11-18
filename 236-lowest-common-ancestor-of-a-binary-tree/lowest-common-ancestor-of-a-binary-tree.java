@@ -20,12 +20,12 @@ class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         dfs(root, null,p.val,q.val);
         TreeNode left = p;
-        Map<Integer,TreeNode> path = new HashMap<>();
+        Set<Integer> path = new HashSet<>();
 
         while(true) {
             if(!map.containsKey(left.val)) break;
             TreeNode node = map.get(left.val);
-            path.put(node.val,node);
+            path.add(node.val);
             if(node.val == q.val)
                 return q;
             left = node;
@@ -37,8 +37,8 @@ class Solution {
             TreeNode node = map.get(right.val);
             if(node.val == p.val)
                 return p;
-            if(path.containsKey(node.val)){
-                return path.get(node.val);
+            if(path.contains(node.val)){
+                return node;
             }
             right = node;
         }
