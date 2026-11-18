@@ -1,26 +1,24 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
 class Solution {
     Map<Integer,TreeNode> map = new HashMap<>();
-
-    void dfs(TreeNode root, TreeNode parent){
+    boolean pS = false;
+    boolean qS = false;
+    void dfs(TreeNode root, TreeNode parent,int p, int q){
+        if(pS && qS) 
+           return;
         if(root == null)
             return;
         if(parent != null){
+            if(root.val == p)
+                pS = true;
+            if(root.val == q)
+                qS = true;
             map.put(root.val,parent);
         }
-        dfs(root.left, root);
-        dfs(root.right, root);
+        dfs(root.left, root,p,q);
+        dfs(root.right, root,p,q);
     }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        dfs(root, null);
+        dfs(root, null,p.val,q.val);
         TreeNode left = p;
         Map<Integer,TreeNode> path = new HashMap<>();
 
