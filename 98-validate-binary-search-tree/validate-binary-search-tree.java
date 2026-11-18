@@ -14,13 +14,15 @@
  * }
  */
 class Solution {
-    boolean dfs(TreeNode root,long max,long min){
+    boolean dfs(TreeNode root,long min,long max){
         if(root == null)
             return true;
-        if (root.val <= min || root.val >= max)
-            return false;
+        if(root.val >= min )
+            return false; // for left sub tree
+        if(root.val <= max)
+            return false; // for righ sub tree
+        return dfs(root.left,Math.min(min,root.val), max) && dfs(root.right, min, Math.max(max,root.val));
         
-        return dfs(root.left, root.val, min) && dfs(root.right, max, root.val);
     }
     public boolean isValidBST(TreeNode root) {
         return dfs(root, Long.MAX_VALUE, Long.MIN_VALUE);
