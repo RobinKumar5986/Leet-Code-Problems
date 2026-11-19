@@ -1,38 +1,48 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int co = 0;
-        int[] pefx = new int[nums.length];
-        int[] pofx = new int[nums.length];
-        for(int i = 0 ; i < nums.length; i++){
-            if(nums[i] == 0 ){
-                co++;
-                if(co >= 2) return new int[nums.length]; 
-            }
-            if(i == 0) {
-                pefx[i] = nums[i];
-                pofx[nums.length-1-i] = nums[nums.length-1 - i];
-            }else{
-                pefx[i] = pefx[i-1] * nums[i];
-                pofx[nums.length-1-i] = pofx[nums.length -1 -i + 1] * nums[nums.length -1 -i];
-            }
-            // System.out.println(pefx[i] + " : " + pofx[nums.length-1-i] );
-        }
+        int[] l = new int[nums.length];
+        int[] r = new int[nums.length];
+        int m1 = 1;
+        int m2 = 1;
         
-        for(int i = 0 ; i < nums.length; i++ ){
-            Integer num = null;
-            if(i-1 >= 0){
-                num = pefx[i-1];
+        int[] ans = new int[nums.length];
+        int co = 0;
+        int ind = -1;
+        for(int i = 0, j = nums.length-1; i < nums.length; i++,j--){
+            if(nums[i] == 0){
+                co++;
+                ind = i;
+                if(co >= 2)
+                    return ans;
             }
-            if(i+1 < nums.length){
-                if(num == null){
-                    num = pofx[i+1];
-                }else{
-                    num = num * pofx[i+1];
-                }
+            if(nums[i] != 0){
+                m1 = m1 * nums[i];
+                l[i] = m1;
             }
-            nums[i] = num;
-
+            if(nums[j] != 0){
+                m2 = m2 * nums[j];
+                r[j] = m2;
+            }
+            
+            
         }
-        return nums;
+        if(ind != -1){
+            int mul = 1;
+            if(ind - 1 >= 0)
+                mul *= l[ind-1];
+            if(ind+1 < nums.length)
+                mul *= r[ind+1];
+            ans[ind] = mul;
+            return ans;
+        }
+        for(int i = 0 ; i < nums.length; i++){
+            int mul = 1;
+            if(i - 1 >= 0)
+                mul *= l[i-1];
+            if(i+1 < nums.length)
+                mul *= r[i+1];
+            ans[i] = mul;
+        }
+        return ans;
     }
 }
