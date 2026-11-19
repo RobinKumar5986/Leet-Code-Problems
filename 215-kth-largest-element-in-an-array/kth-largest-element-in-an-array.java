@@ -6,7 +6,7 @@ class Solution {
         }
         int ans = 0;
         for(int i = 0 ;i < k; i++){
-            ans = pq.poll();
+            ans = pq.remove();
         }
         return ans;
     }
