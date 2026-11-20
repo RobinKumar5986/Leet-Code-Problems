@@ -1,11 +1,17 @@
 class Solution {
     List<List<String>> ans = new ArrayList<>();
-    
+    Map<String, Boolean> seen = new HashMap<>();
     boolean isPalindrome(String str) {
+        if(seen.containsKey(str))
+            return seen.get(str);
         int i = 0, j = str.length() - 1;
         while (i < j) {
-            if (str.charAt(i++) != str.charAt(j--)) return false;
+            if (str.charAt(i++) != str.charAt(j--)) {
+                seen.put(str,false);
+                return false;
+            }
         }
+        seen.put(str,true);
         return true;
     }
 
