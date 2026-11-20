@@ -1,6 +1,8 @@
 class Solution {
     List<List<Integer>> ans = new ArrayList<>();
-    void dfs(List<Integer> lst, int[] nums, boolean[] used){
+    List<Integer> lst = new ArrayList<>();
+    boolean[] used;
+    void dfs(int[] nums){
         if(lst.size() == nums.length){
             ans.add(new ArrayList<>(lst));
             return;
@@ -10,16 +12,15 @@ class Solution {
             if(!used[i]){
                 used[i] = true;
                 lst.add(nums[i]);
-                dfs(lst,nums,used);
+                dfs(nums);
                 lst.remove(lst.size()-1);
                 used[i] = false;
             }
         }
     }
     public List<List<Integer>> permute(int[] nums) {
-        boolean[] used = new boolean[nums.length];
-        dfs(new ArrayList<>(), nums, used);
-
+        used = new boolean[nums.length];
+        dfs(nums);
         return ans;
     }
 }
