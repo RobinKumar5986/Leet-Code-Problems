@@ -8,11 +8,12 @@ class Solution {
         int jump = 1;
         for(int i  = 1; i < nums.length; i++){
             int temp = max;
-            for(int j = i; j <= max; j++){
+            for(int j = i; j <= max; j++,i++){
                 temp = Math.max(temp, j + nums[j] );
                 if( temp >= nums.length-1)
                     return jump+1;
             }
+            i--;
             max = temp;
             jump++;
         }
