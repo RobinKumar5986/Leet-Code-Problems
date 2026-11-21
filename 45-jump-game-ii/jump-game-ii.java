@@ -1,24 +1,26 @@
 class Solution {
-    public int jump(int[] nums) {
-        if(nums.length <= 1)
+    int[] dp;
+    int max_jum = 1_000_00;
+    int dfs(int ind, int[] nums){
+        if(ind == nums.length-1)
             return 0;
+        if(ind >= nums.length)
+            return max_jum;
+        if(dp[ind] != -1)
+            return dp[ind];
+        int minJump = max_jum;
 
-        int indEnd = nums[0];
-        int jump = 1;
-
-        for(int i = 0 ; i < nums.length;){
-            if(nums[i] + i >= nums.length-1)
-                return jump;
-            int nextFar = indEnd;
-            for(int j = i+1 ; j <= indEnd; j++,i++){
-                if(nums[j] + j >= nums.length-1)
-                    return jump+1;
-                nextFar = Math.max(nextFar,nums[j]+j);
-            }
-            jump += 1;
-            indEnd = nextFar;
+        for(int i = 1; i <= nums[ind] ; i++ ){
+            int jump = 1 + dfs(ind + i, nums);
+            minJump = Math.min(minJump,jump);
         }
-        return jump;
+        dp[ind] = minJump;
+        return minJump;
+    }
+    public int jump(int[] nums) {
+        dp = new int[nums.length];
+        Arrays.fill(dp,-1);
 
+        return dfs(0,nums);
     }
 }
