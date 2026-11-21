@@ -1,12 +1,9 @@
 class Solution {
     int[][] dp;
     
-    boolean ans = false;
     boolean dfs(int ind,int[] nums,int total,int sum){
-        if(ans) return true;
         if(sum == total/2) return true;
         if(ind >= nums.length) return false;
-        
         if(dp[ind][sum] != -1){
            if(dp[ind][sum] == 0) return false;
            return true;
@@ -19,12 +16,11 @@ class Solution {
         boolean reach = c1 || c2;
 
 
-        if(reach){
-            ans = true;
+        if(reach)
             dp[ind][sum] = 1;
-        }else{
+        else
             dp[ind][sum] = 0;
-        }
+        
         return reach;
     }
     public boolean canPartition(int[] nums) {
