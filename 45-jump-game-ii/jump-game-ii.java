@@ -20,7 +20,6 @@ class Solution {
     public int jump(int[] nums) {
         dp = new int[nums.length];
         Arrays.fill(dp,-1);
-
         return dfs(0,nums);
     }
 }
