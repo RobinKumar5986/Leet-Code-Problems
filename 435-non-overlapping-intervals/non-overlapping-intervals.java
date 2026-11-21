@@ -1,10 +1,8 @@
 class Solution {
     public int eraseOverlapIntervals(int[][] nums) {
         Arrays.sort(nums,(a,b) -> {
-            if(a[0] == b[0]){
-                return a[1] - b[1];
-            }
-            return a[0] - b[0];
+            return a[1] - b[1];
+            
         });
 
         int ans = 0;
@@ -13,7 +11,6 @@ class Solution {
             int[] ele = nums[i];
             if(max > ele[0] ){
                 ans++;
-                max = Math.min(max,ele[1]);
             }else{
                 max = ele[1];
             }
