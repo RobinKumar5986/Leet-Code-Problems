@@ -1,14 +1,15 @@
 class Solution {
-    Map<String,Boolean> map = new HashMap<>();
+    int[][] dp;
+    
     boolean ans = false;
     boolean dfs(int ind,int[] nums,int total,int sum){
-        String key = ind + ":" + sum;
         if(ans) return true;
         if(sum == total/2) return true;
         if(ind >= nums.length) return false;
         
-        if(map.containsKey(key)){
-           return map.get(key);
+        if(dp[ind][sum] != -1){
+           if(dp[ind][sum] == 0) return false;
+           return true;
         }
         
         //case not include
@@ -20,9 +21,9 @@ class Solution {
 
         if(reach){
             ans = true;
-            map.put(key,true);
+            dp[ind][sum] = 1;
         }else{
-            map.put(key,false);
+            dp[ind][sum] = 0;
         }
         return reach;
     }
@@ -30,7 +31,12 @@ class Solution {
         int total = 0;
         for(int ele : nums) total += ele;
         if(total % 2 != 0) return false;
-
+        dp = new int[nums.length][total + 1];
+        for(int i = 0 ; i  < dp.length; i++){
+            for(int j = 0 ; j < dp[0].length; j++){
+                dp[i][j] = -1;
+            }
+        }
         return dfs(0,nums,total,0);
     }
 }
