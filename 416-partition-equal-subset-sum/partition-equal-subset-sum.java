@@ -1,26 +1,36 @@
 class Solution {
-    int req = 0;
-    Boolean[][] dp;
-    boolean dfs(int[] nums, int ind,int sum){
-        if (sum > req) return false;
-        if(ind >= nums.length)
-            return false;
-        if(sum == req)
-            return true;
-        if (dp[ind][sum] != null) 
-            return dp[ind][sum];
-        boolean res =  dfs(nums,ind+1,sum) || dfs(nums,ind+1,sum + nums[ind]);
-        dp[ind][sum] = res;
+    Map<String,Boolean> map = new HashMap<>();
+    boolean ans = false;
+    boolean dfs(int ind,int[] nums,int total,int sum){
+        String key = ind + ":" + sum;
+        if(ans) return true;
+        if(sum == total/2) return true;
+        if(ind >= nums.length) return false;
+        
+        if(map.containsKey(key)){
+           return map.get(key);
+        }
+        
+        //case not include
+        boolean c1 = dfs(ind+1,nums,total,sum);
+        //include
+        boolean c2 = dfs(ind+1,nums,total,sum + nums[ind]);
+        boolean reach = c1 || c2;
 
-        return dp[ind][sum];
+
+        if(reach){
+            ans = true;
+            map.put(key,true);
+        }else{
+            map.put(key,false);
+        }
+        return reach;
     }
     public boolean canPartition(int[] nums) {
-        for(int ele : nums)
-            req += ele;
-        if(req % 2 != 0)
-            return false;
-        req = req/2;
-        dp = new Boolean[nums.length][req + 1]; 
-        return dfs(nums,0,0);
+        int total = 0;
+        for(int ele : nums) total += ele;
+        if(total % 2 != 0) return false;
+
+        return dfs(0,nums,total,0);
     }
 }
