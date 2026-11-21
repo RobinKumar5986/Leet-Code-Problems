@@ -1,17 +1,10 @@
 class Solution {
     List<List<String>> ans = new ArrayList<>();
-    Map<String, Boolean> seen = new HashMap<>();
-    boolean isPalindrome(String str) {
-        if(seen.containsKey(str))
-            return seen.get(str);
-        int i = 0, j = str.length() - 1;
+
+    boolean isPalindrome(String s, int i, int j) {
         while (i < j) {
-            if (str.charAt(i++) != str.charAt(j--)) {
-                seen.put(str,false);
-                return false;
-            }
+            if (s.charAt(i++) != s.charAt(j--)) return false;
         }
-        seen.put(str,true);
         return true;
     }
 
@@ -25,8 +18,8 @@ class Solution {
         dfs(s,lo, hi+1, lst);
 
         //case 2: partetion 
-        String sub = s.substring(lo,hi+1);
-        if(isPalindrome(sub)) {
+        if(isPalindrome(s,lo,hi)) {
+            String sub = s.substring(lo,hi+1);
             lst.add(sub);
             dfs(s, hi+1,hi+1,lst);
             lst.remove(lst.size()-1);
