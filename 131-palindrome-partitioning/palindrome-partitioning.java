@@ -15,14 +15,9 @@ class Solution {
         return true;
     }
 
-    int totalLength(List<String> lst) {
-        int total = 0;
-        for (String str : lst) total += str.length();
-        return total;
-    }
     void dfs(String s,int lo, int hi ,List<String> lst){
         if (hi >= s.length()) {
-            if (totalLength(lst) == s.length()) ans.add(new ArrayList<>(lst));
+            if (lo == s.length()) ans.add(new ArrayList<>(lst));
             return;
         }
         // two case partetion and not parteation 
@@ -31,12 +26,11 @@ class Solution {
 
         //case 2: partetion 
         String sub = s.substring(lo,hi+1);
-            if(isPalindrome(sub)) {
+        if(isPalindrome(sub)) {
             lst.add(sub);
             dfs(s, hi+1,hi+1,lst);
             lst.remove(lst.size()-1);
         }
-
     }
     public List<List<String>> partition(String s) {
         dfs(s,0,0,new ArrayList<>());
