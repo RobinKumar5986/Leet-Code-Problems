@@ -1,12 +1,11 @@
 class Solution {
-    int[][] dp;
+    Boolean[][] dp;
     
     boolean dfs(int ind,int[] nums,int total,int sum){
         if(sum == total/2) return true;
         if(ind >= nums.length) return false;
-        if(dp[ind][sum] != -1){
-           if(dp[ind][sum] == 0) return false;
-           return true;
+        if(dp[ind][sum] != null){
+           return dp[ind][sum];
         }
         
         //case not include
@@ -17,9 +16,9 @@ class Solution {
 
 
         if(reach)
-            dp[ind][sum] = 1;
+            dp[ind][sum] = true;
         else
-            dp[ind][sum] = 0;
+            dp[ind][sum] = false;
         
         return reach;
     }
@@ -27,12 +26,7 @@ class Solution {
         int total = 0;
         for(int ele : nums) total += ele;
         if(total % 2 != 0) return false;
-        dp = new int[nums.length][total + 1];
-        for(int i = 0 ; i  < dp.length; i++){
-            for(int j = 0 ; j < dp[0].length; j++){
-                dp[i][j] = -1;
-            }
-        }
+        dp = new Boolean[nums.length][total + 1];
         return dfs(0,nums,total,0);
     }
 }
