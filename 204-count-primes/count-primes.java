@@ -12,11 +12,6 @@ class Solution {
                     seen[mul] = true;
                     mul = mul + i;
                 }
-                // for(int ele : set){
-                //     System.out.print(ele + " ");
-                // }
-                // System.out.println();
-                
             }
         }
 
