@@ -7,9 +7,9 @@ class Solution {
                 return 1;
             return 0;
         }
-        // if(dp[ind][sum + pad] != -1){
-        //     return dp[ind][sum + pad];
-        // }
+        if(dp[ind][sum + pad] != -1){
+            return dp[ind][sum + pad];
+        }
         
         //two choices 1.+ve 2.-ve
         //case 1: +ve
