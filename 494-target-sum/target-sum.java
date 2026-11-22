@@ -1,19 +1,34 @@
 class Solution {
-    int ans = 0;
-    void tree(int[] nums,int sum,int ind,int target){
-        if(ind >= nums.length){
+    int[][] dp;
+    int pad = 1000;
+    int dfs(int ind,int sum,int target,int[] nums){
+        if(ind == nums.length){
             if(sum == target)
-                ans++;
-            return;
+                return 1;
+            return 0;
         }
-        //case +
-        tree(nums,sum + nums[ind],ind+1,target);
+        if(dp[ind][sum + pad] != -1){
+            return dp[ind][sum + pad];
+        }
+        
+        //two choices 1.+ve 2.-ve
+        //case 1: +ve
+        int s1 = dfs(ind+1,sum + nums[ind],target,nums);
+        //case 2: -ve
+        int s2 = dfs(ind+1,sum - nums[ind],target,nums);
 
-        //case -
-        tree(nums,sum - nums[ind],ind+1,target);
+        int res = s1 + s2;
+        dp[ind][sum+pad] = res;
+
+        return dp[ind][sum + pad];
     }
     public int findTargetSumWays(int[] nums, int target) {
-        tree(nums,0,0,target);
-        return ans;
+        dp = new int[nums.length][2000+1];
+        for(int i = 0 ; i < nums.length;i++){
+            for(int j = 0; j < 2000+1;j++){
+                dp[i][j] = -1;
+            }
+        }
+        return dfs(0,0,target,nums);
     }
 }
