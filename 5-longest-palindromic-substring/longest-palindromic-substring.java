@@ -4,7 +4,7 @@ class Solution {
             lo--;
             hi++;
         }
-        return new int[]{lo++,hi--};
+        return new int[]{++lo,--hi};
     }
     public String longestPalindrome(String s) {
         int lo = 0;
@@ -24,6 +24,6 @@ class Solution {
                 }
             }
         }
-        return s.substring(lo+1,hi);
+        return s.substring(lo,hi+1);
     }
 }
