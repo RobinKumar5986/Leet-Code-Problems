@@ -1,24 +1,27 @@
 class Solution {
-    String expand(String st, int lo, int hi, String s){
-        while( lo >= 0 && hi < s.length() && s.charAt(lo) == s.charAt(hi)){
-            st  = s.charAt(lo) + st + s.charAt(hi);
-            lo--;
-            hi++;
+    boolean isPali(String s){
+        int lo = 0;
+        int hi = s.length()-1;
+        while(lo < hi){
+            if(s.charAt(lo) != s.charAt(hi))
+                return false;
+            lo++;
+            hi--;
         }
-        return st;
+        return true;
     }
     public String longestPalindrome(String s) {
         String ans = "";
-        for(int i = 0 ; i < s.length() ; i++) {
-            String s1 = expand("",i-1,i,s);
-            String s2 = expand(s.charAt(i)+"", i - 1, i+1,s);
-            if(ans.length() < s1.length()) {
-                ans = s1;
-            }
-            if(ans.length() < s2.length()){
-                ans = s2;
+        for(int i = 0 ; i < s.length(); i++){
+            StringBuilder sb = new StringBuilder();
+            for(int j = i; j < s.length(); j++){
+                sb.append(s.charAt(j));
+                if( isPali(sb.toString()) && sb.length() > ans.length()){
+                    ans = sb.toString();
+                }
             }
         }
+
         return ans;
     }
 }
