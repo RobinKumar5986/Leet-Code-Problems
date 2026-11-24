@@ -1,46 +1,25 @@
 class Solution {
-    void expand(int key, boolean[] vis, Map<Integer,Set<Integer>> path){
-        vis[key] = true;
-        Set<Integer> set = path.get(key);
-        for(int ele : set){
-            if(!vis[ele])
-                expand(ele,vis,path);
+    void expand(int city, boolean[] vis, int[][] con,int n){
+        vis[city] = true;
+        for(int nextCity = 0; nextCity < n; nextCity++){
+            if(con[city][nextCity] == 0)//no path
+                continue;
+            if(vis[nextCity])//already visted next city
+                continue;
+            expand(nextCity,vis,con,n);
         }
     }
     public int findCircleNum(int[][] con) {
-        Map<Integer,Set<Integer>> map = new HashMap<>();
         int n = con.length;
         boolean[] vis = new boolean[n];
-
-        for(int i = 0 ; i < n; i++){
-            for(int j = 0; j < n; j++){
-                if(con[i][j] == 0)
-                    continue;
-                if(!map.containsKey(i))
-                    map.put(i,new HashSet<>());
-                if(!map.containsKey(j))
-                    map.put(j,new HashSet<>());
-                
-                Set<Integer> s1 = map.get(i);
-                Set<Integer> s2 = map.get(j);
-
-                s1.add(j);
-                s2.add(i);
-
-                map.put(i,s1);
-                map.put(j,s2);
-            }
-        }
         int ans = 0;
-        for(Map.Entry<Integer,Set<Integer>> ele : map.entrySet()){
-            int key = ele.getKey();
-            if(vis[key])
+
+        for(int city = 0; city < n; city++){
+            if(vis[city])//already visted this city
                 continue;
             ans++;
-            expand(key,vis,map);
+            expand(city,vis,con,n);
         }
-        
         return ans;
-
     }
 }
