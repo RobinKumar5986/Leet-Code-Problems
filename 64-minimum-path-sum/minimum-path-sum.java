@@ -32,6 +32,7 @@ class Solution {
         int m = grid.length;
         int n = grid[0].length;
 
+        //Bottom-up solution
         for(int i = m-1; i >= 0;i--){
             for(int j = n-1; j >= 0;j--){
                 int min = Integer.MAX_VALUE;
