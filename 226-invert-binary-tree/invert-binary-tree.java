@@ -18,13 +18,12 @@ class Solution {
         if(root == null)
             return;
         
-        TreeNode temp = root.left;
-        root.left = root.right;
-        root.right = temp;
-
         dfs(root.left);
         dfs(root.right);
 
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
 
 
     }
@@ -32,6 +31,6 @@ class Solution {
         dfs(root);
 
         return root;
-        
+
     }
 }
