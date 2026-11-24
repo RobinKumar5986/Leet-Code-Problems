@@ -1,55 +1,39 @@
 class Solution {
+    void expand(int i, int j,int t,int[][] time, int[][] grid){
+        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length )
+            return;
+        if(grid[i][j] == 0)
+            return;
+        if(time[i][j] <= t)
+            return;
+        time[i][j] = t;
+        expand(i+1,j,t+1,time,grid);
+        expand(i-1,j,t+1,time,grid);
+        expand(i,j+1,t+1,time,grid);
+        expand(i,j-1,t+1,time,grid);
+    }
     public int orangesRotting(int[][] grid) {
         int ans = 0;
-        Queue<int[]> q = new LinkedList<>();
-        int fresh = 0;
-        for(int i = 0; i<grid.length; i++){
-            for(int j = 0 ; j < grid[0].length ; j++){
-                if(grid[i][j] == 1)
-                    fresh++;
-                if(grid[i][j] == 2)
-                    q.offer(new int[]{i,j});
+        int[][] time = new int[grid.length][grid[0].length];
+        for(int[] row : time)
+            Arrays.fill(row, Integer.MAX_VALUE);
+
+        for(int i = 0 ; i < grid.length;i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == 0 || grid[i][j] == 1 ) 
+                    continue;
+                expand(i,j,0,time,grid);
             }
         }
-        if(!q.isEmpty() && fresh == 0)
-            return 0;
-        while(!q.isEmpty()){
-            if(fresh == 0)
-                break;
-            ans++;
-            int sz = q.size();
-            for(int i = 0 ; i < sz ; i++){
-                int[] ele = q.poll();
-                int r = ele[0];
-                int c = ele[1];
-                //up
-                if(r-1 >= 0 && grid[r-1][c] == 1){
-                    grid[r-1][c] = 2;
-                    q.offer(new int[]{r-1,c});
-                    fresh--;
-                }
-                //down
-                if(r+1 < grid.length && grid[r+1][c] == 1){
-                    grid[r+1][c] = 2;
-                    q.offer(new int[]{r+1,c});
-                    fresh--;
-                }
-                //left
-                if(c-1 >= 0 && grid[r][c-1] == 1){
-                    grid[r][c-1] = 2;
-                    q.offer(new int[]{r,c-1});
-                    fresh--;
-                }
-                //right
-                if (c + 1 < grid[0].length && grid[r][c + 1] == 1) {
-                    grid[r][c + 1] = 2;
-                    q.offer(new int[]{r, c + 1});
-                    fresh--;
-                }
+
+        for(int i = 0 ; i < grid.length;i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == 1 && time[i][j] == Integer.MAX_VALUE)
+                    return -1;
+                if(time[i][j] != Integer.MAX_VALUE)
+                    ans = Math.max(ans,time[i][j]);
             }
         }
-        if(fresh == 0)
-            return ans;
-        return -1;
+        return ans;
     }
 }
