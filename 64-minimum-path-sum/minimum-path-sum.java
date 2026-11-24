@@ -1,33 +1,50 @@
 class Solution {
+    //Top-down
+    // int dfs(int i,int j,int[][] grid,int[][] dp){
+    //     if(i == grid.length-1 && j == grid[0].length-1)
+    //         return grid[i][j];
+    //     if(i >= grid.length || j >= grid[0].length)
+    //         return Integer.MAX_VALUE;
+    //     if(dp[i][j] != -1)
+    //         return dp[i][j];
+    //     //Two path forward or down
+    //     int n1 = dfs(i+1,j,grid,dp);
+    //     int n2 = dfs(i,j+1,grid,dp);
 
-    int dfs(int i,int j,int[][] grid,int[][] dp){
-        if(i == grid.length-1 && j == grid[0].length-1)
-            return grid[i][j];
-        if(i >= grid.length || j >= grid[0].length)
-            return Integer.MAX_VALUE;
-        if(dp[i][j] != -1)
-            return dp[i][j];
-        //Two path forward or down
-        int n1 = dfs(i+1,j,grid,dp);
-        int n2 = dfs(i,j+1,grid,dp);
+    //     int min = Integer.MAX_VALUE;
+    //     if(n1 != Integer.MAX_VALUE){
+    //         min = n1;
+    //     }
+    //     if(n2 != Integer.MAX_VALUE){
+    //         min = Math.min(min,n2);
+    //     }
+    //     if(min != Integer.MAX_VALUE)
+    //         min += grid[i][j];
+    //     dp[i][j] = min;
+    //     return min;
 
-        int min = Integer.MAX_VALUE;
-        if(n1 != Integer.MAX_VALUE){
-            min = n1;
-        }
-        if(n2 != Integer.MAX_VALUE){
-            min = Math.min(min,n2);
-        }
-        if(min != Integer.MAX_VALUE)
-            min += grid[i][j];
-        dp[i][j] = min;
-        return min;
-
-    }
+    // }
     public int minPathSum(int[][] grid) {
         int[][] dp = new int[grid.length][grid[0].length];
-        for(int[] row : dp)
-            Arrays.fill(row,-1);
-        return dfs(0,0,grid,dp);
+        // for(int[] row : dp)
+        //     Arrays.fill(row,-1);
+        // return dfs(0,0,grid,dp);
+        int m = grid.length;
+        int n = grid[0].length;
+
+        for(int i = m-1; i >= 0;i--){
+            for(int j = n-1; j >= 0;j--){
+                int min = Integer.MAX_VALUE;
+                if(i+1 < m)
+                    min = dp[i+1][j];
+                if(j+1 < n)
+                    min = Math.min(dp[i][j+1],min);
+                if(min == Integer.MAX_VALUE)
+                    min = 0;
+                min += grid[i][j];
+                dp[i][j] = min;
+            }
+        }
+        return dp[0][0];
     }
 }
