@@ -1,66 +1,42 @@
 class Solution {
-    Map<Integer,List<Integer>> map = new HashMap<>();
-    boolean[] path;
-    boolean[] vis;
-    Stack<Integer> stk;
+    public int[] findOrder(int nc, int[][] req) {
+        List<List<Integer>> graph = new ArrayList<>();
 
-    boolean dfs(int src){
-        List<Integer> neg = map.get(src);
-
-        if(path[src]) return true;
-        if(vis[src]) return false;
-
-        vis[src] = true;
-        path[src] = true;
-        if(neg != null ) {
-            for(int ele : neg){
-                if(dfs(ele)){
-                    return true;
-                }
-            }
+        for(int i = 0;i < nc;i++){
+            graph.add(new ArrayList<>());
         }
-        stk.push(src);
-        path[src] = false;
-        return false;
-    }
-    public int[] findOrder(int nC, int[][] req) {
-        int ans[] = new int[nC];
-        if(req.length == 0){
-            for(int i = 0 ; i < nC ; i++)
-                ans[i] = i;
-            return ans;
-        }
-        path = new boolean[2001];
-        vis = new boolean[2001];
-        stk = new Stack<>();
-        //building the adj matrix
+        int[] indegree = new int[nc];
+        //creating the graph i.e b -> a i.e child -> parent 
+
         for(int[] ele : req){
-            if(!map.containsKey(ele[0])){
-                map.put(ele[0],new ArrayList<>());
-            }
-            List<Integer> lst = map.get(ele[0]);
-            lst.add(ele[1]);
-            map.put(ele[0],lst);
+            int a = ele[0];
+            int b = ele[1];
+
+            graph.get(b).add(a);
+            indegree[a]++;
         }
-        for(Map.Entry<Integer,List<Integer>> ele : map.entrySet()){
-            int k = ele.getKey();
-            if(!vis[k]){
-                if(dfs(k)){
-                    return new int[]{};
+        int[] ans = new int[nc];
+        int ind = 0;
+
+        Stack<Integer> stk = new Stack<>();
+
+        for(int i = 0 ; i < nc;i++){
+            if(indegree[i] == 0){
+                stk.push(i);
+            }
+        }
+        while(!stk.isEmpty()){
+            int rem = stk.pop();
+            ans[ind++] = rem;
+            for(int ele : graph.get(rem)){
+                indegree[ele]--;
+                if(indegree[ele] == 0){
+                    stk.push(ele);
                 }
             }
         }
-        int i = nC-1;
-        while(!stk.isEmpty()){
-            int ele = stk.pop();
-            ans[i--] = ele;
-        }
-        i = 0;
-        for(int j = 0 ; j < nC ; j++){
-            if(!vis[j]){
-                ans[i++] = j;
-            }
-        }
+
+        if(ind != nc) return new int[0];
         return ans;
     }
 }
