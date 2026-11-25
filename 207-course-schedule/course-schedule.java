@@ -1,46 +1,50 @@
 class Solution {
-    Map<Integer,List<Integer>> map = new HashMap<>();
-    boolean[] vis;
-    boolean[] path;
-    boolean dfs(int src){
-        List<Integer> neg = map.get(src);
-        if(neg == null)
-            return false;
-        //first current path check to avoid perv path check
-        if(path[src]){
+
+    boolean dfs(int start, Map<Integer,List<Integer>> map,boolean[] vis,boolean[] seen){
+        if (seen[start]) {
             return true;
         }
-        if(vis[src])
+        if (vis[start]) {
             return false;
-        vis[src] = true;
-        path[src] = true;
-        for(int ele : neg){
-            if(dfs(ele)){
-                return true;
+        }
+
+        vis[start] = true;
+        seen[start] = true;
+
+        if(map.containsKey(start)) {
+            List<Integer> lst = map.get(start);
+            for(int ele : lst){
+                if(dfs(ele, map, vis,seen)){
+                    return true;
+                }
             }
         }
-        path[src] = false;
+        seen[start] = false;
         return false;
+
     }
-    public boolean canFinish(int nC, int[][] req) {
-        vis = new boolean[2001];
-        path = new boolean[2001];
-        //creating adj metrix
-        for(int i = 0 ; i < req.length; i++){
-            int[] node = req[i];
-            if(!map.containsKey(node[0])){
-                map.put(node[0],new ArrayList<>());
-            }
-            List<Integer> lst = map.get(node[0]);
-            lst.add(node[1]);
-            map.put(node[0],lst);
+
+    public boolean canFinish(int nc, int[][] req) {
+        Map<Integer,List<Integer>> map = new HashMap<>();
+        for(int[] ele : req){
+            if(!map.containsKey(ele[0]))
+                map.put(ele[0],new ArrayList<>());
+            List<Integer> lst = map.get(ele[0]);
+            lst.add(ele[1]);
+            map.put(ele[0],lst);
         }
-        //running the dfs
+        boolean[] vis = new boolean[nc+1];
+
         for(Map.Entry<Integer,List<Integer>> ele : map.entrySet()){
-            int src = ele.getKey();
-            if(dfs(src))
+            int start = ele.getKey();
+            if(vis[start])
+                continue;
+            boolean[] seen = new boolean[nc+1];
+            if(dfs(start, map,vis,seen)){
                 return false;
+            }
         }
+        
         return true;
     }
 }
