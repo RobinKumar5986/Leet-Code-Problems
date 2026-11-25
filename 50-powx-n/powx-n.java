@@ -13,22 +13,16 @@ class Solution {
             power = -power;
         }
 
-        long pow = 1;
         double ans = 1;
         double factor = x;
-        long sum = 0;
-        while( sum < power){
-            if(pow > power - sum) {
-                //need to reset the factor
-                factor = x;
-                pow = 1;
-            }
 
-            ans = ans * factor;
+        while(power > 0){
+            if((power & 1) == 1)
+                ans = ans * factor;
             factor = factor * factor;
-            sum += pow;
-            pow = pow * 2;
+            power = power >> 1;
         }
+
         if(negative)
             return 1 / ans;
         return ans;
