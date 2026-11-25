@@ -1,33 +1,24 @@
 class Solution {
     int[][] dp;
-
-    int dfs(int i, int[] prices, int holding) {
-        if (i >= prices.length) {
+    int dfs(int i,int[] nums,int isHolding){
+        if(i >= nums.length)
             return 0;
+        if(dp[i][isHolding] != -1)
+            return dp[i][isHolding];
+        //case 1 leave it
+        int max = dfs(i+1,nums,isHolding);
+        //buy or sell
+        if(isHolding == 0){
+            int m2 = dfs(i+1,nums,1) - nums[i];
+            max = Math.max(max,m2);
+        }else{
+            int m3 = dfs(i+2,nums,0) + nums[i];
+
+            max = Math.max(max,m3);
         }
-
-        if (dp[i][holding] != -1) {
-            return dp[i][holding];
-        }
-
-        //leave it
-        int best = dfs(i + 1, prices, holding);
-
-        if (holding == 0) {
-            //buy
-            int buy = dfs(i + 1, prices, 1) - prices[i];
-            best = Math.max(best, buy);
-        } else {
-            //sell, then cooldown on day i+1
-            int sell = dfs(i + 2, prices, 0) + prices[i];
-            best = Math.max(best, sell);
-        }
-
-        dp[i][holding] = best;
-
-        return best;
+        dp[i][isHolding] = max;
+        return max;
     }
-
     public int maxProfit(int[] prices) {
         dp = new int[prices.length][2];
 
