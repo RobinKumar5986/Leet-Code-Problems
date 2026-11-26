@@ -10,7 +10,7 @@ class Solution {
             }else{
                 while(!stk.isEmpty() && nums[stk.peek()] < nums[ind]){
                     int idx = stk.pop();
-                    if(ans[idx] == -1)
+                    // if(ans[idx] == -1)
                         ans[idx] = nums[ind];
                 }
                 stk.push(ind);
