@@ -5,15 +5,12 @@ class Solution {
         while(ind >= 0) {
             time += banana[ind]/k;
             if(banana[ind]%k != 0)time++;
-
-            if(time <= h && ind == 0)
-                return true;
             if(time > h)
                 return false;
             
             ind--;
         }
-        return false;
+        return true;
     }
     public int minEatingSpeed(int[] banana, int h) {
         int lo = 1;
