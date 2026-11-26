@@ -12,10 +12,7 @@ class Solution {
         for(int i = 0; i < nums.length; i++){
             int sum = pxSum[i];
             int req = sum - k;
-            if(map.containsKey(req)){
-                ans += map.get(req);
-            }
-           
+            ans += map.getOrDefault(req,0);
             map.put(sum,map.getOrDefault(sum,0)+1);
         }
         return ans;
