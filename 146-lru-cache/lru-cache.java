@@ -17,6 +17,8 @@ class LRUCache {
     }
     
     public int get(int key) {
+        if(!keys[key])
+            return -1;
         Node itr = head;
         int ans = -1;
         while(itr != null){
