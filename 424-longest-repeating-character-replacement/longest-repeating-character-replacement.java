@@ -1,32 +1,36 @@
 class Solution {
-    public int characterReplacement(String s, int k) {
-
-        int[] map = new int[26];
-        int maxFreq = 0;
-
+    int maxlen(char target, int k, String s){
         int lo = 0;
-        int hi = 0;
-        int ans = 0;
-        while(hi < s.length() ){
-            char c = s.charAt(hi);
-            map[c-'A']++;
-            maxFreq = Math.max(map[c-'A'] , maxFreq);
-        
-
-            //need to check we have enough flip for the remaning char
-            int len = hi - lo + 1;
-            // System.out.println(len + " : " + maxFreq + " : " + lo + " : "+ hi);
-            if(len - maxFreq > k ){
-                map[s.charAt(lo++) - 'A']--;
-                // maxFreq = getMapFreq(map);
-                len = hi - lo + 1;
+        int len = 0;
+        int i = 0;
+        for( i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(c != target){
+                while(k == 0){
+                    if(s.charAt(lo) != target)
+                        k++;
+                    lo++;
+                }
+                k--;
             }
-            // System.out.println(len + " : " + maxFreq + " : " + lo + " : "+ hi);
-            // System.out.println("-------------------------------");
-            ans =  Math.max(hi - lo + 1, ans);
-            hi++;
+            len = Math.max(len,i-lo+1);
         }
-        return ans;
-        
+        len = Math.max(len,i-lo);
+        return len;
     }
+    public int characterReplacement(String s, int k) {
+        boolean[] seen = new boolean[26];
+        int ans = 0;
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(seen[c-'A'])
+                continue;
+            seen[c-'A'] = true;
+            int len = maxlen(c,k,s);
+            ans = Math.max(ans,len);
+        }
+
+        return ans; //max time complexity 10^5 * 26
+    }
+
 }
