@@ -5,6 +5,7 @@ class Solution {
         while(ind >= 0) {
             time += banana[ind]/k;
             if(banana[ind]%k != 0)time++;
+            
             if(time > h)
                 return false;
             
@@ -21,8 +22,7 @@ class Solution {
 
         while(lo <= hi){
             int mid = hi + (lo - hi )/2;
-            boolean canDo = canEatAll(banana,mid,h);
-            if(canDo) {
+            if(canEatAll(banana,mid,h)) {
                 ans = mid;
                 hi = mid-1;   
             }else{
