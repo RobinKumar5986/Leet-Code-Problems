@@ -8,7 +8,7 @@ class Solution {
         Map<Integer,Integer> seen = new HashMap<>();
         seen.put(0,-1);
         for(int i = 0 ; i < nums.length; i++){
-            int req = (pxSum[i] % k);
+            int req = ((pxSum[i] % k) + k) % k;
             if(seen.containsKey(req)){
                 if(i - seen.get(req) >= 2){
                     return true;
