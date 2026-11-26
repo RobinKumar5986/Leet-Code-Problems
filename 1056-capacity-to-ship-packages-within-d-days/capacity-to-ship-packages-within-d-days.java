@@ -1,12 +1,10 @@
 class Solution {
-    static {
-        for (int i = 0; i < 300; i++) shipWithinDays(new int[0], 1);
-    }
-
-    static boolean canShip(int[] weights,int days, int w){
+    boolean canShip(int[] weights,int days, int w){
         int day = 1;
         int sum = 0;
         for(int ele : weights){
+            if(ele > w)
+                return false;
             if(sum + ele > w){
                 day++;
                 sum = 0;
@@ -17,11 +15,11 @@ class Solution {
         }
         return true;
     }
-    public static int shipWithinDays(int[] weights, int days) {
+    public int shipWithinDays(int[] weights, int days) {
         int lo = 1;
         int hi = 0;
         for (int w : weights) {
-            lo = Math.max(lo,w);
+            lo = Math.min(lo,w);
             hi += w;
         }
         int ans = Integer.MAX_VALUE; // minimize the ans
