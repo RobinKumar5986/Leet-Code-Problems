@@ -41,7 +41,6 @@ class LRUCache {
             }
             itr = itr.next;
         }
-        print("get func");
         
         return ans;
     }
@@ -70,7 +69,6 @@ class LRUCache {
             }
             itr = itr.next;
         }
-        print("update func");
     }
 
     public void put(int key, int value) {
@@ -103,19 +101,7 @@ class LRUCache {
             keys.remove(rem.key);
             size -= 1;
         }
-        print("put func");
 
-    }
-
-    void print(String msg){
-        // Node itr = head;
-        // System.out.println(msg);
-        // while(itr != null){
-        //     System.out.print(itr.key + ":" + itr.value + " -> ");
-        //     itr = itr.next;
-        // }
-        // System.out.print(" null\n");
-        // System.out.println("---------------");
     }
 }
 
