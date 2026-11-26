@@ -9,7 +9,7 @@ class LRUCache {
     Node head = null;
     Node tail =  null;
     int size = 0;
-    Set<Integer> keys = new HashSet<>();
+    boolean[] keys = new boolean[1_00_00_0 +1];
 
     public LRUCache(int capacity) {
         max = capacity;
@@ -72,7 +72,7 @@ class LRUCache {
     }
 
     public void put(int key, int value) {
-        if(keys.contains(key)){
+        if(keys[key]){
             update(key,value);
             return;
         }
@@ -91,14 +91,14 @@ class LRUCache {
         }
         
         size += 1;
-        keys.add(key);
+        keys[key] = true;
 
         if(size > max){
             Node rem = head;
             head = head.next;
             head.prev = null;
 
-            keys.remove(rem.key);
+            keys[rem.key] = false;
             size -= 1;
         }
 
