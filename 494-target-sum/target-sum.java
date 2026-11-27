@@ -24,11 +24,8 @@ class Solution {
     }
     public int findTargetSumWays(int[] nums, int target) {
         dp = new int[nums.length][2000+1];
-        for(int i = 0 ; i < nums.length;i++){
-            for(int j = 0; j < 2000+1;j++){
-                dp[i][j] = -1;
-            }
-        }
+        for(int[] row : dp)
+            Arrays.fill(row,-1);
         return dfs(0,0,target,nums);
     }
 }
