@@ -10,7 +10,7 @@ class Solution {
 
     void dfs(String s,int lo, int hi ,List<String> lst){
         if (hi >= s.length()) {
-            if (lo == s.length()) ans.add(new ArrayList<>(lst));
+            if (lo == hi) ans.add(new ArrayList<>(lst));
             return;
         }
         // two case partetion and not parteation 
