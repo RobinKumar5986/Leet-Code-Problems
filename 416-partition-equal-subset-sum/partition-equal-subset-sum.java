@@ -16,11 +16,7 @@ class Solution {
         boolean reach = c1 || c2;
 
         ans = reach;
-        if(reach)
-            dp[ind][sum] = true;
-        else
-            dp[ind][sum] = false;
-        
+        dp[ind][sum] = reach;
         return reach;
     }
     public boolean canPartition(int[] nums) {
