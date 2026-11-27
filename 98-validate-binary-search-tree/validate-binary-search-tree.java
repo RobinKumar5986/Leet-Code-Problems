@@ -1,15 +1,18 @@
 class Solution {
-    boolean dfs(TreeNode root,long min,long max){
+    List<Integer> lst = new ArrayList<>();
+    void dfs(TreeNode root){
         if(root == null)
-            return true;
-        if(root.val >= min )
-            return false; // for left sub tree
-        if(root.val <= max)
-            return false; // for righ sub tree
-        return dfs(root.left,root.val, max) && dfs(root.right, min,root.val);
-        
+            return;
+        dfs(root.left);
+        lst.add(root.val);
+        dfs(root.right);
     }
     public boolean isValidBST(TreeNode root) {
-        return dfs(root, Long.MAX_VALUE, Long.MIN_VALUE);
+        dfs(root);
+        for(int i = 1; i < lst.size(); i++){
+            if(lst.get(i-1) >= lst.get(i))
+                return false;
+        }
+        return true;
     }
 }
