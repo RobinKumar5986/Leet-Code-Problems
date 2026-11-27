@@ -1,31 +1,36 @@
 class Solution {
-    int ans = Integer.MAX_VALUE;
-    Map<String,Integer> map = new HashMap<>();
-    int dfs(int ind,int sum, int[] coins,int amount){
-        String key = ind +":"+sum;
-        if(sum == amount)
+    int[][] dp;
+    int INF;
+    int dfs(int ind,int rem, int[] coins,int amount){
+        if(rem == 0)
             return 0;
+        if(rem < 0)
+            return INF;
         if(ind >= coins.length)
-            return Integer.MAX_VALUE;
-        if(sum > amount)
-            return Integer.MAX_VALUE;
+            return INF;
+    
+        if(dp[ind][rem] != -1)
+            return dp[ind][rem];
 
-        if(map.containsKey(key))
-            return map.get(key);
-
-        int min = Integer.MAX_VALUE;
+        int min = INF;
         for(int i = ind; i < coins.length; i++){
-            int val = dfs(i, sum + coins[i],coins,amount);
-            if(val != Integer.MAX_VALUE){
-                min = Math.min(min,val+1); //+1 signifying adding this coin as part
-            }
-        } 
-        map.put(key,min);   
+            int val = dfs(i, rem - coins[i],coins,amount);
+            min = Math.min(min,val+1); //+1 signifying adding this coin as part
+            
+        }
+        
+        dp[ind][rem] = min;
+        
         return min;
     }
-    public int coinChange(int[] coins, int amount) {        
-        int ans = dfs(0,0,coins,amount);
-        if(ans == Integer.MAX_VALUE)
+    public int coinChange(int[] coins, int amount) {
+        INF = amount+1;
+
+        dp = new int[coins.length][amount+1];
+        for(int[] row : dp)
+            Arrays.fill(row,-1);
+        int ans = dfs(0,amount,coins,amount);
+        if(ans == INF)
             return -1;
         return ans;
     }
