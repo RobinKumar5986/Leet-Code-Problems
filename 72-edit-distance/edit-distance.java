@@ -12,11 +12,11 @@ class Solution {
         if(s1.charAt(i) == s2.charAt(j)){
             min = dfs(i+1,j+1,s1,s2); //no step taken
         }else{
-            int n1 = dfs(i,j+1,s1,s2) + 1; //insert thus char at i == j (hypothetically)
-            int n2 = dfs(i+1,j,s1,s2) + 1; //delete thus i need to go to next char
-            int n3 = dfs(i+1,j+1,s1,s2) + 1; //replace char thus now both char is equal
+            int n1 = dfs(i,j+1,s1,s2); //insert thus char at i == j (hypothetically)
+            int n2 = dfs(i+1,j,s1,s2); //delete thus i need to go to next char
+            int n3 = dfs(i+1,j+1,s1,s2); //replace char thus now both char is equal
             
-            min = Math.min(n1,Math.min(n2,n3));
+            min = Math.min(n1,Math.min(n2,n3)) + 1;
         }
         dp[i][j] = min;
         return min;
