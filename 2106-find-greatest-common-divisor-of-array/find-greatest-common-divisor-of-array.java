@@ -8,7 +8,7 @@ class Solution {
         }
 
         int ans = 1;
-        for(int i = 1 ; i <= l ; i++){
+        for(int i = 1 ; i <= s ; i++){
             if(i > s ) break;
             double v1 = (double)s / i;
             double v2 = (double)l / i;
