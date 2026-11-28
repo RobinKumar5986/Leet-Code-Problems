@@ -7,15 +7,11 @@ class Solution {
             l = Math.max(l,ele);
         }
 
-        int ans = 1;
-        for(int i = 1 ; i <= s ; i++){
-            if(i > s ) break;
-            double v1 = (double)s / i;
-            double v2 = (double)l / i;
-            if((int) v1 == v1 && (int)v2 == v2){
-                ans = i;
-            }
+        while( l != 0){
+            int temp = s % l;
+            s = l;
+            l = temp;
         }
-        return ans;
+        return s;
     }
 }
