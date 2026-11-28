@@ -6,11 +6,11 @@ class Solution {
             s = Math.min(s,ele);
             l = Math.max(l,ele);
         }
-
-        while( l != 0){
-            int temp = s % l;
-            s = l;
-            l = temp;
+        int rem = l % s;
+        while(rem != 0){
+            l = s;
+            s = rem;
+            rem = l % s;
         }
         return s;
     }
