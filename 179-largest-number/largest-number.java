@@ -42,30 +42,34 @@ class Solution {
     // }
 
     //Solution 2
-    String getBest(int[] nums,boolean[] seen) {
-        String best = "";
-        int ind = -1;
-        for(int i = 0 ; i < nums.length; i++){
-            if(seen[i])
-                continue;
-            String n = nums[i] + "";
-            if(ind == -1 || (n + best).compareTo(best + n) > 0){
-                best = n;
-                ind = i;
-            }
+    // String getBest(int[] nums,boolean[] seen) {
+    //     String best = "";
+    //     int ind = -1;
+    //     for(int i = 0 ; i < nums.length; i++){
+    //         if(seen[i])
+    //             continue;
+    //         String n = nums[i] + "";
+    //         if(ind == -1 || (n + best).compareTo(best + n) > 0){
+    //             best = n;
+    //             ind = i;
+    //         }
             
-        }
-        seen[ind] = true;
-        return best;
-    }
+    //     }
+    //     seen[ind] = true;
+    //     return best;
+    // }
     public String largestNumber(int[] nums) {
-        boolean[] seen = new boolean[nums.length];
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < nums.length; i++){
-            sb.append(getBest(nums,seen));
+        String[] arr = new String[nums.length];
+        for(int i = 0 ; i < nums.length; i++){
+            arr[i] = String.valueOf(nums[i]);
         }
-        if(sb.charAt(0) == '0')
-            return "0";
+        Arrays.sort(arr,(a,b) -> (b+a).compareTo(a+b));
+        StringBuilder sb = new StringBuilder();
+        for(String s : arr)
+            sb.append(s);
+        if(sb.charAt(0) == '0') return "0";
+
         return sb.toString();
+
     }
 }
